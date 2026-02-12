@@ -178,6 +178,27 @@
             line-height: 1.7;
         }
 
+        .about-features {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .about-features li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--color-dark-gray);
+        }
+
+        .about-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-blue);
+            font-weight: bold;
+            font-size: 16px;
+        }
+
         .about-image {
             background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-light-blue) 100%);
             border-radius: 8px;
@@ -339,6 +360,44 @@
             display: flex;
             align-items: center;
             gap: 5px;
+        }
+
+        /* ===== CEMETERY SECTION ===== */
+        .cemetery {
+            background: var(--color-light-gray);
+        }
+
+        .cemetery-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .cemetery-text h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            color: var(--color-blue);
+            margin-bottom: 15px;
+        }
+
+        .cemetery-text p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .cemetery-image {
+            background: linear-gradient(135deg, var(--color-gray) 0%, var(--color-dark-gray) 100%);
+            border-radius: 8px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-size: 16px;
+            text-align: center;
+            padding: 30px;
         }
 
         /* ===== CONTACT SECTION ===== */
@@ -510,6 +569,7 @@
             }
 
             .about-content,
+            .cemetery-content,
             .contact-content {
                 grid-template-columns: 1fr;
             }
@@ -552,6 +612,7 @@
                     <li><a href="#services">Services</a></li>
                     <li><a href="#news">Actualités</a></li>
                     <li><a href="#events">Événements</a></li>
+                    <li><a href="#cemetery">Cimetière</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -577,6 +638,12 @@
                     <p>Irqvithen est un village situé à la daïra de Maâtkas, wilaya de Tizi-Ouzou, dans le nord de l'Algérie. Notre communauté est composée de familles qui vivent ici depuis plusieurs générations, partageant une histoire commune et un attachement fort à leur terre.</p>
                     <p>Le village dispose de deux cimetières qui témoignent de son histoire et de ses traditions. Nous travaillons ensemble pour préserver notre patrimoine et améliorer la qualité de vie de tous les habitants du village.</p>
                     <p>Nous sommes engagés dans des projets de développement local, notamment dans les domaines de l'environnement, de l'éducation et de la culture.</p>
+                    <ul class="about-features">
+                        <li>Village de Kabylie, Algérie</li>
+                        <li>Deux cimetières ancestraux</li>
+                        <li>Communauté unie et solidaire</li>
+                        <li>Projets de développement local</li>
+                    </ul>
                 </div>
                 <div class="about-image">
                     <div style="text-align: center;">
@@ -591,7 +658,7 @@
     <!-- ===== SERVICES SECTION ===== -->
     <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">Cimetière Assadi : un patrimoine à défendre</h2>
+            <h2 class="section-title">Services et Informations</h2>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
@@ -672,12 +739,27 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-
-
-
-
-                
+    <!-- ===== CEMETERY SECTION ===== -->
+    <section class="cemetery" id="cemetery">
+        <div class="container">
+            <h2 class="section-title">Cimetière d'Irqvithen : mémoire et dignité</h2>
+            <div class="cemetery-content">
+                <div class="cemetery-text">
+                    <h3>Notre Patrimoine Funéraire</h3>
+                    <p>Le village d'Irqvithen compte deux cimetières ancestraux qui témoignent de son histoire et de ses traditions. Ces lieux sacrés sont le repos éternel de nos ancêtres et font partie intégrante de notre identité collective.</p>
+                    <p>Nous travaillons à la préservation, l'entretien et la valorisation de ces espaces de mémoire, afin de rendre hommage à ceux qui nous ont précédés et de transmettre ce patrimoine aux générations futures.</p>
+                    <p>Le respect de ces lieux est une priorité pour notre communauté. Chaque tombe, chaque pierre raconte une histoire, et nous nous engageons à préserver cette mémoire avec dignité.</p>
+                </div>
+                <div class="cemetery-image">
+                    <div style="text-align: center;">
+                        <i class="fas fa-cross" style="font-size: 60px; margin-bottom: 15px;"></i>
+                        <p>Cimetière d'Irqvithen<br>Lieu de Mémoire et de Recueillement</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -721,7 +803,7 @@
                         </div>
                         <div>
                             <h4>Horaires</h4>
-                            <p>---<br>--</p>
+                            <p>Lundi - Vendredi : 8h - 16h<br>Samedi : 8h - 12h</p>
                         </div>
                     </div>
                 </div>
@@ -754,6 +836,7 @@
                     <li><a href="#services">Services</a></li>
                     <li><a href="#news">Actualités</a></li>
                     <li><a href="#events">Événements</a></li>
+                    <li><a href="#cemetery">Cimetière</a></li>
                 </ul>
             </div>
             <div class="footer-section">
