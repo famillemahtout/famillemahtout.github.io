@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irqvithen - Village de Kabylie, Algérie</title>
+    <meta name="description" content="Site officiel du village d'Irqvithen. Informations, événements, services et actualités de la communauté.">
+    <meta name="keywords" content="Irqvithen, village, Kabylie, Algérie, communauté, événements">
+    <meta name="author" content="Comité du Village d'Irqvithen">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-white: #FFFFFF;
+            --color-blue: #2c5282;
+            --color-light-blue: #3b82f6;
+            --color-gray: #6b7280;
+            --color-light-gray: #f3f4f6;
+            --color-dark-gray: #1f2937;
+            --color-green: #10b981;
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--color-dark-gray);
+            line-height: 1.6;
+            background-color: var(--color-white);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--color-white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-blue);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-dark-gray);
+            font-weight: 500;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--color-light-blue);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--color-blue) 0%, #1e3a8a 100%);
+            color: var(--color-white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--color-white);
+            color: var(--color-blue);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--color-white);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--color-white);
+        }
+
+        /* ===== SECTIONS GÉNÉRALES ===== */
+        section {
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-blue);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--color-gray);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            background: var(--color-light-gray);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            color: var(--color-blue);
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-light-blue) 100%);
+            border-radius: 8px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-size: 16px;
+            text-align: center;
+            padding: 30px;
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: var(--color-white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-icon {
+            font-size: 36px;
+            color: var(--color-blue);
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            color: var(--color-blue);
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: var(--color-gray);
+            line-height: 1.6;
+        }
+
+        /* ===== NEWS SECTION ===== */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .news-card {
+            background: var(--color-white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        .news-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-date {
+            font-size: 13px;
+            color: var(--color-gray);
+            margin-bottom: 10px;
+        }
+
+        .news-card h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+            color: var(--color-blue);
+            margin-bottom: 10px;
+        }
+
+        .news-card p {
+            font-size: 14px;
+            color: var(--color-gray);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            color: var(--color-light-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* ===== EVENTS SECTION ===== */
+        .events-list {
+            margin-top: 40px;
+        }
+
+        .event-item {
+            background: var(--color-white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .event-date {
+            background: var(--color-blue);
+            color: var(--color-white);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .event-day {
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .event-month {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .event-details h4 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            color: var(--color-blue);
+            margin-bottom: 5px;
+        }
+
+        .event-details p {
+            font-size: 14px;
+            color: var(--color-gray);
+            line-height: 1.6;
+        }
+
+        .event-location {
+            font-size: 13px;
+            color: var(--color-gray);
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            background: var(--color-light-gray);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-info {
+            background: var(--color-white);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            font-size: 20px;
+            color: var(--color-blue);
+            min-width: 25px;
+        }
+
+        .contact-item h4 {
+            color: var(--color-blue);
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .contact-item p {
+            color: var(--color-gray);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            background: var(--color-white);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--color-blue);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-light-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-submit {
+            background: var(--color-blue);
+            color: var(--color-white);
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+
+        .form-submit:hover {
+            background: var(--color-light-blue);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--color-dark-gray);
+            color: var(--color-white);
+            padding: 40px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+
+        .footer-section a:hover {
+            color: var(--color-light-blue);
+        }
+
+        .footer-bottom {
+            font-size: 12px;
+            opacity: 0.8;
+            text-align: center;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .event-item {
+                grid-template-columns: 80px 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 40px 20px;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Irqvithen</a>
+            <nav>
+                <ul>
+                    <li><a href="#about">À Propos</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#news">Actualités</a></li>
+                    <li><a href="#events">Événements</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Village d'Irqvithen</h1>
+            <p>Kabylie, Algérie</p>
+            <a href="#about" class="cta-button">En savoir plus</a>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">À Propos d'Irqvithen</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Notre Village</h3>
+                    <p>Irqvithen est un village situé en Kabylie, dans le nord de l'Algérie. Notre communauté est composée de familles qui vivent ici depuis plusieurs générations, partageant une histoire commune et un attachement fort à leur terre.</p>
+                    <p>Le village dispose de deux cimetières qui témoignent de son histoire et de ses traditions. Nous travaillons ensemble pour préserver notre patrimoine et améliorer la qualité de vie de tous les habitants.</p>
+                    <p>Nous sommes engagés dans des projets de développement local, notamment dans les domaines de l'environnement, de l'éducation et de la culture.</p>
+                </div>
+                <div class="about-image">
+                    <div style="text-align: center;">
+                        <i class="fas fa-mountain" style="font-size: 60px; margin-bottom: 15px;"></i>
+                        <p>Irqvithen<br>Kabylie, Algérie</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES SECTION ===== -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Services et Informations</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Environnement</h3>
+                    <p>Gestion des déchets, propreté des espaces publics et initiatives de préservation de l'environnement.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Vie Communautaire</h3>
+                    <p>Organisation d'événements, réunions de quartier et activités pour renforcer les liens entre habitants.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Éducation</h3>
+                    <p>Soutien scolaire, bibliothèque communautaire et programmes d'apprentissage pour les jeunes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== NEWS SECTION ===== -->
+    <section class="news" id="news">
+        <div class="container">
+            <h2 class="section-title">Actualités</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-date">15 février 2026</div>
+                    <h3>Campagne de nettoyage printanière</h3>
+                    <p>Une journée de nettoyage collectif est prévue le 5 mars. Tous les habitants sont invités à participer.</p>
+                    <a href="#" class="read-more">Lire la suite</a>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">10 février 2026</div>
+                    <h3>Nouveau comité de quartier</h3>
+                    <p>Le comité de quartier a été renouvelé. Découvrez les nouveaux membres et leurs projets.</p>
+                    <a href="#" class="read-more">Lire la suite</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EVENTS SECTION ===== -->
+    <section class="events" id="events">
+        <div class="container">
+            <h2 class="section-title">Événements à Venir</h2>
+            <div class="events-list">
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="event-day">05</span>
+                        <span class="event-month">MARS</span>
+                    </div>
+                    <div class="event-details">
+                        <h4>Journée de nettoyage collective</h4>
+                        <p>Nettoyage des rues et espaces publics du village. Matériel fourni sur place.</p>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Rendez-vous à la place du village à 9h</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="event-day">12</span>
+                        <span class="event-month">MARS</span>
+                    </div>
+                    <div class="event-details">
+                        <h4>Réunion du comité de quartier</h4>
+                        <p>Point sur les projets en cours et présentation des nouvelles initiatives.</p>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Salle communale à 18h</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="event-day">20</span>
+                        <span class="event-month">MARS</span>
+                    </div>
+                    <div class="event-details">
+                        <h4>Fête du printemps</h4>
+                        <p>Célébration du printemps avec animations et repas partagé.</p>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Place du village à partir de 14h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Adresse</h4>
+                            <p>Irqvithen, Kabylie<br>Algérie</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p>+213 [Numéro du comité]</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>contact@irqvithen.dz</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Horaires</h4>
+                            <p>Lundi - Vendredi : 8h - 16h<br>Samedi : 8h - 12h</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nom</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#about">À Propos</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#news">Actualités</a></li>
+                    <li><a href="#events">Événements</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="#contact">Formulaire de contact</a></li>
+                    <li><a href="tel:+213">Téléphone</a></li>
+                    <li><a href="mailto:contact@irqvithen.dz">Email</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Suivez-nous</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Village d'Irqvithen. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message. Nous vous répondrons dans les plus brefs délais.');
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>
