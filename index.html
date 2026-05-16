@@ -1,1517 +1,878 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Irqvithen - Village de Kabylie, Algérie</title>
-    <meta name="description" content="Site officiel du village d'Irqvithen. Informations, événements, services et actualités de la communauté.">
-    <meta name="keywords" content="Irqvithen, village, Kabylie, Algérie, communauté, événements">
-    <meta name="author" content="Comité du Village d'Irqvithen">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --color-white: #FFFFFF;
-            --color-blue: #2c5282;
-            --color-light-blue: #3b82f6;
-            --color-gray: #6b7280;
-            --color-light-gray: #f3f4f6;
-            --color-dark-gray: #1f2937;
-            --color-green: #10b981;
-            --transition: all 0.3s ease;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: var(--color-dark-gray);
-            line-height: 1.6;
-            background-color: var(--color-white);
-        }
-
-        /* ===== HEADER ===== */
-        header {
-            background-color: var(--color-white);
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Roboto', sans-serif;
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--color-blue);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo i {
-            font-size: 28px;
-        }
-
-        /* ===== NAVIGATION BAR ===== */
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 5px;
-            align-items: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--color-dark-gray);
-            font-weight: 500;
-            font-size: 14px;
-            transition: var(--transition);
-            padding: 8px 14px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        nav a:hover, nav a.active {
-            color: var(--color-light-blue);
-            background-color: rgba(59, 130, 246, 0.08);
-        }
-
-        nav a.active {
-            font-weight: 600;
-        }
-
-        /* ===== MOBILE MENU ===== */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: var(--color-blue);
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        /* ===== PAGE SYSTEM ===== */
-        .page {
-            display: none;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            background: linear-gradient(135deg, var(--color-blue) 0%, #1e3a8a 50%, #0f2557 100%);
-            color: var(--color-white);
-            padding: 100px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-            animation: heroGlow 8s ease-in-out infinite;
-        }
-
-        @keyframes heroGlow {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(5%, 5%); }
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 52px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 35px;
-            opacity: 0.95;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--color-white);
-            color: var(--color-blue);
-            padding: 14px 32px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: 2px solid var(--color-white);
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        .cta-button:hover {
-            background: transparent;
-            color: var(--color-white);
-            transform: translateY(-2px);
-        }
-
-        .cta-button-outline {
-            display: inline-block;
-            background: transparent;
-            color: var(--color-white);
-            padding: 14px 32px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: 2px solid rgba(255,255,255,0.5);
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        .cta-button-outline:hover {
-            border-color: var(--color-white);
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-2px);
-        }
-
-        /* Hero stats */
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .hero-stat {
-            text-align: center;
-        }
-
-        .hero-stat-number {
-            font-family: 'Roboto', sans-serif;
-            font-size: 36px;
-            font-weight: 700;
-            display: block;
-        }
-
-        .hero-stat-label {
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        /* ===== SECTIONS GÉNÉRALES ===== */
-        section {
-            padding: 60px 20px;
-        }
-
-        .section-title {
-            font-family: 'Roboto', sans-serif;
-            font-size: 34px;
-            font-weight: 700;
-            color: var(--color-blue);
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            font-size: 16px;
-            color: var(--color-gray);
-            text-align: center;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .section-divider {
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(to right, var(--color-blue), var(--color-light-blue));
-            margin: 15px auto 25px;
-            border-radius: 2px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* ===== ABOUT SECTION ===== */
-        .about {
-            background: var(--color-light-gray);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 26px;
-            color: var(--color-blue);
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            margin-bottom: 15px;
-            line-height: 1.8;
-            color: #374151;
-        }
-
-        .about-image {
-            background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-light-blue) 100%);
-            border-radius: 12px;
-            height: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-white);
-            font-size: 16px;
-            text-align: center;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(44, 82, 130, 0.3);
-        }
-
-        .about-highlights {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .about-highlight {
-            text-align: center;
-            padding: 20px;
-            background: var(--color-white);
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-
-        .about-highlight i {
-            font-size: 28px;
-            color: var(--color-blue);
-            margin-bottom: 10px;
-        }
-
-        .about-highlight h4 {
-            font-size: 14px;
-            color: var(--color-blue);
-            margin-bottom: 5px;
-        }
-
-        .about-highlight p {
-            font-size: 12px;
-            color: var(--color-gray);
-        }
-
-        /* ===== SERVICES SECTION ===== */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .service-card {
-            background: var(--color-white);
-            padding: 35px 25px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid #e5e7eb;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-            border-color: var(--color-light-blue);
-        }
-
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(44,82,130,0.1), rgba(59,130,246,0.1));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-        }
-
-        .service-icon i {
-            font-size: 30px;
-            color: var(--color-blue);
-        }
-
-        .service-card h3 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 20px;
-            color: var(--color-blue);
-            margin-bottom: 12px;
-        }
-
-        .service-card p {
-            font-size: 14px;
-            color: var(--color-gray);
-            line-height: 1.7;
-        }
-
-        /* ===== NEWS SECTION ===== */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .news-card {
-            background: var(--color-white);
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            transition: var(--transition);
-            overflow: hidden;
-            border: 1px solid #e5e7eb;
-        }
-
-        .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-        }
-
-        .news-image {
-            height: 180px;
-            background: linear-gradient(135deg, var(--color-blue), var(--color-light-blue));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-
-        .news-image i {
-            font-size: 50px;
-            opacity: 0.7;
-        }
-
-        .news-content {
-            padding: 25px;
-        }
-
-        .news-date {
-            font-size: 13px;
-            color: var(--color-light-blue);
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .news-card h3 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 20px;
-            color: var(--color-blue);
-            margin-bottom: 10px;
-        }
-
-        .news-card p {
-            font-size: 14px;
-            color: var(--color-gray);
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-
-        .read-more {
-            color: var(--color-light-blue);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: var(--transition);
-        }
-
-        .read-more:hover {
-            gap: 10px;
-        }
-
-        /* ===== EVENTS SECTION ===== */
-        .events-list {
-            margin-top: 40px;
-            display: grid;
-            gap: 20px;
-        }
-
-        .event-item {
-            background: var(--color-white);
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            display: grid;
-            grid-template-columns: 110px 1fr auto;
-            gap: 25px;
-            align-items: center;
-            border: 1px solid #e5e7eb;
-            transition: var(--transition);
-        }
-
-        .event-item:hover {
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            border-color: var(--color-light-blue);
-        }
-
-        .event-date {
-            background: linear-gradient(135deg, var(--color-blue), #1e3a8a);
-            color: var(--color-white);
-            padding: 18px;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .event-day {
-            font-family: 'Roboto', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .event-month {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        .event-details h4 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 20px;
-            color: var(--color-blue);
-            margin-bottom: 8px;
-        }
-
-        .event-details p {
-            font-size: 14px;
-            color: var(--color-gray);
-            line-height: 1.6;
-        }
-
-        .event-location {
-            font-size: 13px;
-            color: var(--color-gray);
-            margin-top: 8px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .event-location i {
-            color: var(--color-light-blue);
-        }
-
-        .event-badge {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--color-green);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-
-        /* ===== CEMETERY SECTION ===== */
-        .cemetery {
-            background: var(--color-light-gray);
-        }
-
-        .cemetery-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: start;
-            margin-top: 40px;
-        }
-
-        .cemetery-text h3 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 24px;
-            color: var(--color-blue);
-            margin-bottom: 15px;
-        }
-
-        .cemetery-text p {
-            margin-bottom: 15px;
-            line-height: 1.8;
-            color: #374151;
-        }
-
-        .highlight {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            padding: 20px;
-            border-left: 4px solid var(--color-blue);
-            margin: 25px 0;
-            border-radius: 0 8px 8px 0;
-            font-style: italic;
-            color: #92400e;
-            line-height: 1.7;
-        }
-
-        .cemetery-actions {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-        }
-
-        .cemetery-actions li {
-            padding: 10px 0;
-            padding-left: 30px;
-            position: relative;
-            color: #374151;
-        }
-
-        .cemetery-actions li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--color-green);
-            font-weight: 700;
-        }
-
-        .cemetery-sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .cemetery-image {
-            background: linear-gradient(135deg, #374151, #1f2937);
-            border-radius: 12px;
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-white);
-            text-align: center;
-            padding: 30px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        .cemetery-info-box {
-            background: var(--color-white);
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .cemetery-info-box h4 {
-            color: var(--color-blue);
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-
-        .cemetery-info-box p {
-            font-size: 14px;
-            color: var(--color-gray);
-            line-height: 1.7;
-        }
-
-        /* ===== CONTACT SECTION ===== */
-        .contact {
-            background: var(--color-light-gray);
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .contact-info {
-            background: linear-gradient(135deg, var(--color-blue), #1e3a8a);
-            color: white;
-            padding: 35px;
-            border-radius: 12px;
-        }
-
-        .contact-info h3 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 22px;
-            margin-bottom: 25px;
-        }
-
-        .contact-item {
-            margin-bottom: 25px;
-            display: flex;
-            gap: 15px;
-        }
-
-        .contact-icon {
-            width: 45px;
-            height: 45px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .contact-icon i {
-            font-size: 18px;
-            color: var(--color-white);
-        }
-
-        .contact-item h4 {
-            margin-bottom: 5px;
-            font-size: 16px;
-        }
-
-        .contact-item p {
-            font-size: 14px;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        .contact-form {
-            background: var(--color-white);
-            padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .contact-form h3 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 22px;
-            color: var(--color-blue);
-            margin-bottom: 25px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--color-blue);
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 14px;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--color-light-blue);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-submit {
-            background: linear-gradient(135deg, var(--color-blue), var(--color-light-blue));
-            color: var(--color-white);
-            padding: 12px 30px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 15px;
-            width: 100%;
-        }
-
-        .form-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(44, 82, 130, 0.3);
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: var(--color-dark-gray);
-            color: var(--color-white);
-            padding: 50px 20px 20px;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto 30px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-section h4 {
-            margin-bottom: 20px;
-            font-family: 'Roboto', sans-serif;
-            font-size: 18px;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .footer-section a:hover {
-            color: var(--color-light-blue);
-            padding-left: 5px;
-        }
-
-        .footer-bottom {
-            font-size: 13px;
-            opacity: 0.6;
-            text-align: center;
-        }
-
-        /* ===== BACK TO TOP ===== */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--color-blue);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(44,82,130,0.3);
-            transition: var(--transition);
-            z-index: 999;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-3px);
-            background: var(--color-light-blue);
-        }
-
-        .back-to-top.visible {
-            display: flex;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                z-index: 999;
-            }
-
-            nav.open {
-                display: block;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 0;
-                padding: 10px 0;
-            }
-
-            nav a {
-                padding: 12px 20px;
-                border-radius: 0;
-            }
-
-            .hero {
-                padding: 60px 20px;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .hero-stats {
-                gap: 25px;
-            }
-
-            .hero-stat-number {
-                font-size: 26px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about-content,
-            .cemetery-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .about-highlights {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .event-item {
-                grid-template-columns: 90px 1fr;
-            }
-
-            .event-badge {
-                display: none;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 40px 20px;
-            }
-
-            .section-title {
-                font-size: 26px;
-            }
-
-            .contact-info {
-                order: 2;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Village Irqvithen – Famille Mahtout</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark  : #1a5c38;
+      --green-mid   : #2e8b57;
+      --green-light : #a8d5b5;
+      --gold        : #c9963d;
+      --cream       : #f9f5ef;
+      --text-dark   : #1e1e1e;
+      --text-light  : #f0ede8;
+      --shadow      : 0 8px 32px rgba(0,0,0,.15);
+      --radius      : 16px;
+      --nav-h       : 66px;
+      --ticker-h    : 44px;
+      --offset      : calc(var(--nav-h) + var(--ticker-h));
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      padding-top: var(--offset);
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000; height: var(--nav-h);
+      background: rgba(26,92,56,.97);
+      backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem;
+      box-shadow: 0 2px 16px rgba(0,0,0,.3);
+    }
+    .nav-logo { display:flex; align-items:center; gap:.7rem; text-decoration:none; }
+    .nav-logo .logo-icon {
+      width:42px; height:42px; border-radius:50%;
+      background:var(--gold);
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.2rem; color:#fff;
+    }
+    .nav-logo span {
+      font-family:'Playfair Display',serif;
+      color:#fff; font-size:1.15rem; letter-spacing:.5px;
+    }
+    .nav-links { display:flex; gap:1.8rem; list-style:none; }
+    .nav-links a {
+      color:var(--text-light); text-decoration:none;
+      font-size:.88rem; font-weight:400; transition:color .3s;
+      display:flex; align-items:center; gap:.35rem;
+    }
+    .nav-links a:hover { color:var(--gold); }
+    .nav-badge {
+      display:inline-flex; align-items:center; justify-content:center;
+      background:var(--gold); color:#fff;
+      font-size:.58rem; font-weight:700;
+      width:16px; height:16px; border-radius:50%;
+    }
+
+    /* ── TICKER ── */
+    .annonces-ticker {
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0;
+      z-index: 999; height: var(--ticker-h);
+      background: linear-gradient(90deg,#0f2d1c 0%,var(--green-dark) 40%,#0f2d1c 100%);
+      display: flex; align-items: center; overflow: hidden;
+      box-shadow: 0 3px 12px rgba(0,0,0,.3);
+      border-bottom: 2px solid var(--gold);
+    }
+    .ticker-label {
+      flex-shrink:0;
+      display:flex; align-items:center; gap:.5rem;
+      background:var(--gold); color:#fff;
+      font-size:.7rem; font-weight:700;
+      text-transform:uppercase; letter-spacing:1.5px;
+      padding:0 1.1rem; height:100%; white-space:nowrap;
+    }
+    .ticker-sep {
+      width:0; height:0;
+      border-top:var(--ticker-h) solid var(--gold);
+      border-right:18px solid transparent;
+      flex-shrink:0;
+    }
+    .ticker-track {
+      flex:1; overflow:hidden;
+      mask-image:linear-gradient(90deg,transparent 0%,#000 4%,#000 96%,transparent 100%);
+    }
+    .ticker-inner {
+      display:flex; white-space:nowrap;
+      animation:ticker-scroll 26s linear infinite;
+    }
+    .ticker-inner:hover { animation-play-state:paused; }
+    @keyframes ticker-scroll {
+      0%   { transform:translateX(0); }
+      100% { transform:translateX(-50%); }
+    }
+    .ticker-item {
+      display:inline-flex; align-items:center; gap:.55rem;
+      color:rgba(255,255,255,.9); font-size:.8rem;
+      padding:0 2.5rem; cursor:pointer; text-decoration:none;
+      transition:color .2s;
+    }
+    .ticker-item:hover { color:var(--gold); }
+    .ticker-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+    .ticker-cat { font-size:.62rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; opacity:.65; }
+    .ticker-item strong { font-weight:600; }
+    .ticker-view-all {
+      flex-shrink:0;
+      display:flex; align-items:center; gap:.4rem;
+      color:var(--gold); font-size:.75rem; font-weight:600;
+      text-decoration:none; padding:0 1.1rem; height:100%;
+      border-left:1px solid rgba(255,255,255,.1);
+      white-space:nowrap; transition:background .2s;
+    }
+    .ticker-view-all:hover { background:rgba(255,255,255,.07); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: calc(100vh - var(--offset));
+      background:
+        linear-gradient(160deg,rgba(26,92,56,.85) 0%,rgba(10,40,25,.7) 100%),
+        url('https://images.unsplash.com/photo-1575783970733-1aaedde1db74?w=1600&q=80') center/cover no-repeat;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      text-align:center; padding:4rem 1.5rem;
+      position:relative; overflow:hidden;
+    }
+    .hero::after {
+      content:''; position:absolute; bottom:0; left:0; right:0; height:80px;
+      background:var(--cream); clip-path:ellipse(60% 100% at 50% 100%);
+    }
+    .hero-badge {
+      background:rgba(201,150,61,.25); border:1px solid var(--gold); color:var(--gold);
+      padding:.4rem 1.2rem; border-radius:50px;
+      font-size:.78rem; letter-spacing:2px; text-transform:uppercase; margin-bottom:1.4rem;
+    }
+    .hero h1 {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2.8rem,7vw,5.5rem);
+      color:#fff; line-height:1.1;
+      text-shadow:0 4px 20px rgba(0,0,0,.4); margin-bottom:.6rem;
+    }
+    .hero h1 span { color:var(--gold); }
+    .hero-sub {
+      font-size:clamp(.95rem,2.2vw,1.2rem);
+      color:rgba(255,255,255,.85); margin-bottom:.5rem; font-weight:300;
+    }
+    .hero-location {
+      display:flex; align-items:center; gap:.5rem;
+      color:var(--green-light); font-size:.9rem; margin-top:.4rem;
+    }
+    .hero-buttons {
+      display:flex; gap:1rem; margin-top:2.5rem; flex-wrap:wrap; justify-content:center;
+    }
+    .btn {
+      padding:.8rem 2rem; border-radius:50px;
+      text-decoration:none; font-weight:600; font-size:.95rem;
+      transition:all .3s; display:inline-flex; align-items:center; gap:.5rem;
+    }
+    .btn-primary { background:var(--gold); color:#fff; box-shadow:0 4px 18px rgba(201,150,61,.4); }
+    .btn-primary:hover { background:#b8822e; transform:translateY(-2px); }
+    .btn-outline  { border:2px solid rgba(255,255,255,.7); color:#fff; }
+    .btn-outline:hover { background:rgba(255,255,255,.15); transform:translateY(-2px); }
+
+    /* ── SECTIONS ── */
+    section { padding:5rem 1.5rem; }
+    .section-title { text-align:center; margin-bottom:3rem; }
+    .section-title .overline {
+      display:block; color:var(--gold); font-size:.78rem;
+      text-transform:uppercase; letter-spacing:3px; margin-bottom:.5rem;
+    }
+    .section-title h2 {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.8rem,4vw,2.8rem); color:var(--green-dark);
+    }
+    .section-title .divider {
+      width:60px; height:4px; border-radius:2px;
+      background:linear-gradient(90deg,var(--green-mid),var(--gold));
+      margin:1rem auto 0;
+    }
+
+    /* ── ANNONCES ── */
+    .annonces-section { background:#fff; }
+
+    .annonces-toolbar {
+      max-width:1100px; margin:0 auto 2rem;
+      display:flex; flex-wrap:wrap; gap:1rem;
+      align-items:center; justify-content:space-between;
+    }
+    .annonces-search-wrap {
+      position:relative; flex:1; min-width:200px; max-width:320px;
+    }
+    .annonces-search-wrap i {
+      position:absolute; left:1rem; top:50%; transform:translateY(-50%);
+      color:#bbb; font-size:.85rem;
+    }
+    #searchInput {
+      width:100%; padding:.6rem 1rem .6rem 2.5rem;
+      border:2px solid #e5e7eb; border-radius:50px;
+      font-family:'Poppins',sans-serif; font-size:.83rem;
+      outline:none; background:#fff; transition:border-color .25s;
+    }
+    #searchInput:focus { border-color:var(--green-mid); }
+
+    .annonces-filters { display:flex; gap:.45rem; flex-wrap:wrap; }
+    .filter-btn {
+      padding:.4rem .95rem; border-radius:50px;
+      border:2px solid #e5e7eb; background:#fff;
+      font-family:'Poppins',sans-serif; font-size:.78rem; font-weight:600;
+      cursor:pointer; transition:all .25s; color:#666;
+      display:inline-flex; align-items:center; gap:.3rem;
+    }
+    .filter-btn:hover,
+    .filter-btn.active { background:var(--green-dark); border-color:var(--green-dark); color:#fff; }
+
+    .annonces-count {
+      text-align:center; font-size:.8rem; color:#aaa; margin-bottom:1.5rem;
+    }
+    .annonces-count strong { color:var(--green-dark); }
+
+    .annonces-grid {
+      max-width:1100px; margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+      gap:2rem;
+    }
+
+    /* Carte */
+    .annonce-card {
+      background:var(--cream); border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:0 4px 24px rgba(0,0,0,.07);
+      border:1px solid rgba(0,0,0,.06);
+      border-left:5px solid transparent;
+      transition:transform .3s, box-shadow .3s;
+      display:flex; flex-direction:column;
+      animation:fadeUp .4s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(18px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .annonce-card:hover { transform:translateY(-5px); box-shadow:0 14px 44px rgba(0,0,0,.13); }
+
+    .annonce-card[data-category="urgent"]      { border-left-color:#dc2626; }
+    .annonce-card[data-category="general"]     { border-left-color:#7c3aed; }
+    .annonce-card[data-category="sciences"]    { border-left-color:#2563eb; }
+    .annonce-card[data-category="amenagement"] { border-left-color:var(--green-mid); }
+    .annonce-card[data-category="juridique"]   { border-left-color:var(--gold); }
+
+    .annonce-card.pinned {
+      border:2px solid var(--gold);
+      border-left:5px solid var(--gold);
+      position:relative;
+    }
+    .annonce-card.pinned::after {
+      content:'\f08d'; font-family:'Font Awesome 6 Free'; font-weight:900;
+      position:absolute; top:0; right:14px; font-size:1.1rem; color:var(--gold);
+    }
+
+    .annonce-card-header {
+      padding:1rem 1.4rem .75rem;
+      display:flex; align-items:center; justify-content:space-between;
+      border-bottom:1px solid #f0f0f0;
+    }
+    .annonce-cat {
+      display:inline-flex; align-items:center; gap:.4rem;
+      padding:.25rem .8rem; border-radius:50px;
+      font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:1px;
+    }
+    .cat-sciences    { background:#dbeafe; color:#1d4ed8; }
+    .cat-amenagement { background:#dcfce7; color:#166534; }
+    .cat-juridique   { background:#fef3c7; color:#92400e; }
+    .cat-general     { background:#ede9fe; color:#5b21b6; }
+    .cat-urgent      { background:#fee2e2; color:#991b1b; }
+
+    .annonce-new {
+      display:inline-flex; align-items:center; gap:.28rem;
+      background:var(--green-mid); color:#fff;
+      font-size:.6rem; font-weight:700;
+      padding:.15rem .5rem; border-radius:50px;
+      text-transform:uppercase; letter-spacing:1px;
+      animation:blink 2s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.45} }
+
+    .annonce-card-body { padding:1.2rem 1.4rem; flex:1; }
+    .annonce-card-body h3 {
+      font-family:'Playfair Display',serif;
+      font-size:1.1rem; color:var(--green-dark);
+      margin-bottom:.55rem; line-height:1.35;
+    }
+    .annonce-card-body p { font-size:.87rem; color:#666; line-height:1.8; }
+
+    .annonce-card-footer {
+      padding:.85rem 1.4rem;
+      border-top:1px solid #f0f0f0; background:#fafafa;
+      display:flex; align-items:center;
+      justify-content:space-between; flex-wrap:wrap; gap:.5rem;
+    }
+    .annonce-meta { display:flex; align-items:center; gap:.8rem; font-size:.75rem; color:#aaa; flex-wrap:wrap; }
+    .annonce-meta span { display:flex; align-items:center; gap:.3rem; }
+    .annonce-link {
+      font-size:.8rem; font-weight:600; color:var(--green-dark);
+      text-decoration:none; display:flex; align-items:center; gap:.3rem; transition:color .2s;
+    }
+    .annonce-link:hover { color:var(--gold); }
+
+    .no-annonce {
+      text-align:center; padding:3.5rem 1rem; color:#ccc;
+      font-size:.92rem; display:none; grid-column:1/-1;
+    }
+    .no-annonce i { font-size:3rem; display:block; margin-bottom:1rem; }
+
+    /* ── À PROPOS ── */
+    .about { background:var(--cream); }
+    .about-grid {
+      max-width:1100px; margin:0 auto;
+      display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center;
+    }
+    .about-img { border-radius:var(--radius); overflow:hidden; position:relative; box-shadow:var(--shadow); }
+    .about-img img { width:100%; display:block; }
+    .about-img .img-badge {
+      position:absolute; bottom:1rem; left:1rem;
+      background:var(--green-dark); color:#fff;
+      padding:.5rem 1rem; border-radius:8px; font-size:.8rem;
+    }
+    .about-text h3 { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--green-dark); margin-bottom:1rem; }
+    .about-text p  { color:#555; line-height:1.8; margin-bottom:1rem; font-size:.95rem; }
+    .info-chips { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.5rem; }
+    .chip {
+      background:var(--green-light); color:var(--green-dark);
+      padding:.35rem .9rem; border-radius:50px; font-size:.8rem; font-weight:600;
+      display:flex; align-items:center; gap:.4rem;
+    }
+
+    /* ── COMMISSIONS ── */
+    .committee { background:#fff; }
+    .commissions-banner { display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; margin-bottom:3rem; }
+    .banner-stat { text-align:center; }
+    .banner-stat .stat-number { font-family:'Playfair Display',serif; font-size:2.8rem; color:var(--green-dark); line-height:1; }
+    .banner-stat .stat-label  { font-size:.78rem; text-transform:uppercase; letter-spacing:2px; color:#999; margin-top:.3rem; }
+    .banner-divider { width:1px; background:#ddd; }
+
+    .commissions-grid {
+      max-width:1100px; margin:0 auto;
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem;
+    }
+    .commission-card {
+      background:var(--cream); border-radius:var(--radius); padding:2.2rem;
+      box-shadow:var(--shadow); border-top:5px solid transparent;
+      transition:transform .3s, box-shadow .3s; position:relative; overflow:hidden;
+    }
+    .commission-card:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(0,0,0,.18); }
+    .commission-card::before {
+      content:attr(data-num); position:absolute; top:-10px; right:16px;
+      font-family:'Playfair Display',serif; font-size:5rem; font-weight:700;
+      color:rgba(0,0,0,.04); line-height:1; pointer-events:none;
+    }
+    .commission-card:nth-child(1) { border-color:#3b82f6; }
+    .commission-card:nth-child(2) { border-color:var(--green-mid); }
+    .commission-card:nth-child(3) { border-color:var(--gold); }
+
+    .commission-icon { width:60px; height:60px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.6rem; margin-bottom:1.2rem; }
+    .commission-card:nth-child(1) .commission-icon { background:#eff6ff; color:#3b82f6; }
+    .commission-card:nth-child(2) .commission-icon { background:#f0fdf4; color:var(--green-mid); }
+    .commission-card:nth-child(3) .commission-icon { background:#fffbeb; color:var(--gold); }
+
+    .commission-num { display:inline-block; margin-bottom:.7rem; font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; padding:.2rem .75rem; border-radius:50px; }
+    .commission-card:nth-child(1) .commission-num { background:#dbeafe; color:#1d4ed8; }
+    .commission-card:nth-child(2) .commission-num { background:#dcfce7; color:#166534; }
+    .commission-card:nth-child(3) .commission-num { background:#fef3c7; color:#92400e; }
+
+    .commission-card h3 { font-family:'Playfair Display',serif; font-size:1.25rem; margin-bottom:.5rem; color:var(--text-dark); }
+    .commission-domain  { font-size:.78rem; color:#999; font-style:italic; margin-bottom:.8rem; }
+    .commission-card p  { color:#666; font-size:.9rem; line-height:1.75; }
+    .commission-card ul { margin-top:.8rem; padding-left:1.1rem; color:#555; font-size:.88rem; line-height:2; }
+
+    .tag { display:inline-block; margin-top:1.2rem; padding:.3rem .8rem; border-radius:50px; font-size:.75rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; }
+    .tag-blue  { background:#dbeafe; color:#1d4ed8; }
+    .tag-green { background:#dcfce7; color:#166534; }
+    .tag-gold  { background:#fef3c7; color:#92400e; }
+
+    /* ── LOCALISATION ── */
+    .location-section { background:var(--green-dark); color:#fff; }
+    .location-section .section-title h2     { color:#fff; }
+    .location-section .section-title .overline { color:var(--gold); }
+    .location-grid {
+      max-width:900px; margin:0 auto;
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:1.5rem; text-align:center;
+    }
+    .loc-item {
+      background:rgba(255,255,255,.08); border-radius:var(--radius); padding:1.8rem 1rem;
+      border:1px solid rgba(255,255,255,.12); transition:background .3s;
+    }
+    .loc-item:hover { background:rgba(255,255,255,.14); }
+    .loc-item i  { font-size:2rem; color:var(--gold); margin-bottom:.8rem; }
+    .loc-item h4 { font-size:.8rem; text-transform:uppercase; letter-spacing:2px; color:var(--green-light); margin-bottom:.4rem; }
+    .loc-item p  { font-size:1rem; font-weight:600; }
+    .map-wrapper { max-width:900px; margin:3rem auto 0; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
+    .map-wrapper iframe { display:block; width:100%; height:320px; border:none; }
+
+    /* ── FOOTER ── */
+    footer { background:#0f2d1c; color:rgba(255,255,255,.7); text-align:center; padding:3rem 1.5rem; }
+    footer .footer-logo { font-family:'Playfair Display',serif; color:#fff; font-size:1.6rem; margin-bottom:.5rem; }
+    footer .footer-logo span { color:var(--gold); }
+    footer > p { font-size:.85rem; margin-top:.4rem; }
+    .footer-links { display:flex; justify-content:center; gap:1.5rem; margin:1.5rem 0; list-style:none; flex-wrap:wrap; }
+    .footer-links a { color:rgba(255,255,255,.6); text-decoration:none; font-size:.85rem; transition:color .3s; }
+    .footer-links a:hover { color:var(--gold); }
+    .social-icons { display:flex; justify-content:center; gap:1rem; margin:1.2rem 0; }
+    .social-icons a {
+      width:40px; height:40px; border-radius:50%;
+      background:rgba(255,255,255,.08); color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      text-decoration:none; transition:background .3s, color .3s;
+    }
+    .social-icons a:hover { background:var(--gold); }
+    .footer-copy { margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,.08); font-size:.78rem; color:rgba(255,255,255,.4); }
+
+    /* ── BACK TO TOP ── */
+    #top-btn {
+      position:fixed; bottom:2rem; right:2rem;
+      background:var(--gold); color:#fff;
+      width:46px; height:46px; border-radius:50%;
+      display:none; align-items:center; justify-content:center;
+      cursor:pointer; font-size:1.1rem;
+      box-shadow:0 4px 16px rgba(0,0,0,.25);
+      border:none; transition:background .3s, transform .3s; z-index:997;
+    }
+    #top-btn:hover { background:var(--green-dark); transform:translateY(-3px); }
+    #top-btn.visible { display:flex; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width:768px) {
+      nav { padding:0 1.2rem; }
+      .nav-links { display:none; }
+      .about-grid { grid-template-columns:1fr; }
+      .banner-divider { display:none; }
+      .annonces-grid { grid-template-columns:1fr; }
+      .annonces-toolbar { flex-direction:column; align-items:stretch; }
+      .annonces-search-wrap { max-width:100%; }
+      .ticker-label { padding:0 .7rem; font-size:.63rem; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
-    <header>
-        <div class="header-container">
-            <a href="#" class="logo" onclick="showPage('accueil'); return false;">
-                <i class="fas fa-mountain"></i>
-                Irqvithen
-            </a>
-            <button class="menu-toggle" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="#" onclick="showPage('accueil'); return false;" class="nav-link active" data-page="accueil"><i class="fas fa-home"></i> Accueil</a></li>
-                    <li><a href="#" onclick="showPage('about'); return false;" class="nav-link" data-page="about"><i class="fas fa-info-circle"></i> À Propos</a></li>
-                    <li><a href="#" onclick="showPage('services'); return false;" class="nav-link" data-page="services"><i class="fas fa-cogs"></i> Axes</a></li>
-                    <li><a href="#" onclick="showPage('news'); return false;" class="nav-link" data-page="news"><i class="fas fa-newspaper"></i> Actualités</a></li>
-                    <li><a href="#" onclick="showPage('events'); return false;" class="nav-link" data-page="events"><i class="fas fa-calendar-alt"></i> Événements</a></li>
-                    <li><a href="#" onclick="showPage('cemetery'); return false;" class="nav-link" data-page="cemetery"><i class="fas fa-landmark"></i> Cimetière Assadit</a></li>
-                    <li><a href="#" onclick="showPage('contact'); return false;" class="nav-link" data-page="contact"><i class="fas fa-envelope"></i> Contact</a></li>
-                </ul>
-            </nav>
+<!-- NAVBAR -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+    <span>Irqvithen</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#annonces">Annonces <span class="nav-badge" id="navBadge">0</span></a></li>
+    <li><a href="#about">Le Village</a></li>
+    <li><a href="#committee">Commissions</a></li>
+    <li><a href="#location">Localisation</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- TICKER -->
+<div class="annonces-ticker">
+  <div class="ticker-label">
+    <i class="fa-solid fa-bullhorn"></i> Annonces
+  </div>
+  <div class="ticker-sep"></div>
+  <div class="ticker-track">
+    <div class="ticker-inner" id="tickerInner"></div>
+  </div>
+  <a href="#annonces" class="ticker-view-all">
+    Voir tout <i class="fa-solid fa-arrow-right"></i>
+  </a>
+</div>
+
+<!-- 1 — HERO -->
+<header class="hero" id="accueil">
+  <div class="hero-badge">
+    <i class="fa-solid fa-star-and-crescent"></i> &nbsp; Algérie – Wilaya de Tizi-Ouzou
+  </div>
+  <h1>Village<br/><span>Irqvithen</span></h1>
+  <p class="hero-sub">Famille <strong>Mahtout</strong> — Fiers de notre terre kabyle</p>
+  <div class="hero-location">
+    <i class="fa-solid fa-location-dot"></i>
+    Daïra de Maâtkas &nbsp;•&nbsp; Wilaya de Tizi-Ouzou
+  </div>
+  <div class="hero-buttons">
+    <a href="#annonces"  class="btn btn-primary"><i class="fa-solid fa-bullhorn"></i> Voir les annonces</a>
+    <a href="#committee" class="btn btn-outline"><i class="fa-solid fa-compass"></i> Nos Commissions</a>
+  </div>
+</header>
+
+<!-- 2 — ANNONCES -->
+<section class="annonces-section" id="annonces">
+  <div class="section-title">
+    <span class="overline">Comité IRQVITHEN</span>
+    <h2>
+      <i class="fa-solid fa-bullhorn" style="color:var(--gold);font-size:.8em;margin-right:.3rem;"></i>
+      Annonces du Village
+    </h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="annonces-toolbar">
+    <div class="annonces-search-wrap">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="Rechercher une annonce…"/>
+    </div>
+    <div class="annonces-filters">
+      <button class="filter-btn active" data-filter="all">
+        <i class="fa-solid fa-border-all"></i> Toutes
+      </button>
+      <button class="filter-btn" data-filter="urgent">
+        <i class="fa-solid fa-circle-exclamation"></i> Urgent
+      </button>
+      <button class="filter-btn" data-filter="general">
+        <i class="fa-solid fa-bullhorn"></i> Général
+      </button>
+      <button class="filter-btn" data-filter="sciences">
+        <i class="fa-solid fa-flask"></i> Sciences
+      </button>
+      <button class="filter-btn" data-filter="amenagement">
+        <i class="fa-solid fa-leaf"></i> Aménagement
+      </button>
+      <button class="filter-btn" data-filter="juridique">
+        <i class="fa-solid fa-scale-balanced"></i> Juridique
+      </button>
+    </div>
+  </div>
+
+  <p class="annonces-count" id="annoncesCount"></p>
+
+  <div class="annonces-grid" id="annoncesGrid">
+    <div class="no-annonce" id="noAnnonce">
+      <i class="fa-regular fa-folder-open"></i>
+      Aucune annonce trouvée.
+    </div>
+  </div>
+</section>
+
+<!-- 3 — À PROPOS -->
+<section class="about" id="about">
+  <div class="section-title">
+    <span class="overline">Notre identité</span>
+    <h2>Le Village Irqvithen</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1597149980600-4d54d1ee71c4?w=800&q=80" alt="Paysage kabyle"/>
+      <div class="img-badge"><i class="fa-solid fa-mountain"></i> Kabylie, Algérie</div>
+    </div>
+    <div class="about-text">
+      <h3>Un seul village, une seule famille</h3>
+      <p>Irqvithen est un village kabyle niché dans la région de la Daïra de Maâtkas,
+         au cœur de la Wilaya de Tizi-Ouzou.</p>
+      <p>La famille <strong>Mahtout</strong>, profondément ancrée dans ce terroir,
+         œuvre pour le développement, la cohésion sociale et la préservation
+         de son patrimoine à travers le Comité de village <strong>IRQVITHEN</strong>,
+         organisé en <strong>3 commissions spécialisées</strong>.</p>
+      <div class="info-chips">
+        <span class="chip"><i class="fa-solid fa-flag"></i> Algérie</span>
+        <span class="chip"><i class="fa-solid fa-map-pin"></i> Tizi-Ouzou</span>
+        <span class="chip"><i class="fa-solid fa-tree"></i> Maâtkas</span>
+        <span class="chip"><i class="fa-solid fa-users"></i> Famille Mahtout</span>
+        <span class="chip"><i class="fa-solid fa-globe"></i> Kabylie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 — COMMISSIONS -->
+<section class="committee" id="committee">
+  <div class="section-title">
+    <span class="overline">Comité IRQVITHEN</span>
+    <h2>3 Commissions</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="commissions-banner">
+    <div class="banner-stat"><div class="stat-number">3</div><div class="stat-label">Commissions</div></div>
+    <div class="banner-divider"></div>
+    <div class="banner-stat"><div class="stat-number">3</div><div class="stat-label">Domaines couverts</div></div>
+    <div class="banner-divider"></div>
+    <div class="banner-stat"><div class="stat-number">1</div><div class="stat-label">Objectif commun</div></div>
+  </div>
+  <div class="commissions-grid">
+    <div class="commission-card" data-num="01">
+      <span class="commission-num"><i class="fa-solid fa-hashtag"></i> Commission 1</span>
+      <div class="commission-icon"><i class="fa-solid fa-flask"></i></div>
+      <h3>Sciences &amp; Loisirs</h3>
+      <p class="commission-domain"><i class="fa-solid fa-circle-dot"></i>&nbsp; Domaine : <strong>Jeunesse &amp; Éducation</strong></p>
+      <p>Cette commission se consacre entièrement à la jeunesse du village. Elle stimule la curiosité scientifique, soutient l'éducation et organise des activités de loisirs.</p>
+      <ul>
+        <li>Ateliers éducatifs et scientifiques</li>
+        <li>Activités sportives &amp; culturelles</li>
+        <li>Soutien scolaire &amp; orientation</li>
+        <li>Événements jeunesse</li>
+      </ul>
+      <span class="tag tag-blue"><i class="fa-solid fa-graduation-cap"></i> Pour les jeunes</span>
+    </div>
+    <div class="commission-card" data-num="02">
+      <span class="commission-num"><i class="fa-solid fa-hashtag"></i> Commission 2</span>
+      <div class="commission-icon"><i class="fa-solid fa-leaf"></i></div>
+      <h3>Aménagement &amp; Environnement</h3>
+      <p class="commission-domain"><i class="fa-solid fa-circle-dot"></i>&nbsp; Domaine : <strong>Cadre de vie &amp; Nature</strong></p>
+      <p>Cette commission se consacre à l'embellissement du village, la préservation de la nature et le développement de l'espace public.</p>
+      <ul>
+        <li>Aménagement des espaces communs</li>
+        <li>Plantation d'arbres &amp; verdissement</li>
+        <li>Gestion des déchets &amp; propreté</li>
+        
+      </ul>
+      <span class="tag tag-green"><i class="fa-solid fa-seedling"></i> Développement durable</span>
+    </div>
+    <div class="commission-card" data-num="03">
+      <span class="commission-num"><i class="fa-solid fa-hashtag"></i> Commission 3</span>
+      <div class="commission-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+      <h3>Juridique</h3>
+      <p class="commission-domain"><i class="fa-solid fa-circle-dot"></i>&nbsp; Domaine : <strong>Droits &amp; Patrimoine</strong></p>
+      <p>Cette commission se consacre au suivi de l'affaire du cimetière <em>Assadi</em>.</p>
+      <ul>
+        <li></li>
+
+      </ul>
+      <span class="tag tag-gold"><i class="fa-solid fa-gavel"></i> Cimetière Assadi</span>
+    </div>
+  </div>
+</section>
+
+<!-- 5 — LOCALISATION -->
+<section class="location-section" id="location">
+  <div class="section-title">
+    <span class="overline">Où nous trouver</span>
+    <h2>Localisation du Village</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="location-grid">
+    <div class="loc-item"><i class="fa-solid fa-flag"></i><h4>Pays</h4><p>Algérie 🇩🇿</p></div>
+    <div class="loc-item"><i class="fa-solid fa-map"></i><h4>Wilaya</h4><p>Tizi-Ouzou</p></div>
+    <div class="loc-item"><i class="fa-solid fa-location-crosshairs"></i><h4>Daïra</h4><p>Maâtkas</p></div>
+    <div class="loc-item"><i class="fa-solid fa-house"></i><h4>Village</h4><p>Irqvithen</p></div>
+  </div>
+  <div class="map-wrapper">
+    <iframe
+      src="https://www.openstreetmap.org/export/embed.html?bbox=4.0%2C36.4%2C4.5%2C36.7&layer=mapnik"
+      title="Carte – région de Maâtkas, Tizi-Ouzou" loading="lazy">
+    </iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-logo">Village <span>Irqvithen</span></div>
+  <p>Famille Mahtout — Daïra de Maâtkas, Wilaya de Tizi-Ouzou, Algérie</p>
+  <ul class="footer-links">
+    <li><a href="#annonces">Annonces</a></li>
+    <li><a href="#about">Le Village</a></li>
+    <li><a href="#committee">Commissions</a></li>
+    <li><a href="#location">Localisation</a></li>
+  </ul>
+  <div class="social-icons">
+    <a href="https://famillemahtout.github.io/" target="_blank"><i class="fa-brands fa-github"></i></a>
+    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#"><i class="fa-solid fa-envelope"></i></a>
+  </div>
+  <div class="footer-copy">
+    &copy; 2025 – Famille Mahtout / Comité IRQVITHEN. Tous droits réservés.<br/>
+    Site réalisé avec ❤️ pour notre village.
+  </div>
+</footer>
+
+<button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<script>
+
+const ANNONCES = [
+
+  /* ─── 1ʳᵉ annonce affichée ─── */
+  {
+    ordre     : 1,                         // ← position dans la grille
+    id        : 1,
+    categorie : "general",
+    titre     : "Création officielle du comité Irqvithen",
+    texte     : "Le comité de village IRQVITHEN est officiellement créé. "
+              + "Il est composé de trois commissions spécialisées : "
+              + "Sciences & Loisirs, Aménagement & Environnement, et Juridique. "
+              + "Ensemble, œuvrons pour le développement et le rayonnement de notre village.",
+    date      : "Juin 2025",
+    meta      : "Comité officiel",
+    metaIcon  : "fa-solid fa-certificate",
+    lienTexte : "Découvrir les commissions",
+    lienUrl   : "#committee",
+    nouveau   : true,
+    epingle   : true
+  },
+
+  /* ─── 2ᵉ annonce affichée ─── */
+  {
+    ordre     : 2,                         // ← position dans la grille
+    id        : 2,
+    categorie : "amenagement",
+    titre     : "Campagne de nettoyage et désherbage",
+    texte     : "La Commission Aménagement & Environnement lance une grande campagne "
+              + "de nettoyage et de désherbage dans le village Irqvithen. "
+              + "Tous les habitants sont invités à participer. "
+              + "Venez munis de vos outils, gants et bonne humeur pour embellir "
+              + "notre cadre de vie ensemble !",
+    date      : "Juin 2025",
+    meta      : "Tous les habitants",
+    metaIcon  : "fa-solid fa-users",
+    lienTexte : "Participer",
+    lienUrl   : "#",
+    nouveau   : true,
+    epingle   : false
+  }
+
+  /* ─── ✏️ NOUVELLE ANNONCE (exemple) ───
+  ,{
+    ordre     : 3,
+    id        : 3,
+    categorie : "general",
+    titre     : "Titre de votre annonce",
+    texte     : "Description de l'annonce...",
+    date      : "Juillet 2025",
+    meta      : "Info complémentaire",
+    metaIcon  : "fa-solid fa-circle-info",
+    lienTexte : "En savoir plus",
+    lienUrl   : "#",
+    nouveau   : true,
+    epingle   : false
+  }
+  */
+];
+
+/* ════════════════════════════════════════
+   ⚙️  MOTEUR  —  Ne pas modifier
+════════════════════════════════════════ */
+const CAT_CONFIG = {
+  urgent      : { icon:"fa-solid fa-circle-exclamation", css:"cat-urgent",      label:"Urgent"             },
+  general     : { icon:"fa-solid fa-bullhorn",           css:"cat-general",     label:"Général"            },
+  sciences    : { icon:"fa-solid fa-flask",              css:"cat-sciences",    label:"Sciences & Loisirs" },
+  amenagement : { icon:"fa-solid fa-leaf",               css:"cat-amenagement", label:"Aménagement"        },
+  juridique   : { icon:"fa-solid fa-scale-balanced",     css:"cat-juridique",   label:"Juridique"          }
+};
+
+const grid        = document.getElementById('annoncesGrid');
+const noAnnonce   = document.getElementById('noAnnonce');
+const countEl     = document.getElementById('annoncesCount');
+const navBadge    = document.getElementById('navBadge');
+const searchInput = document.getElementById('searchInput');
+const filterBtns  = document.querySelectorAll('.filter-btn');
+const tickerInner = document.getElementById('tickerInner');
+
+let currentFilter = 'all';
+let currentSearch = '';
+
+/* ── Génère le HTML d'une carte ── */
+function buildCard(a) {
+  const cfg      = CAT_CONFIG[a.categorie] || CAT_CONFIG.general;
+  const pinClass = a.epingle ? 'pinned' : '';
+  const newBadge = a.nouveau
+    ? `<span class="annonce-new"><i class="fa-solid fa-circle"></i> Nouveau</span>` : '';
+  return `
+    <div class="annonce-card ${pinClass}" data-id="${a.id}" data-category="${a.categorie}">
+      <div class="annonce-card-header">
+        <span class="annonce-cat ${cfg.css}">
+          <i class="${cfg.icon}"></i> ${cfg.label}
+        </span>
+        ${newBadge}
+      </div>
+      <div class="annonce-card-body">
+        <h3>${a.titre}</h3>
+        <p>${a.texte}</p>
+      </div>
+      <div class="annonce-card-footer">
+        <div class="annonce-meta">
+          <span><i class="fa-solid fa-calendar-days"></i> ${a.date}</span>
+          <span><i class="${a.metaIcon}"></i> ${a.meta}</span>
         </div>
-    </header>
+        <a href="${a.lienUrl}" class="annonce-link">
+          ${a.lienTexte} <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>`;
+}
 
-    <!-- ===== PAGE ACCUEIL ===== -->
-    <div class="page active" id="page-accueil">
-        <section class="hero">
-            <div class="hero-content">
-                <h1>🏘️ Village d'Irqvithen</h1>
-                <p>Daïra de Maâtkas, Wilaya de Tizi-Ouzou — Au cœur de la Kabylie</p>
-                <div class="hero-buttons">
-                    <a href="#" onclick="showPage('about'); return false;" class="cta-button">En savoir plus</a>
-                    <a href="#" onclick="showPage('contact'); return false;" class="cta-button-outline">Nous contacter</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <span class="hero-stat-number">2</span>
-                        <span class="hero-stat-label">Cimetières ancestraux</span>
-                    </div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-number">100+</span>
-                        <span class="hero-stat-label">Familles</span>
-                    </div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-number">3</span>
-                        <span class="hero-stat-label">Axes de développement</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+/* ── Tri : respect strict du champ "ordre" ── */
+function sortAnnonces(list) {
+  return [...list].sort((a, b) => a.ordre - b.ordre);  // ✅ ordre croissant = 1 en premier
+}
 
-        <section>
-            <div class="container">
-                <h2 class="section-title">Bienvenue à Irqvithen</h2>
-                <div class="section-divider"></div>
-                <p class="section-subtitle">Découvrez notre village, notre histoire, et notre engagement pour l'avenir de notre communauté.</p>
-                <div class="services-grid">
-                    <div class="service-card" onclick="showPage('about')" style="cursor:pointer;">
-                        <div class="service-icon">
-                            <i class="fas fa-mountain"></i>
-                        </div>
-                        <h3>Notre Village</h3>
-                        <p>Un village riche d'histoire et de traditions, niché dans les montagnes de Kabylie.</p>
-                    </div>
-                    <div class="service-card" onclick="showPage('services')" style="cursor:pointer;">
-                        <div class="service-icon">
-                            <i class="fas fa-leaf"></i>
-                        </div>
-                        <h3>Nos Projets</h3>
-                        <p>Environnement, éducation et vie communautaire : nos axes de développement.</p>
-                    </div>
-                    <div class="service-card" onclick="showPage('cemetery')" style="cursor:pointer;">
-                        <div class="service-icon">
-                            <i class="fas fa-landmark"></i>
-                        </div>
-                        <h3>Cimetière Assadit</h3>
-                        <p>Un lieu de mémoire ancestral que nous nous engageons à préserver et défendre.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+/* ── Rendu filtré + recherche ── */
+function renderAnnonces() {
+  const sorted = sortAnnonces(ANNONCES);
 
-    <!-- ===== PAGE À PROPOS ===== -->
-    <div class="page" id="page-about">
-        <section class="hero" style="padding: 50px 20px;">
-            <div class="hero-content">
-                <h1>À Propos</h1>
-                <p>Découvrez l'histoire et la vie du village d'Irqvithen</p>
-            </div>
-        </section>
-        <section class="about">
-            <div class="container">
-                <h2 class="section-title">Notre Village</h2>
-                <div class="section-divider"></div>
-                <div class="about-content">
-                    <div class="about-text">
-                        <h3>Irqvithen, un village de Kabylie</h3>
-                        <p>Irqvithen est un village situé à la daïra de Maâtkas, wilaya de Tizi-Ouzou, dans le nord de l'Algérie. Notre communauté est composée de familles qui vivent ici depuis plusieurs générations, partageant une histoire commune et un attachement fort à leur terre.</p>
-                        <p>Le village dispose de deux cimetières ancestraux qui témoignent de son histoire et de ses traditions. Nous travaillons ensemble pour préserver notre patrimoine et améliorer la qualité de vie de tous les habitants du village.</p>
-                        <p>Nous sommes engagés dans des projets de développement local, notamment dans les domaines de l'environnement, de l'éducation et de la culture.</p>
-                    </div>
-                    <div class="about-image">
-                        <div style="text-align: center;">
-                            <i class="fas fa-mountain" style="font-size: 70px; margin-bottom: 20px;"></i>
-                            <p style="font-size:18px; font-weight:600;">Irqvithen</p>
-                            <p>Daïra de Maâtkas<br>Wilaya de Tizi-Ouzou<br>Kabylie, Algérie</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-highlights">
-                    <div class="about-highlight">
-                        <i class="fas fa-users"></i>
-                        <h4>Communauté</h4>
-                        <p>Des familles unies depuis des générations</p>
-                    </div>
-                    <div class="about-highlight">
-                        <i class="fas fa-landmark"></i>
-                        <h4>Patrimoine</h4>
-                        <p>Des traditions et un héritage préservés</p>
-                    </div>
-                    <div class="about-highlight">
-                        <i class="fas fa-seedling"></i>
-                        <h4>Avenir</h4>
-                        <p>Des projets pour les générations futures</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+  const filtered = sorted.filter(a => {
+    const matchCat    = currentFilter === 'all' || a.categorie === currentFilter;
+    const matchSearch = a.titre.toLowerCase().includes(currentSearch)
+                     || a.texte.toLowerCase().includes(currentSearch);
+    return matchCat && matchSearch;
+  });
 
-    <!-- ===== PAGE SERVICES / AXES ===== -->
-    <div class="page" id="page-services">
-        <section class="hero" style="padding: 50px 20px;">
-            <div class="hero-content">
-                <h1>Axes de Développement</h1>
-                <p>Nos engagements pour l'avenir du village</p>
-            </div>
-        </section>
-        <section>
-            <div class="container">
-                <h2 class="section-title">Nos Axes de Travail</h2>
-                <div class="section-divider"></div>
-                <p class="section-subtitle">Le comité du village travaille sur trois axes prioritaires pour le développement de notre communauté.</p>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-leaf"></i>
-                        </div>
-                        <h3>Environnement</h3>
-                        <p>Gestion des déchets, propreté des espaces publics, plantation d'arbres et initiatives de préservation de l'environnement au village. Nous organisons régulièrement des journées de nettoyage collectives.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3>Vie Communautaire</h3>
-                        <p>Organisation d'événements culturels, réunions de village, activités sportives pour les jeunes, et renforcement des liens entre les familles du village.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <h3>Éducation</h3>
-                        <p>Soutien scolaire pour les élèves, programmes d'apprentissage, bibliothèque communautaire et initiatives pour encourager la réussite éducative des jeunes du village.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+  grid.innerHTML = '';
+  grid.appendChild(noAnnonce);
 
-    <!-- ===== PAGE ACTUALITÉS ===== -->
-    <div class="page" id="page-news">
-        <section class="hero" style="padding: 50px 20px;">
-            <div class="hero-content">
-                <h1>Actualités</h1>
-                <p>Les dernières nouvelles du village d'Irqvithen</p>
-            </div>
-        </section>
-        <section>
-            <div class="container">
-                <h2 class="section-title">Dernières Actualités</h2>
-                <div class="section-divider"></div>
-                <div class="news-grid">
-                    <div class="news-card">
-                        <div class="news-image">
-                            <i class="fas fa-broom"></i>
-                        </div>
-                        <div class="news-content">
-                            <div class="news-date"><i class="far fa-calendar"></i> 20 février 2026</div>
-                            <h3>Campagne de nettoyage</h3>
-                            <p>Une journée de nettoyage collective est prévue le 5 mars. Tous les habitants du village sont invités à participer activement à cette initiative pour un village plus propre.</p>
-                            <a href="#" class="read-more">Lire la suite <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="news-card">
-                        <div class="news-image" style="background: linear-gradient(135deg, #1e3a8a, #2c5282);">
-                            <i class="fas fa-users-cog"></i>
-                        </div>
-                        <div class="news-content">
-                            <div class="news-date"><i class="far fa-calendar"></i> 2 février 2026</div>
-                            <h3>Nouveau comité du village</h3>
-                            <p>Le comité du village a été renouvelé. Découvrez sa structure, ses membres et ses projets ambitieux pour le développement du village d'Irqvithen.</p>
-                            <a href="#" class="read-more">Lire la suite <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="news-card">
-                        <div class="news-image" style="background: linear-gradient(135deg, #065f46, #10b981);">
-                            <i class="fas fa-tree"></i>
-                        </div>
-                        <div class="news-content">
-                            <div class="news-date"><i class="far fa-calendar"></i> 15 janvier 2026</div>
-                            <h3>Plantation d'arbres</h3>
-                            <p>Une campagne de plantation d'arbres fruitiers a été lancée autour du village. Plus de 50 arbres ont déjà été plantés grâce à la participation des familles.</p>
-                            <a href="#" class="read-more">Lire la suite <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="news-card">
-                        <div class="news-image" style="background: linear-gradient(135deg, #7c2d12, #ea580c);">
-                            <i class="fas fa-gavel"></i>
-                        </div>
-                        <div class="news-content">
-                            <div class="news-date"><i class="far fa-calendar"></i> 5 janvier 2026</div>
-                            <h3>Dossier du cimetière Assadit</h3>
-                            <p>Le comité rassemble activement les documents et témoignages pour défendre les droits du village sur le cimetière ancestral Assadit.</p>
-                            <a href="#" class="read-more" onclick="showPage('cemetery'); return false;">En savoir plus <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+  if (filtered.length === 0) {
+    noAnnonce.style.display = 'block';
+    countEl.innerHTML = 'Aucune annonce trouvée.';
+  } else {
+    noAnnonce.style.display = 'none';
+    filtered.forEach(a => grid.insertAdjacentHTML('beforeend', buildCard(a)));
+    const n = filtered.length;
+    countEl.innerHTML = `<strong>${n}</strong> annonce${n > 1 ? 's' : ''} affichée${n > 1 ? 's' : ''}`;
+  }
+}
 
-    <!-- ===== PAGE ÉVÉNEMENTS ===== -->
-    <div class="page" id="page-events">
-        <section class="hero" style="padding: 50px 20px;">
-            <div class="hero-content">
-                <h1>Événements</h1>
-                <p>Les prochains événements au village d'Irqvithen</p>
-            </div>
-        </section>
-        <section>
-            <div class="container">
-                <h2 class="section-title">Événements à Venir</h2>
-                <div class="section-divider"></div>
-                <p class="section-subtitle">Retrouvez ici tous les événements organisés par le comité du village.</p>
-                <div class="events-list">
-                    <div class="event-item">
-                        <div class="event-date">
-                            <span class="event-day">13</span>
-                            <span class="event-month">FÉVRIER</span>
-                        </div>
-                        <div class="event-details">
-                            <h4>Assemblée générale</h4>
-                            <p>Première assemblée générale organisée par le nouveau comité du village. Tous les habitants sont invités à y participer.</p>
-                            <div class="event-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Heure de l'AG : 9h00</span>
-                            </div>
-                        </div>
-                        <span class="event-badge">🟢 À venir</span>
-                    </div>
-                    <div class="event-item">
-                        <div class="event-date">
-                            <span class="event-day">18</span>
-                            <span class="event-month">FÉVRIER</span>
-                        </div>
-                        <div class="event-details">
-                            <h4>Réunion du comité du village</h4>
-                            <p>Ordre du jour : Modalités de réalisation des projets à venir. Budget et planification des activités.</p>
-                            <div class="event-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Heure : 18h00</span>
-                            </div>
-                        </div>
-                        <span class="event-badge">🟢 À venir</span>
-                    </div>
-                    <div class="event-item">
-                        <div class="event-date" style="background: linear-gradient(135deg, #065f46, #10b981);">
-                            <span class="event-day">05</span>
-                            <span class="event-month">MARS</span>
-                        </div>
-                        <div class="event-details">
-                            <h4>Journée de nettoyage collective</h4>
-                            <p>Grande campagne de nettoyage du village. Prévoir gants et sacs poubelles. Un repas collectif sera partagé à midi.</p>
-                            <div class="event-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Départ : 8h00 — Place du village</span>
-                            </div>
-                        </div>
-                        <span class="event-badge" style="background: rgba(16,185,129,0.1); color: #10b981;">🟢 Planifié</span>
-                    </div>
-                    <div class="event-item">
-                        <div class="event-date" style="background: linear-gradient(135deg, #7c2d12, #ea580c);">
-                            <span class="event-day">21</span>
-                            <span class="event-month">MARS</span>
-                        </div>
-                        <div class="event-details">
-                            <h4>Réunion sur le dossier Assadit</h4>
-                            <p>Réunion dédiée à l'avancement du dossier du cimetière Assadit. Présentation des documents recueillis et prochaines étapes.</p>
-                            <div class="event-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Heure : 16h00</span>
-                            </div>
-                        </div>
-                        <span class="event-badge" style="background: rgba(234,88,12,0.1); color: #ea580c;">🔴 Important</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+/* ── Ticker : même ordre que la grille ── */
+function buildTicker() {
+  const sorted = sortAnnonces(ANNONCES);
+  const items  = [...sorted, ...sorted]; // doublon pour défilement infini
+  tickerInner.innerHTML = items.map(a => {
+    const cfg = CAT_CONFIG[a.categorie] || CAT_CONFIG.general;
+    return `
+      <a href="#annonces" class="ticker-item">
+        <span class="ticker-dot"></span>
+        <span class="ticker-cat">${cfg.label}</span>
+        <strong>${a.titre}</strong>
+      </a>`;
+  }).join('');
+}
 
-    <!-- ===== PAGE CIMETIÈRE ===== -->
-    <div class="page" id="page-cemetery">
-        <section class="hero" style="padding: 50px 20px; background: linear-gradient(135deg, #374151, #1f2937);">
-            <div class="hero-content">
-                <h1>Cimetière Assadit</h1>
-                <p>Mémoire et dignité — Un lieu ancestral à préserver</p>
-            </div>
-        </section>
-        <section class="cemetery">
-            <div class="container">
-                <h2 class="section-title">Cimetière Assadit : mémoire et dignité</h2>
-                <div class="section-divider"></div>
-                <div class="cemetery-content">
-                    <div class="cemetery-text">
-                        <h3>Un lieu de mémoire à préserver</h3>
-                        <p>Le cimetière Assadit est un espace funéraire ancestral où reposent les ancêtres du village d'Irqvithen. Ce lieu sacré fait partie intégrante de notre patrimoine familial et collectif.</p>
-                        <p>Actuellement, ce cimetière fait l'objet d'un litige foncier. Un autre village revendique ce terrain en le qualifiant de terre agricole. Une procédure judiciaire a eu lieu, mais notre communauté n'a pas pu présenter tous les éléments nécessaires à l'époque pour faire valoir ses droits historiques sur ce lieu de sépulture.</p>
-                        <div class="highlight">
-                            Aujourd'hui, nous nous engageons à rassembler tous les documents, témoignages et preuves nécessaires pour défendre la mémoire de nos ancêtres enterrés au cimetière Assadit, dans le respect des procédures administratives et légales en vigueur.
-                        </div>
-                        <p>Nous appelons au dialogue avec les autorités locales et judiciaires afin de trouver une solution qui respecte à la fois les droits fonciers et la dignité des défunts qui reposent en ce lieu.</p>
-                        <p><strong>Nous travaillons activement à :</strong></p>
-                        <ul class="cemetery-actions">
-                            <li>Recueillir les témoignages des familles concernées</li>
-                            <li>Rassembler les documents historiques et administratifs</li>
-                            <li>Engager un dialogue constructif avec les autorités compétentes</li>
-                            <li>Sensibiliser l'opinion publique à l'importance de préserver les lieux de mémoire</li>
-                        </ul>
-                    </div>
-                    <div class="cemetery-sidebar">
-                        <div class="cemetery-image">
-                            <div style="text-align: center;">
-                                <i class="fas fa-monument" style="font-size: 60px; margin-bottom: 15px; opacity: 0.8;"></i>
-                                <p style="font-size: 18px; font-weight: 600;">Cimetière Assadit</p>
-                                <p>Lieu de Mémoire d'Irqvithen</p>
-                            </div>
-                        </div>
-                        <div class="cemetery-info-box">
-                            <h4><i class="fas fa-info-circle"></i> Comment nous aider ?</h4>
-                            <p>Si vous possédez des documents, des témoignages ou des informations concernant le cimetière Assadit, merci de nous contacter. Chaque contribution est précieuse pour défendre notre patrimoine commun.</p>
-                            <br>
-                            <a href="#" onclick="showPage('contact'); return false;" class="read-more" style="font-size: 15px;">Nous contacter <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+/* ── Badge navbar ── */
+navBadge.textContent = ANNONCES.length;
 
-    <!-- ===== PAGE CONTACT ===== -->
-    <div class="page" id="page-contact">
-        <section class="hero" style="padding: 50px 20px;">
-            <div class="hero-content">
-                <h1>Contact</h1>
-                <p>Communiquez avec le comité du village d'Irqvithen</p>
-            </div>
-        </section>
-        <section class="contact">
-            <div class="container">
-                <h2 class="section-title">Contactez-nous</h2>
-                <div class="section-divider"></div>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <h3>Informations de Contact</h3>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h4>Adresse</h4>
-                                <p>Irqvithen<br>Daïra de Maâtkas<br>Wilaya de Tizi-Ouzou<br>Algérie</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div>
-                                <h4>Téléphone</h4>
-                                <p>+213 [Numéro du comité]</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>contact@irqvithen.dz</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div>
-                                <h4>Horaires</h4>
-                                <p>Lundi - Vendredi : 8h - 16h<br>Samedi : 8h - 12h</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contact-form">
-                        <h3>Envoyez-nous un message</h3>
-                        <form onsubmit="handleSubmit(event)">
-                            <div class="form-group">
-                                <label for="name">Nom complet</label>
-                                <input type="text" id="name" name="name" placeholder="Votre nom" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Adresse Email</label>
-                                <input type="email" id="email" name="email" placeholder="votre.email@exemple.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Sujet</label>
-                                <input type="text" id="subject" name="subject" placeholder="Sujet de votre message" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" placeholder="Écrivez votre message ici..." required></textarea>
-                            </div>
-                            <button type="submit" class="form-submit">
-                                <i class="fas fa-paper-plane"></i> Envoyer le message
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+/* ── Filtres ── */
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    renderAnnonces();
+  });
+});
 
-    <!-- ===== FOOTER (toujours visible) ===== -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="#" onclick="showPage('accueil'); return false;"><i class="fas fa-chevron-right"></i> Accueil</a></li>
-                    <li><a href="#" onclick="showPage('about'); return false;"><i class="fas fa-chevron-right"></i> À Propos</a></li>
-                    <li><a href="#" onclick="showPage('services'); return false;"><i class="fas fa-chevron-right"></i> Axes de développement</a></li>
-                    <li><a href="#" onclick="showPage('news'); return false;"><i class="fas fa-chevron-right"></i> Actualités</a></li>
-                    <li><a href="#" onclick="showPage('events'); return false;"><i class="fas fa-chevron-right"></i> Événements</a></li>
-                    <li><a href="#" onclick="showPage('cemetery'); return false;"><i class="fas fa-chevron-right"></i> Cimetière Assadit</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <ul>
-                    <li><a href="#" onclick="showPage('contact'); return false;"><i class="fas fa-chevron-right"></i> Formulaire de contact</a></li>
-                    <li><a href="tel:+213"><i class="fas fa-chevron-right"></i> Téléphone</a></li>
-                    <li><a href="mailto:contact@irqvithen.dz"><i class="fas fa-chevron-right"></i> Email</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Suivez-nous</h4>
-                <ul>
-                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Village d'Irqvithen. Tous droits réservés.</p>
-        </div>
-    </footer>
+/* ── Recherche ── */
+searchInput.addEventListener('input', () => {
+  currentSearch = searchInput.value.toLowerCase().trim();
+  renderAnnonces();
+});
 
-    <!-- ===== BOUTON RETOUR EN HAUT ===== -->
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+/* ── Bouton retour en haut ── */
+const topBtn = document.getElementById('top-btn');
+window.addEventListener('scroll', () => {
+  topBtn.classList.toggle('visible', window.scrollY > 400);
+});
 
-    <script>
-        // ===== NAVIGATION SYSTEM =====
-        function showPage(pageName) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-
-            // Show selected page
-            const targetPage = document.getElementById('page-' + pageName);
-            if (targetPage) {
-                targetPage.classList.add('active');
-            }
-
-            // Update active nav link
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('data-page') === pageName) {
-                    link.classList.add('active');
-                }
-            });
-
-            // Close mobile menu
-            document.getElementById('mainNav').classList.remove('open');
-
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // ===== MOBILE MENU TOGGLE =====
-        function toggleMenu() {
-            document.getElementById('mainNav').classList.toggle('open');
-        }
-
-        // ===== FORM SUBMISSION =====
-        function handleSubmit(e) {
-            e.preventDefault();
-            alert('✅ Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
-            e.target.reset();
-        }
-
-        // ===== BACK TO TOP BUTTON =====
-        window.addEventListener('scroll', function() {
-            const btn = document.getElementById('backToTop');
-            if (window.scrollY > 300) {
-                btn.classList.add('visible');
-            } else {
-                btn.classList.remove('visible');
-            }
-        });
-    </script>
-
+/* ── Init ── */
+buildTicker();
+renderAnnonces();
+</script>
 </body>
 </html>
