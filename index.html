@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -61,6 +62,22 @@
       display:flex; align-items:center; gap:.35rem;
     }
     .nav-links a:hover { color:var(--gold); }
+
+    /* ✅ Lien Commissions mis en valeur dans la navbar */
+    .nav-links a.nav-commissions {
+      color: var(--gold);
+      font-weight: 600;
+      border: 1px solid rgba(201,150,61,.4);
+      padding: .3rem .8rem;
+      border-radius: 50px;
+      transition: all .3s;
+    }
+    .nav-links a.nav-commissions:hover {
+      background: var(--gold);
+      color: #fff;
+      border-color: var(--gold);
+    }
+
     .nav-badge {
       display:inline-flex; align-items:center; justify-content:center;
       background:var(--gold); color:#fff;
@@ -192,7 +209,6 @@
 
     /* ── ANNONCES ── */
     .annonces-section { background:#fff; }
-
     .annonces-toolbar {
       max-width:1100px; margin:0 auto 2rem;
       display:flex; flex-wrap:wrap; gap:1rem;
@@ -212,7 +228,6 @@
       outline:none; background:#fff; transition:border-color .25s;
     }
     #searchInput:focus { border-color:var(--green-mid); }
-
     .annonces-filters { display:flex; gap:.45rem; flex-wrap:wrap; }
     .filter-btn {
       padding:.4rem .95rem; border-radius:50px;
@@ -223,20 +238,16 @@
     }
     .filter-btn:hover,
     .filter-btn.active { background:var(--green-dark); border-color:var(--green-dark); color:#fff; }
-
     .annonces-count {
       text-align:center; font-size:.8rem; color:#aaa; margin-bottom:1.5rem;
     }
     .annonces-count strong { color:var(--green-dark); }
-
     .annonces-grid {
       max-width:1100px; margin:0 auto;
       display:grid;
       grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
       gap:2rem;
     }
-
-    /* Carte */
     .annonce-card {
       background:var(--cream); border-radius:var(--radius);
       overflow:hidden;
@@ -252,13 +263,11 @@
       to   { opacity:1; transform:translateY(0); }
     }
     .annonce-card:hover { transform:translateY(-5px); box-shadow:0 14px 44px rgba(0,0,0,.13); }
-
     .annonce-card[data-category="urgent"]      { border-left-color:#dc2626; }
     .annonce-card[data-category="general"]     { border-left-color:#7c3aed; }
     .annonce-card[data-category="sciences"]    { border-left-color:#2563eb; }
     .annonce-card[data-category="amenagement"] { border-left-color:var(--green-mid); }
     .annonce-card[data-category="juridique"]   { border-left-color:var(--gold); }
-
     .annonce-card.pinned {
       border:2px solid var(--gold);
       border-left:5px solid var(--gold);
@@ -268,7 +277,6 @@
       content:'\f08d'; font-family:'Font Awesome 6 Free'; font-weight:900;
       position:absolute; top:0; right:14px; font-size:1.1rem; color:var(--gold);
     }
-
     .annonce-card-header {
       padding:1rem 1.4rem .75rem;
       display:flex; align-items:center; justify-content:space-between;
@@ -284,7 +292,6 @@
     .cat-juridique   { background:#fef3c7; color:#92400e; }
     .cat-general     { background:#ede9fe; color:#5b21b6; }
     .cat-urgent      { background:#fee2e2; color:#991b1b; }
-
     .annonce-new {
       display:inline-flex; align-items:center; gap:.28rem;
       background:var(--green-mid); color:#fff;
@@ -294,7 +301,6 @@
       animation:blink 2s infinite;
     }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.45} }
-
     .annonce-card-body { padding:1.2rem 1.4rem; flex:1; }
     .annonce-card-body h3 {
       font-family:'Playfair Display',serif;
@@ -302,7 +308,6 @@
       margin-bottom:.55rem; line-height:1.35;
     }
     .annonce-card-body p { font-size:.87rem; color:#666; line-height:1.8; }
-
     .annonce-card-footer {
       padding:.85rem 1.4rem;
       border-top:1px solid #f0f0f0; background:#fafafa;
@@ -316,7 +321,6 @@
       text-decoration:none; display:flex; align-items:center; gap:.3rem; transition:color .2s;
     }
     .annonce-link:hover { color:var(--gold); }
-
     .no-annonce {
       text-align:center; padding:3.5rem 1rem; color:#ccc;
       font-size:.92rem; display:none; grid-column:1/-1;
@@ -352,7 +356,6 @@
     .banner-stat .stat-number { font-family:'Playfair Display',serif; font-size:2.8rem; color:var(--green-dark); line-height:1; }
     .banner-stat .stat-label  { font-size:.78rem; text-transform:uppercase; letter-spacing:2px; color:#999; margin-top:.3rem; }
     .banner-divider { width:1px; background:#ddd; }
-
     .commissions-grid {
       max-width:1100px; margin:0 auto;
       display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem;
@@ -361,6 +364,7 @@
       background:var(--cream); border-radius:var(--radius); padding:2.2rem;
       box-shadow:var(--shadow); border-top:5px solid transparent;
       transition:transform .3s, box-shadow .3s; position:relative; overflow:hidden;
+      display:flex; flex-direction:column;
     }
     .commission-card:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(0,0,0,.18); }
     .commission-card::before {
@@ -371,26 +375,69 @@
     .commission-card:nth-child(1) { border-color:#3b82f6; }
     .commission-card:nth-child(2) { border-color:var(--green-mid); }
     .commission-card:nth-child(3) { border-color:var(--gold); }
-
     .commission-icon { width:60px; height:60px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.6rem; margin-bottom:1.2rem; }
     .commission-card:nth-child(1) .commission-icon { background:#eff6ff; color:#3b82f6; }
     .commission-card:nth-child(2) .commission-icon { background:#f0fdf4; color:var(--green-mid); }
     .commission-card:nth-child(3) .commission-icon { background:#fffbeb; color:var(--gold); }
-
     .commission-num { display:inline-block; margin-bottom:.7rem; font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; padding:.2rem .75rem; border-radius:50px; }
     .commission-card:nth-child(1) .commission-num { background:#dbeafe; color:#1d4ed8; }
     .commission-card:nth-child(2) .commission-num { background:#dcfce7; color:#166534; }
     .commission-card:nth-child(3) .commission-num { background:#fef3c7; color:#92400e; }
-
     .commission-card h3 { font-family:'Playfair Display',serif; font-size:1.25rem; margin-bottom:.5rem; color:var(--text-dark); }
     .commission-domain  { font-size:.78rem; color:#999; font-style:italic; margin-bottom:.8rem; }
     .commission-card p  { color:#666; font-size:.9rem; line-height:1.75; }
-    .commission-card ul { margin-top:.8rem; padding-left:1.1rem; color:#555; font-size:.88rem; line-height:2; }
-
+    .commission-card ul { margin-top:.8rem; padding-left:1.1rem; color:#555; font-size:.88rem; line-height:2; flex:1; }
     .tag { display:inline-block; margin-top:1.2rem; padding:.3rem .8rem; border-radius:50px; font-size:.75rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; }
     .tag-blue  { background:#dbeafe; color:#1d4ed8; }
     .tag-green { background:#dcfce7; color:#166534; }
     .tag-gold  { background:#fef3c7; color:#92400e; }
+
+    /* ✅ Bouton "Voir le plan d'action" sur chaque carte commission */
+    .commission-card .btn-detail {
+      display: inline-flex; align-items: center; gap: .4rem;
+      margin-top: 1.2rem;
+      padding: .55rem 1.1rem; border-radius: 50px;
+      font-size: .78rem; font-weight: 600;
+      text-decoration: none; color: var(--green-dark);
+      border: 2px solid var(--green-light);
+      background: #fff;
+      transition: all .25s; width: fit-content;
+    }
+    .commission-card .btn-detail:hover {
+      background: var(--green-dark); color: #fff;
+      border-color: var(--green-dark);
+      transform: translateY(-2px);
+    }
+
+    /* ✅ Bloc CTA sous la grille des commissions */
+    .commissions-cta {
+      text-align: center;
+      margin-top: 3.5rem;
+      padding: 2.5rem 1.5rem;
+      background: linear-gradient(135deg, var(--green-dark) 0%, #0f3d22 100%);
+      border-radius: var(--radius);
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: var(--shadow);
+    }
+    .commissions-cta h3 {
+      font-family: 'Playfair Display', serif;
+      color: #fff; font-size: 1.5rem; margin-bottom: .6rem;
+    }
+    .commissions-cta p {
+      color: rgba(255,255,255,.75); font-size: .9rem;
+      margin-bottom: 1.5rem; max-width: 500px; margin-left: auto; margin-right: auto;
+    }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--gold); color: #fff;
+      padding: .85rem 2rem; border-radius: 50px;
+      text-decoration: none; font-weight: 600; font-size: .95rem;
+      box-shadow: 0 4px 18px rgba(201,150,61,.5);
+      transition: all .3s;
+    }
+    .btn-cta:hover { background: #b8822e; transform: translateY(-2px); }
 
     /* ── LOCALISATION ── */
     .location-section { background:var(--green-dark); color:#fff; }
@@ -458,7 +505,7 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
+<!-- ╔══ NAVBAR ══╗ -->
 <nav>
   <a href="#" class="nav-logo">
     <div class="logo-icon"><i class="fa-solid fa-mountain-sun"></i></div>
@@ -467,13 +514,20 @@
   <ul class="nav-links">
     <li><a href="#annonces">Annonces <span class="nav-badge" id="navBadge">0</span></a></li>
     <li><a href="#about">Le Village</a></li>
-    <li><a href="#committee">Commissions</a></li>
+
+    <!-- ✅ POINT 1 : Lien navbar → commissions.html -->
+    <li>
+      <a href="commissions.html" class="nav-commissions">
+        <i class="fa-solid fa-compass"></i> Commissions
+      </a>
+    </li>
+
     <li><a href="#location">Localisation</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- TICKER -->
+<!-- ╔══ TICKER ══╗ -->
 <div class="annonces-ticker">
   <div class="ticker-label">
     <i class="fa-solid fa-bullhorn"></i> Annonces
@@ -487,7 +541,7 @@
   </a>
 </div>
 
-<!-- 1 — HERO -->
+<!-- ╔══ 1 — HERO ══╗ -->
 <header class="hero" id="accueil">
   <div class="hero-badge">
     <i class="fa-solid fa-star-and-crescent"></i> &nbsp; Algérie – Wilaya de Tizi-Ouzou
@@ -499,12 +553,12 @@
     Daïra de Maâtkas &nbsp;•&nbsp; Wilaya de Tizi-Ouzou
   </div>
   <div class="hero-buttons">
-    <a href="#annonces"  class="btn btn-primary"><i class="fa-solid fa-bullhorn"></i> Voir les annonces</a>
-    <a href="#committee" class="btn btn-outline"><i class="fa-solid fa-compass"></i> Nos Commissions</a>
+    <a href="#annonces"       class="btn btn-primary"><i class="fa-solid fa-bullhorn"></i> Voir les annonces</a>
+    <a href="commissions.html" class="btn btn-outline"><i class="fa-solid fa-compass"></i> Nos Commissions</a>
   </div>
 </header>
 
-<!-- 2 — ANNONCES -->
+<!-- ╔══ 2 — ANNONCES ══╗ -->
 <section class="annonces-section" id="annonces">
   <div class="section-title">
     <span class="overline">Comité IRQVITHEN</span>
@@ -521,29 +575,16 @@
       <input type="text" id="searchInput" placeholder="Rechercher une annonce…"/>
     </div>
     <div class="annonces-filters">
-      <button class="filter-btn active" data-filter="all">
-        <i class="fa-solid fa-border-all"></i> Toutes
-      </button>
-      <button class="filter-btn" data-filter="urgent">
-        <i class="fa-solid fa-circle-exclamation"></i> Urgent
-      </button>
-      <button class="filter-btn" data-filter="general">
-        <i class="fa-solid fa-bullhorn"></i> Général
-      </button>
-      <button class="filter-btn" data-filter="sciences">
-        <i class="fa-solid fa-flask"></i> Sciences
-      </button>
-      <button class="filter-btn" data-filter="amenagement">
-        <i class="fa-solid fa-leaf"></i> Aménagement
-      </button>
-      <button class="filter-btn" data-filter="juridique">
-        <i class="fa-solid fa-scale-balanced"></i> Juridique
-      </button>
+      <button class="filter-btn active" data-filter="all"><i class="fa-solid fa-border-all"></i> Toutes</button>
+      <button class="filter-btn" data-filter="urgent"><i class="fa-solid fa-circle-exclamation"></i> Urgent</button>
+      <button class="filter-btn" data-filter="general"><i class="fa-solid fa-bullhorn"></i> Général</button>
+      <button class="filter-btn" data-filter="sciences"><i class="fa-solid fa-flask"></i> Sciences</button>
+      <button class="filter-btn" data-filter="amenagement"><i class="fa-solid fa-leaf"></i> Aménagement</button>
+      <button class="filter-btn" data-filter="juridique"><i class="fa-solid fa-scale-balanced"></i> Juridique</button>
     </div>
   </div>
 
   <p class="annonces-count" id="annoncesCount"></p>
-
   <div class="annonces-grid" id="annoncesGrid">
     <div class="no-annonce" id="noAnnonce">
       <i class="fa-regular fa-folder-open"></i>
@@ -552,7 +593,7 @@
   </div>
 </section>
 
-<!-- 3 — À PROPOS -->
+<!-- ╔══ 3 — À PROPOS ══╗ -->
 <section class="about" id="about">
   <div class="section-title">
     <span class="overline">Notre identité</span>
@@ -583,13 +624,14 @@
   </div>
 </section>
 
-<!-- 4 — COMMISSIONS -->
+<!-- ╔══ 4 — COMMISSIONS ══╗ -->
 <section class="committee" id="committee">
   <div class="section-title">
     <span class="overline">Comité IRQVITHEN</span>
     <h2>3 Commissions</h2>
     <div class="divider"></div>
   </div>
+
   <div class="commissions-banner">
     <div class="banner-stat"><div class="stat-number">3</div><div class="stat-label">Commissions</div></div>
     <div class="banner-divider"></div>
@@ -597,7 +639,10 @@
     <div class="banner-divider"></div>
     <div class="banner-stat"><div class="stat-number">1</div><div class="stat-label">Objectif commun</div></div>
   </div>
+
   <div class="commissions-grid">
+
+    <!-- Commission 1 -->
     <div class="commission-card" data-num="01">
       <span class="commission-num"><i class="fa-solid fa-hashtag"></i> Commission 1</span>
       <div class="commission-icon"><i class="fa-solid fa-flask"></i></div>
@@ -611,7 +656,13 @@
         <li>Événements jeunesse</li>
       </ul>
       <span class="tag tag-blue"><i class="fa-solid fa-graduation-cap"></i> Pour les jeunes</span>
+      <!-- ✅ POINT 2 : Bouton sur chaque carte → commissions.html -->
+      <a href="commissions.html" class="btn-detail">
+        <i class="fa-solid fa-arrow-right"></i> Voir le plan d'action
+      </a>
     </div>
+
+    <!-- Commission 2 -->
     <div class="commission-card" data-num="02">
       <span class="commission-num"><i class="fa-solid fa-hashtag"></i> Commission 2</span>
       <div class="commission-icon"><i class="fa-solid fa-leaf"></i></div>
@@ -622,10 +673,15 @@
         <li>Aménagement des espaces communs</li>
         <li>Plantation d'arbres &amp; verdissement</li>
         <li>Gestion des déchets &amp; propreté</li>
-        
       </ul>
       <span class="tag tag-green"><i class="fa-solid fa-seedling"></i> Développement durable</span>
+      <!-- ✅ POINT 2 : Bouton sur chaque carte → commissions.html -->
+      <a href="commissions.html" class="btn-detail">
+        <i class="fa-solid fa-arrow-right"></i> Voir le plan d'action
+      </a>
     </div>
+
+    <!-- Commission 3 -->
     <div class="commission-card" data-num="03">
       <span class="commission-num"><i class="fa-solid fa-hashtag"></i> Commission 3</span>
       <div class="commission-icon"><i class="fa-solid fa-scale-balanced"></i></div>
@@ -633,15 +689,31 @@
       <p class="commission-domain"><i class="fa-solid fa-circle-dot"></i>&nbsp; Domaine : <strong>Droits &amp; Patrimoine</strong></p>
       <p>Cette commission se consacre au suivi de l'affaire du cimetière <em>Assadi</em>.</p>
       <ul>
-        <li></li>
-
+        <li>Suivi de l'affaire Assadi</li>
+        <li>Coordination avec les autorités</li>
+        <li>Documentation &amp; archives légales</li>
       </ul>
       <span class="tag tag-gold"><i class="fa-solid fa-gavel"></i> Cimetière Assadi</span>
+      <!-- ✅ POINT 2 : Bouton sur chaque carte → commissions.html -->
+      <a href="commissions.html" class="btn-detail">
+        <i class="fa-solid fa-arrow-right"></i> Voir le plan d'action
+      </a>
     </div>
+
   </div>
+
+  <!-- ✅ POINT 3 : Bloc CTA centré sous les 3 cartes → commissions.html -->
+  <div class="commissions-cta">
+    <h3><i class="fa-solid fa-map" style="color:var(--gold);margin-right:.4rem;"></i> Plan d'action 2026 – 2027</h3>
+    <p>Découvrez en détail les grands axes, les actions prévues et la feuille de route complète de chaque commission.</p>
+    <a href="commissions.html" class="btn-cta">
+      <i class="fa-solid fa-compass"></i> Voir toutes les commissions
+    </a>
+  </div>
+
 </section>
 
-<!-- 5 — LOCALISATION -->
+<!-- ╔══ 5 — LOCALISATION ══╗ -->
 <section class="location-section" id="location">
   <div class="section-title">
     <span class="overline">Où nous trouver</span>
@@ -662,14 +734,15 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ╔══ FOOTER ══╗ -->
 <footer id="contact">
   <div class="footer-logo">Village <span>Irqvithen</span></div>
   <p>Famille Mahtout — Daïra de Maâtkas, Wilaya de Tizi-Ouzou, Algérie</p>
   <ul class="footer-links">
     <li><a href="#annonces">Annonces</a></li>
     <li><a href="#about">Le Village</a></li>
-    <li><a href="#committee">Commissions</a></li>
+    <!-- ✅ Lien footer → commissions.html -->
+    <li><a href="commissions.html">Commissions</a></li>
     <li><a href="#location">Localisation</a></li>
   </ul>
   <div class="social-icons">
@@ -688,69 +761,32 @@
 </button>
 
 <script>
-
 const ANNONCES = [
-
-  /* ─── 1ʳᵉ annonce affichée ─── */
   {
-    ordre     : 1,                         // ← position dans la grille
-    id        : 1,
-    categorie : "general",
-    titre     : "Création officielle du comité Irqvithen",
-    texte     : "Le comité de village IRQVITHEN est officiellement créé. "
-              + "Il est composé de trois commissions spécialisées : "
-              + "Sciences & Loisirs, Aménagement & Environnement, et Juridique. "
-              + "Ensemble, œuvrons pour le développement et le rayonnement de notre village.",
-    date      : "Juin 2025",
-    meta      : "Comité officiel",
-    metaIcon  : "fa-solid fa-certificate",
-    lienTexte : "Découvrir les commissions",
-    lienUrl   : "#committee",
-    nouveau   : true,
-    epingle   : true
+    ordre:1, id:1, categorie:"general",
+    titre:"Création officielle du comité Irqvithen",
+    texte:"Le comité de village IRQVITHEN est officiellement créé. "
+        + "Il est composé de trois commissions spécialisées : "
+        + "Sciences & Loisirs, Aménagement & Environnement, et Juridique. "
+        + "Ensemble, œuvrons pour le développement et le rayonnement de notre village.",
+    date:"Juin 2025", meta:"Comité officiel", metaIcon:"fa-solid fa-certificate",
+    lienTexte:"Découvrir les commissions", lienUrl:"commissions.html",
+    nouveau:true, epingle:true
   },
-
-  /* ─── 2ᵉ annonce affichée ─── */
   {
-    ordre     : 2,                         // ← position dans la grille
-    id        : 2,
-    categorie : "amenagement",
-    titre     : "Campagne de nettoyage et désherbage",
-    texte     : "La Commission Aménagement & Environnement lance une grande campagne "
-              + "de nettoyage et de désherbage dans le village Irqvithen. "
-              + "Tous les habitants sont invités à participer. "
-              + "Venez munis de vos outils, gants et bonne humeur pour embellir "
-              + "notre cadre de vie ensemble !",
-    date      : "Juin 2025",
-    meta      : "Tous les habitants",
-    metaIcon  : "fa-solid fa-users",
-    lienTexte : "Participer",
-    lienUrl   : "#",
-    nouveau   : true,
-    epingle   : false
+    ordre:2, id:2, categorie:"amenagement",
+    titre:"Campagne de nettoyage et désherbage",
+    texte:"La Commission Aménagement & Environnement lance une grande campagne "
+        + "de nettoyage et de désherbage dans le village Irqvithen. "
+        + "Tous les habitants sont invités à participer. "
+        + "Venez munis de vos outils, gants et bonne humeur pour embellir "
+        + "notre cadre de vie ensemble !",
+    date:"Juin 2025", meta:"Tous les habitants", metaIcon:"fa-solid fa-users",
+    lienTexte:"Participer", lienUrl:"#",
+    nouveau:true, epingle:false
   }
-
-  /* ─── ✏️ NOUVELLE ANNONCE (exemple) ───
-  ,{
-    ordre     : 3,
-    id        : 3,
-    categorie : "general",
-    titre     : "Titre de votre annonce",
-    texte     : "Description de l'annonce...",
-    date      : "Juillet 2025",
-    meta      : "Info complémentaire",
-    metaIcon  : "fa-solid fa-circle-info",
-    lienTexte : "En savoir plus",
-    lienUrl   : "#",
-    nouveau   : true,
-    epingle   : false
-  }
-  */
 ];
 
-/* ════════════════════════════════════════
-   ⚙️  MOTEUR  —  Ne pas modifier
-════════════════════════════════════════ */
 const CAT_CONFIG = {
   urgent      : { icon:"fa-solid fa-circle-exclamation", css:"cat-urgent",      label:"Urgent"             },
   general     : { icon:"fa-solid fa-bullhorn",           css:"cat-general",     label:"Général"            },
@@ -766,11 +802,9 @@ const navBadge    = document.getElementById('navBadge');
 const searchInput = document.getElementById('searchInput');
 const filterBtns  = document.querySelectorAll('.filter-btn');
 const tickerInner = document.getElementById('tickerInner');
-
 let currentFilter = 'all';
 let currentSearch = '';
 
-/* ── Génère le HTML d'une carte ── */
 function buildCard(a) {
   const cfg      = CAT_CONFIG[a.categorie] || CAT_CONFIG.general;
   const pinClass = a.epingle ? 'pinned' : '';
@@ -779,9 +813,7 @@ function buildCard(a) {
   return `
     <div class="annonce-card ${pinClass}" data-id="${a.id}" data-category="${a.categorie}">
       <div class="annonce-card-header">
-        <span class="annonce-cat ${cfg.css}">
-          <i class="${cfg.icon}"></i> ${cfg.label}
-        </span>
+        <span class="annonce-cat ${cfg.css}"><i class="${cfg.icon}"></i> ${cfg.label}</span>
         ${newBadge}
       </div>
       <div class="annonce-card-body">
@@ -800,25 +832,20 @@ function buildCard(a) {
     </div>`;
 }
 
-/* ── Tri : respect strict du champ "ordre" ── */
 function sortAnnonces(list) {
-  return [...list].sort((a, b) => a.ordre - b.ordre);  // ✅ ordre croissant = 1 en premier
+  return [...list].sort((a,b) => a.ordre - b.ordre);
 }
 
-/* ── Rendu filtré + recherche ── */
 function renderAnnonces() {
-  const sorted = sortAnnonces(ANNONCES);
-
+  const sorted   = sortAnnonces(ANNONCES);
   const filtered = sorted.filter(a => {
     const matchCat    = currentFilter === 'all' || a.categorie === currentFilter;
     const matchSearch = a.titre.toLowerCase().includes(currentSearch)
                      || a.texte.toLowerCase().includes(currentSearch);
     return matchCat && matchSearch;
   });
-
   grid.innerHTML = '';
   grid.appendChild(noAnnonce);
-
   if (filtered.length === 0) {
     noAnnonce.style.display = 'block';
     countEl.innerHTML = 'Aucune annonce trouvée.';
@@ -826,29 +853,24 @@ function renderAnnonces() {
     noAnnonce.style.display = 'none';
     filtered.forEach(a => grid.insertAdjacentHTML('beforeend', buildCard(a)));
     const n = filtered.length;
-    countEl.innerHTML = `<strong>${n}</strong> annonce${n > 1 ? 's' : ''} affichée${n > 1 ? 's' : ''}`;
+    countEl.innerHTML = `<strong>${n}</strong> annonce${n>1?'s':''} affichée${n>1?'s':''}`;
   }
 }
 
-/* ── Ticker : même ordre que la grille ── */
 function buildTicker() {
-  const sorted = sortAnnonces(ANNONCES);
-  const items  = [...sorted, ...sorted]; // doublon pour défilement infini
+  const items = [...sortAnnonces(ANNONCES), ...sortAnnonces(ANNONCES)];
   tickerInner.innerHTML = items.map(a => {
     const cfg = CAT_CONFIG[a.categorie] || CAT_CONFIG.general;
-    return `
-      <a href="#annonces" class="ticker-item">
-        <span class="ticker-dot"></span>
-        <span class="ticker-cat">${cfg.label}</span>
-        <strong>${a.titre}</strong>
-      </a>`;
+    return `<a href="#annonces" class="ticker-item">
+      <span class="ticker-dot"></span>
+      <span class="ticker-cat">${cfg.label}</span>
+      <strong>${a.titre}</strong>
+    </a>`;
   }).join('');
 }
 
-/* ── Badge navbar ── */
 navBadge.textContent = ANNONCES.length;
 
-/* ── Filtres ── */
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     filterBtns.forEach(b => b.classList.remove('active'));
@@ -858,19 +880,16 @@ filterBtns.forEach(btn => {
   });
 });
 
-/* ── Recherche ── */
 searchInput.addEventListener('input', () => {
   currentSearch = searchInput.value.toLowerCase().trim();
   renderAnnonces();
 });
 
-/* ── Bouton retour en haut ── */
 const topBtn = document.getElementById('top-btn');
 window.addEventListener('scroll', () => {
   topBtn.classList.toggle('visible', window.scrollY > 400);
 });
 
-/* ── Init ── */
 buildTicker();
 renderAnnonces();
 </script>
