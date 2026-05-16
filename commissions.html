@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AXEs 2026-2027 – Village Irqvithen</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* ── BASE & VARIABLES (Identiques à l'index) ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green-dark  : #1a5c38;
+      --green-mid   : #2e8b57;
+      --gold        : #c9963d;
+      --cream       : #f9f5ef;
+      --text-dark   : #1e1e1e;
+      --white       : #ffffff;
+      --radius      : 12px;
+      --shadow      : 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      background: var(--green-dark);
+      padding: 1rem 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; z-index: 1000;
+    }
+    .nav-logo { color: #fff; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+    .nav-links a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 0.9rem; }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO SECTION ── */
+    .hero-AXEs {
+      background: linear-gradient(rgba(26, 92, 56, 0.9), rgba(26, 92, 56, 0.9)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80') center/cover;
+      color: white; padding: 4rem 1.5rem; text-align: center;
+    }
+    .hero-AXEs h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 10px; }
+    .hero-AXEs p { font-weight: 300; opacity: 0.9; letter-spacing: 1px; }
+
+    /* ── CONTENEUR PRINCIPAL ── */
+    .container { max-width: 1100px; margin: -50px auto 50px; padding: 0 1.5rem; }
+
+    /* ── CARDS DES AXES ── */
+    .AXE-section {
+      background: var(--white); border-radius: var(--radius);
+      padding: 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow);
+      border-top: 6px solid var(--gold);
+    }
+    .AXE-header { display: flex; align-items: center; gap: 15px; margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 1rem; }
+    .AXE-header i { font-size: 2rem; color: var(--green-dark); }
+    .AXE-header h2 { font-family: 'Playfair Display', serif; color: var(--green-dark); }
+    .responsable-tag { background: var(--green-light); color: var(--green-dark); padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; background: #e8f5e9; margin-left: auto; }
+
+    /* ── GRILLE DE CONTENU ── */
+    .grid-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .domain-box { background: #fcfcfc; border: 1px solid #f0f0f0; padding: 1.5rem; border-radius: 10px; }
+    .domain-box h3 { color: var(--gold); font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+    .domain-box ul { list-style: none; }
+    .domain-box ul li { margin-bottom: 10px; padding-left: 20px; position: relative; font-size: 0.9rem; }
+    .domain-box ul li::before { content: "•"; color: var(--gold); position: absolute; left: 0; font-weight: bold; }
+
+    /* ── TABLES ── */
+    .table-container { overflow-x: auto; margin-top: 1rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px; }
+    table th, table td { border: 1px solid #eee; padding: 10px; text-align: left; }
+    table th { background: var(--green-dark); color: white; }
+    table tr:nth-child(even) { background: #f9f9f9; }
+
+    /* ── STYLES SPÉCIFIQUES ── */
+    .badge-color { width: 15px; height: 15px; display: inline-block; border-radius: 3px; vertical-align: middle; }
+    .highlight-box { background: #fffde7; border-left: 4px solid #fbc02d; padding: 1rem; margin-top: 1rem; font-size: 0.9rem; }
+
+    footer { text-align: center; padding: 3rem; background: var(--green-dark); color: white; margin-top: 4rem; }
+
+    @media (max-width: 768px) {
+      .AXE-header { flex-direction: column; align-items: flex-start; }
+      .responsable-tag { margin-left: 0; margin-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <i class="fa-solid fa-house-chimney"></i> Irqvithen
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="index.html#annonces">Annonces</a>
+    </div>
+  </nav>
+
+  <header class="hero-AXEs">
+    <p>COMITÉ DE VILLAGE IRQVITHEN</p>
+    <h1>Grands axes 2026-2027</h1>
+    <p><i class="fa-solid fa-calendar-check"></i> Grand axes pour un meilleur développement du village</p>
+  </header>
+
+  <main class="container">
+
+    <!-- ── AXE 1: AMÉNAGEMENT & ENVIRONNEMENT ── -->
+    <section class="AXE-section">
+      <div class="AXE-header">
+        <i class="fa-solid fa-trowel-bricks"></i>
+        <h2>Aménagement & Cadre de Vie</h2>
+        <span class="responsable-tag">Responsable : Remdane</span>
+      </div>
+
+      <div class="grid-content">
+        <!-- Places et Passages -->
+        <div class="domain-box">
+          <h3><i class="fa-solid fa-road"></i> Places & Passages</h3>
+          <ul>
+            <li><strong>Bancs de repos :</strong> Installation à l'extrémité de chaque pente pour les personnes âgées.</li>
+            <li><strong>Rampes hybrides :</strong> Conception bois + fer pour sécuriser les passages.</li>
+            <li><strong>Annar & Amrah :</strong> Réfection du caniveau et aménagement d'espaces de repos.</li>
+            <li><strong>Musée de L'jamaa :</strong> Transformation des murs (Carte historique, documents affaire Assadi, photos satellites, arbre généalogique).</li>
+          </ul>
+        </div>
+
+        <!-- Fontaine & Esthétique -->
+        <div class="domain-box">
+          <h3><i class="fa-solid fa-faucet-drip"></i> Fontaine & Patrimoine</h3>
+          <ul>
+            <li><strong>Réhabilitation Amdhoun :</strong> Restauration complète de la source.</li>
+            <li><strong>Charte de couleurs :</strong> Incitation à l'usage d'une palette commune (Blanc & Ocre) pour les murs extérieurs.</li>
+            <li><strong>Végétalisation :</strong> Plantation d'espèces locales peu gourmandes en eau (Bougainvilliers, Lauriers-roses, Jasmin).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AXE 2: GESTION DES DÉCHETS ── -->
+    <section class="AXE-section">
+      <div class="AXE-header">
+        <i class="fa-solid fa-recycle"></i>
+        <h2>Environnement & Économie Circulaire</h2>
+      </div>
+      <div class="grid-content">
+        <div class="domain-box">
+          <h3><i class="fa-solid fa-trash-can"></i> Gestion des Déchets</h3>
+          <ul>
+            <li><strong>Collecte sélective :</strong> Points colorés (Plastique, Verre, Reste).</li>
+            <li><strong>Financement :</strong> Vente du plastique recyclé pour financer les fleurs et la peinture du village.</li>
+            <li><strong>Pédagogie :</strong> Signalétique expliquant le temps de décomposition (ex: Bouteille = 450 ans).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AXE 3: SCIENCE & CULTURE ── -->
+    <section class="AXE-section" style="border-top-color: #3b82f6;">
+      <div class="AXE-header">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <h2>Science & Culture</h2>
+      </div>
+      <div class="grid-content">
+        <div class="domain-box">
+          <h3><i class="fa-solid fa-brain"></i> Compétences & Avenir</h3>
+          <ul>
+            <li><strong>Éducation Civique :</strong> Cours sur les droits/devoirs et la vie associative.</li>
+            <li><strong>Outils Numériques :</strong> Formation Word, Excel et initiation à la programmation (Code/Web).</li>
+            <li><strong>Soft Skills :</strong> Ateliers gestion du temps, confiance en soi (prise de parole) et leadership.</li>
+          </ul>
+        </div>
+        <div class="domain-box">
+          <h3><i class="fa-solid fa-palette"></i> Arts & Sciences</h3>
+          <ul>
+            <li><strong>Soutien scolaire :</strong> Mathématiques (Logique et calcul).</li>
+            <li><strong>Éveil :</strong> Ateliers biologie, environnement et initiation au solfège (Musique).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AXE 4: AIRE DE JEUX ── -->
+    <section class="AXE-section">
+      <div class="AXE-header">
+        <i class="fa-solid fa-child-reaching"></i>
+        <h2>Aire de Jeux (Amrah)</h2>
+      </div>
+      <p style="font-size: 0.9rem; margin-bottom: 1rem;">Localisation centrale pour une visibilité et sécurité optimale.</p>
+      
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Équipement (40-60 m²)</th>
+              <th>Dimensions / Détails</th>
+              <th>Coût Estimé</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Balançoires doubles</td>
+              <td>2m x 2m</td>
+              <td>15,000 - 25,000 DA</td>
+            </tr>
+            <tr>
+              <td>Toboggan</td>
+              <td>Hauteur 1,5 - 2m</td>
+              <td>20,000 - 30,000 DA</td>
+            </tr>
+            <tr>
+              <td>Grimpe de mains</td>
+              <td>1,5m x 1,5m (Motricité)</td>
+              <td>10,000 - 15,000 DA</td>
+            </tr>
+            <tr>
+              <td>Bascule à ressort (x2)</td>
+              <td>Compact & Ludique</td>
+              <td>10,000 DA (5k/unité)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="highlight-box">
+        <strong>Sécurité :</strong> Panneaux 3-12 ans requis (3,000 DA). Maintenance mensuelle obligatoire.
+      </div>
+    </section>
+
+    <!-- ── AXE 5: CIMETIÈRES ── -->
+    <section class="AXE-section" style="border-top-color: #5d4037;">
+      <div class="AXE-header">
+        <i class="fa-solid fa-monument"></i>
+        <h2>Cimetières & Mémoire</h2>
+      </div>
+      <div class="grid-content">
+        <div class="domain-box">
+          <h3>Cimetière Issadiyen 2</h3>
+          <ul>
+            <li><strong>Restauration :</strong> Nettoyage, allées cimentées, murs à la chaux.</li>
+            <li><strong>Aménagement :</strong> Plantation de cyprès (paix) et éclairage solaire discret.</li>
+            <li><strong>Signalétique :</strong> Plaques trilingues (Tamazight, Arabe, Français).</li>
+          </ul>
+        </div>
+        <div class="domain-box">
+          <h3>Cimetière 1 & Histoire</h3>
+          <ul>
+            <li><strong>Archives :</strong> Collecte de documents historiques.</li>
+            <li><strong>Chemin fleuri :</strong> Création d'un accès ombragé reliant le village au cimetière.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AXE 6: COMMUNICATION & MATÉRIEL ── -->
+    <section class="AXE-section">
+      <div class="AXE-header">
+        <i class="fa-solid fa-tower-broadcast"></i>
+        <h2>Communication & Logistique</h2>
+      </div>
+      <div class="grid-content">
+        <div class="domain-box">
+          <h3><i class="fa-solid fa-laptop-code"></i> Numérique & Médias</h3>
+          <ul>
+            <li><strong>Gestion :</strong> Logiciel avec base de données habitants, gestion financière et absences.</li>
+            <li><strong>Médias :</strong> Impliquer l'APS, El Watan, Horizons et la Radio locale pour l'affaire Assadi.</li>
+          </ul>
+        </div>
+        <div class="domain-box">
+          <h3><i class="fa-solid fa-toolbox"></i> Matériel Funéraire</h3>
+          <div class="table-container">
+            <table>
+              <tr><td><strong>Rites :</strong> Table de lavage, chapiteaux, bancs, fontaine/glacière.</td></tr>
+              <tr><td><strong>Outils :</strong> Pioches, pelles, niveau à bulle, truelle, taloche, mini-pelles.</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Village Irqvithen – AXE 2026-2027</p>
+    <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Famille Mahtout – Unie pour le progrès</p>
+  </footer>
+
+</body>
+</html>
