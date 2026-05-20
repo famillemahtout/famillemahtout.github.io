@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -62,8 +61,6 @@
       display:flex; align-items:center; gap:.35rem;
     }
     .nav-links a:hover { color:var(--gold); }
-
-    /* ✅ Lien Commissions mis en valeur dans la navbar */
     .nav-links a.nav-commissions {
       color: var(--gold);
       font-weight: 600;
@@ -77,7 +74,6 @@
       color: #fff;
       border-color: var(--gold);
     }
-
     .nav-badge {
       display:inline-flex; align-items:center; justify-content:center;
       background:var(--gold); color:#fff;
@@ -321,6 +317,16 @@
       text-decoration:none; display:flex; align-items:center; gap:.3rem; transition:color .2s;
     }
     .annonce-link:hover { color:var(--gold); }
+
+    /* ── ID BADGE sur chaque carte ── */
+    .annonce-id {
+      display:inline-flex; align-items:center; gap:.25rem;
+      background:#f0f0f0; color:#999;
+      font-size:.6rem; font-weight:700;
+      padding:.15rem .55rem; border-radius:50px;
+      font-family:'Poppins',sans-serif; letter-spacing:.5px;
+    }
+
     .no-annonce {
       text-align:center; padding:3.5rem 1rem; color:#ccc;
       font-size:.92rem; display:none; grid-column:1/-1;
@@ -391,8 +397,6 @@
     .tag-blue  { background:#dbeafe; color:#1d4ed8; }
     .tag-green { background:#dcfce7; color:#166534; }
     .tag-gold  { background:#fef3c7; color:#92400e; }
-
-    /* ✅ Bouton "Voir le plan d'action" sur chaque carte commission */
     .commission-card .btn-detail {
       display: inline-flex; align-items: center; gap: .4rem;
       margin-top: 1.2rem;
@@ -408,8 +412,6 @@
       border-color: var(--green-dark);
       transform: translateY(-2px);
     }
-
-    /* ✅ Bloc CTA sous la grille des commissions */
     .commissions-cta {
       text-align: center;
       margin-top: 3.5rem;
@@ -514,14 +516,11 @@
   <ul class="nav-links">
     <li><a href="#annonces">Annonces <span class="nav-badge" id="navBadge">0</span></a></li>
     <li><a href="#about">Le Village</a></li>
-
-    <!-- ✅ POINT 1 : Lien navbar → commissions.html -->
     <li>
       <a href="commissions.html" class="nav-commissions">
         <i class="fa-solid fa-compass"></i> Commissions
       </a>
     </li>
-
     <li><a href="#location">Localisation</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -553,7 +552,7 @@
     Daïra de Maâtkas &nbsp;•&nbsp; Wilaya de Tizi-Ouzou
   </div>
   <div class="hero-buttons">
-    <a href="#annonces"       class="btn btn-primary"><i class="fa-solid fa-bullhorn"></i> Voir les annonces</a>
+    <a href="#annonces"        class="btn btn-primary"><i class="fa-solid fa-bullhorn"></i> Voir les annonces</a>
     <a href="commissions.html" class="btn btn-outline"><i class="fa-solid fa-compass"></i> Nos Commissions</a>
   </div>
 </header>
@@ -656,7 +655,6 @@
         <li>Événements jeunesse</li>
       </ul>
       <span class="tag tag-blue"><i class="fa-solid fa-graduation-cap"></i> Pour les jeunes</span>
-      <!-- ✅ POINT 2 : Bouton sur chaque carte → commissions.html -->
       <a href="commissions.html" class="btn-detail">
         <i class="fa-solid fa-arrow-right"></i> Voir le plan d'action
       </a>
@@ -675,7 +673,6 @@
         <li>Gestion des déchets &amp; propreté</li>
       </ul>
       <span class="tag tag-green"><i class="fa-solid fa-seedling"></i> Développement durable</span>
-      <!-- ✅ POINT 2 : Bouton sur chaque carte → commissions.html -->
       <a href="commissions.html" class="btn-detail">
         <i class="fa-solid fa-arrow-right"></i> Voir le plan d'action
       </a>
@@ -694,7 +691,6 @@
         <li>Documentation &amp; archives légales</li>
       </ul>
       <span class="tag tag-gold"><i class="fa-solid fa-gavel"></i> Cimetière Assadi</span>
-      <!-- ✅ POINT 2 : Bouton sur chaque carte → commissions.html -->
       <a href="commissions.html" class="btn-detail">
         <i class="fa-solid fa-arrow-right"></i> Voir le plan d'action
       </a>
@@ -702,7 +698,6 @@
 
   </div>
 
-  <!-- ✅ POINT 3 : Bloc CTA centré sous les 3 cartes → commissions.html -->
   <div class="commissions-cta">
     <h3><i class="fa-solid fa-map" style="color:var(--gold);margin-right:.4rem;"></i> Plan d'action 2026 – 2027</h3>
     <p>Découvrez en détail les grands axes, les actions prévues et la feuille de route complète de chaque commission.</p>
@@ -741,7 +736,6 @@
   <ul class="footer-links">
     <li><a href="#annonces">Annonces</a></li>
     <li><a href="#about">Le Village</a></li>
-    <!-- ✅ Lien footer → commissions.html -->
     <li><a href="commissions.html">Commissions</a></li>
     <li><a href="#location">Localisation</a></li>
   </ul>
@@ -761,32 +755,70 @@
 </button>
 
 <script>
+/* ═══════════════════════════════════════════════════════════════
+   BASE DES ANNONCES
+   ───────────────────────────────────────────────────────────────
+   Pour ajouter une annonce :
+     1. Copier un bloc existant
+     2. Incrémenter id  ET  ordre
+     3. Remplir les champs
+     4. Catégories disponibles :
+        "general" | "urgent" | "sciences" | "amenagement" | "juridique"
+   ═══════════════════════════════════════════════════════════════ */
+
 const ANNONCES = [
+
+
+  // ═══════════════════════════════════════════
+  // ID 1 — Aménagement
+  // ═══════════════════════════════════════════
   {
-    ordre:1, id:1, categorie:"general",
-    titre:"Création officielle du comité Irqvithen",
-    texte:"Le comité de village IRQVITHEN est officiellement créé. "
-        + "Il est composé de trois commissions spécialisées : "
-        + "Sciences & Loisirs, Aménagement & Environnement, et Juridique. "
-        + "Ensemble, œuvrons pour le développement et le rayonnement de notre village.",
-    date:"Juin 2025", meta:"Comité officiel", metaIcon:"fa-solid fa-certificate",
-    lienTexte:"Découvrir les commissions", lienUrl:"commissions.html",
-    nouveau:true, epingle:true
+  
+    id       : 2,
+    categorie: "amenagement",
+    titre    : "Campagne de nettoyage et désherbage",
+    texte    : "La Commission Aménagement & Environnement lance une grande campagne "
+             + "de nettoyage et de désherbage dans le village Irqvithen. "
+             + "Tous les habitants sont invités à participer. "
+             + "Venez munis de vos outils, gants et bonne humeur pour embellir "
+             + "notre cadre de vie ensemble !",
+    date     : "2025",
+    meta     : "Tous les habitants",
+    metaIcon : "fa-solid fa-users",
+    lienTexte: "Participer",
+    lienUrl  : "#",
+    nouveau  : true,
+    epingle  : false
   },
+
+
+// ═══════════════════════════════════════════
+  // ID 2 — Annonce épinglée / générale
+  // ═══════════════════════════════════════════
   {
-    ordre:2, id:2, categorie:"amenagement",
-    titre:"Campagne de nettoyage et désherbage",
-    texte:"La Commission Aménagement & Environnement lance une grande campagne "
-        + "de nettoyage et de désherbage dans le village Irqvithen. "
-        + "Tous les habitants sont invités à participer. "
-        + "Venez munis de vos outils, gants et bonne humeur pour embellir "
-        + "notre cadre de vie ensemble !",
-    date:"Juin 2025", meta:"Tous les habitants", metaIcon:"fa-solid fa-users",
-    lienTexte:"Participer", lienUrl:"#",
-    nouveau:true, epingle:false
-  }
+    
+    id       : 1,
+    categorie: "general",
+    titre    : "Création officielle du comité Irqvithen",
+    texte    : "Le comité de village IRQVITHEN est officiellement créé. "
+             + "Il est composé de trois commissions spécialisées : "
+             + "Sciences & Loisirs, Aménagement & Environnement, et Juridique. "
+             + "Ensemble, œuvrons pour le développement et le rayonnement de notre village.",
+    date     : "Juin 2025",
+    meta     : "Comité officiel",
+    metaIcon : "fa-solid fa-certificate",
+    lienTexte: "Découvrir les commissions",
+    lienUrl  : "commissions.html",
+    nouveau  : true,
+    epingle  : true
+  },
+
+
 ];
 
+/* ─────────────────────────────────────────────
+   CONFIG DES CATÉGORIES
+───────────────────────────────────────────── */
 const CAT_CONFIG = {
   urgent      : { icon:"fa-solid fa-circle-exclamation", css:"cat-urgent",      label:"Urgent"             },
   general     : { icon:"fa-solid fa-bullhorn",           css:"cat-general",     label:"Général"            },
@@ -795,6 +827,9 @@ const CAT_CONFIG = {
   juridique   : { icon:"fa-solid fa-scale-balanced",     css:"cat-juridique",   label:"Juridique"          }
 };
 
+/* ─────────────────────────────────────────────
+   RÉFÉRENCES DOM
+───────────────────────────────────────────── */
 const grid        = document.getElementById('annoncesGrid');
 const noAnnonce   = document.getElementById('noAnnonce');
 const countEl     = document.getElementById('annoncesCount');
@@ -802,24 +837,42 @@ const navBadge    = document.getElementById('navBadge');
 const searchInput = document.getElementById('searchInput');
 const filterBtns  = document.querySelectorAll('.filter-btn');
 const tickerInner = document.getElementById('tickerInner');
+
 let currentFilter = 'all';
 let currentSearch = '';
 
+/* ─────────────────────────────────────────────
+   CONSTRUCTION D'UNE CARTE
+───────────────────────────────────────────── */
 function buildCard(a) {
   const cfg      = CAT_CONFIG[a.categorie] || CAT_CONFIG.general;
   const pinClass = a.epingle ? 'pinned' : '';
+
   const newBadge = a.nouveau
-    ? `<span class="annonce-new"><i class="fa-solid fa-circle"></i> Nouveau</span>` : '';
+    ? `<span class="annonce-new"><i class="fa-solid fa-circle"></i> Nouveau</span>`
+    : '';
+
   return `
     <div class="annonce-card ${pinClass}" data-id="${a.id}" data-category="${a.categorie}">
+
       <div class="annonce-card-header">
-        <span class="annonce-cat ${cfg.css}"><i class="${cfg.icon}"></i> ${cfg.label}</span>
+        <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;">
+          <span class="annonce-cat ${cfg.css}">
+            <i class="${cfg.icon}"></i> ${cfg.label}
+          </span>
+          <!-- Badge ID -->
+          <span class="annonce-id">
+            <i class="fa-solid fa-fingerprint"></i> #${String(a.id).padStart(2,'0')}
+          </span>
+        </div>
         ${newBadge}
       </div>
+
       <div class="annonce-card-body">
         <h3>${a.titre}</h3>
         <p>${a.texte}</p>
       </div>
+
       <div class="annonce-card-footer">
         <div class="annonce-meta">
           <span><i class="fa-solid fa-calendar-days"></i> ${a.date}</span>
@@ -829,13 +882,20 @@ function buildCard(a) {
           ${a.lienTexte} <i class="fa-solid fa-arrow-right"></i>
         </a>
       </div>
+
     </div>`;
 }
 
+/* ─────────────────────────────────────────────
+   TRI PAR ORDRE
+───────────────────────────────────────────── */
 function sortAnnonces(list) {
-  return [...list].sort((a,b) => a.ordre - b.ordre);
+  return [...list].sort((a, b) => a.ordre - b.ordre);
 }
 
+/* ─────────────────────────────────────────────
+   RENDU DE LA GRILLE
+───────────────────────────────────────────── */
 function renderAnnonces() {
   const sorted   = sortAnnonces(ANNONCES);
   const filtered = sorted.filter(a => {
@@ -844,8 +904,10 @@ function renderAnnonces() {
                      || a.texte.toLowerCase().includes(currentSearch);
     return matchCat && matchSearch;
   });
+
   grid.innerHTML = '';
   grid.appendChild(noAnnonce);
+
   if (filtered.length === 0) {
     noAnnonce.style.display = 'block';
     countEl.innerHTML = 'Aucune annonce trouvée.';
@@ -853,10 +915,13 @@ function renderAnnonces() {
     noAnnonce.style.display = 'none';
     filtered.forEach(a => grid.insertAdjacentHTML('beforeend', buildCard(a)));
     const n = filtered.length;
-    countEl.innerHTML = `<strong>${n}</strong> annonce${n>1?'s':''} affichée${n>1?'s':''}`;
+    countEl.innerHTML = `<strong>${n}</strong> annonce${n > 1 ? 's' : ''} affichée${n > 1 ? 's' : ''}`;
   }
 }
 
+/* ─────────────────────────────────────────────
+   TICKER
+───────────────────────────────────────────── */
 function buildTicker() {
   const items = [...sortAnnonces(ANNONCES), ...sortAnnonces(ANNONCES)];
   tickerInner.innerHTML = items.map(a => {
@@ -864,13 +929,19 @@ function buildTicker() {
     return `<a href="#annonces" class="ticker-item">
       <span class="ticker-dot"></span>
       <span class="ticker-cat">${cfg.label}</span>
-      <strong>${a.titre}</strong>
+      <strong>#${String(a.id).padStart(2,'0')} — ${a.titre}</strong>
     </a>`;
   }).join('');
 }
 
+/* ─────────────────────────────────────────────
+   BADGE NAVBAR
+───────────────────────────────────────────── */
 navBadge.textContent = ANNONCES.length;
 
+/* ─────────────────────────────────────────────
+   FILTRES
+───────────────────────────────────────────── */
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     filterBtns.forEach(b => b.classList.remove('active'));
@@ -880,16 +951,25 @@ filterBtns.forEach(btn => {
   });
 });
 
+/* ─────────────────────────────────────────────
+   RECHERCHE
+───────────────────────────────────────────── */
 searchInput.addEventListener('input', () => {
   currentSearch = searchInput.value.toLowerCase().trim();
   renderAnnonces();
 });
 
+/* ─────────────────────────────────────────────
+   BACK TO TOP
+───────────────────────────────────────────── */
 const topBtn = document.getElementById('top-btn');
 window.addEventListener('scroll', () => {
   topBtn.classList.toggle('visible', window.scrollY > 400);
 });
 
+/* ─────────────────────────────────────────────
+   INIT
+───────────────────────────────────────────── */
 buildTicker();
 renderAnnonces();
 </script>
