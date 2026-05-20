@@ -1,0 +1,945 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PV de Réunions – Comité Irqvithen</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark  : #1a5c38;
+      --green-mid   : #2e8b57;
+      --green-light : #a8d5b5;
+      --gold        : #c9963d;
+      --cream       : #f9f5ef;
+      --text-dark   : #1e1e1e;
+      --text-light  : #f0ede8;
+      --shadow      : 0 8px 32px rgba(0,0,0,.15);
+      --radius      : 16px;
+      --nav-h       : 66px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      padding-top: var(--nav-h);
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000; height: var(--nav-h);
+      background: rgba(26,92,56,.97);
+      backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem;
+      box-shadow: 0 2px 16px rgba(0,0,0,.3);
+    }
+    .nav-logo { display:flex; align-items:center; gap:.7rem; text-decoration:none; }
+    .nav-logo .logo-icon {
+      width:42px; height:42px; border-radius:50%;
+      background:var(--gold);
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.2rem; color:#fff;
+    }
+    .nav-logo span {
+      font-family:'Playfair Display',serif;
+      color:#fff; font-size:1.15rem; letter-spacing:.5px;
+    }
+    .nav-links { display:flex; gap:1.5rem; list-style:none; }
+    .nav-links a {
+      color:var(--text-light); text-decoration:none;
+      font-size:.85rem; font-weight:400; transition:color .3s;
+      display:flex; align-items:center; gap:.35rem;
+    }
+    .nav-links a:hover { color:var(--gold); }
+    .nav-links a.nav-commissions {
+      color: var(--gold); font-weight: 600;
+      border: 1px solid rgba(201,150,61,.4);
+      padding: .3rem .8rem; border-radius: 50px; transition: all .3s;
+    }
+    .nav-links a.nav-commissions:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+    .nav-links a.nav-pv {
+      color: #fff; font-weight: 600;
+      border: 1px solid rgba(255,255,255,.25);
+      padding: .3rem .8rem; border-radius: 50px; transition: all .3s;
+    }
+    .nav-links a.nav-pv:hover,
+    .nav-links a.nav-pv.active { background: rgba(255,255,255,.2); border-color: rgba(255,255,255,.5); }
+
+    /* ── HERO ── */
+    .hero-pv {
+      background:
+        linear-gradient(160deg, rgba(10,40,25,.92) 0%, rgba(26,92,56,.85) 100%),
+        url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80') center/cover no-repeat;
+      padding: 6rem 1.5rem 5rem;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-pv::after {
+      content:''; position:absolute; bottom:0; left:0; right:0; height:80px;
+      background:var(--cream); clip-path:ellipse(60% 100% at 50% 100%);
+    }
+    .breadcrumb {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.85); padding: .4rem 1.2rem; border-radius: 50px;
+      font-size: .78rem; margin-bottom: 1.5rem; text-decoration: none;
+      transition: background .3s;
+    }
+    .breadcrumb:hover { background: rgba(255,255,255,.18); }
+    .breadcrumb i { color: var(--gold); }
+    .hero-pv h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      color: #fff; line-height: 1.15;
+      text-shadow: 0 4px 20px rgba(0,0,0,.4);
+      margin-bottom: .7rem;
+    }
+    .hero-pv h1 span { color: var(--gold); }
+    .hero-pv > p {
+      color: rgba(255,255,255,.8); font-size: .98rem;
+      max-width: 560px; margin: 0 auto; line-height: 1.8;
+    }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 2rem;
+      flex-wrap: wrap; margin-top: 2.5rem;
+    }
+    .hero-stat {
+      text-align: center;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: var(--radius);
+      padding: 1rem 1.8rem;
+      backdrop-filter: blur(6px);
+    }
+    .hero-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; color: var(--gold); line-height: 1;
+    }
+    .hero-stat .lbl {
+      font-size: .7rem; text-transform: uppercase;
+      letter-spacing: 2px; color: rgba(255,255,255,.7); margin-top: .3rem;
+    }
+
+    /* ── DRIVE BANNER ── */
+    .drive-banner {
+      max-width: 1000px; margin: 3rem auto 0;
+      padding: 0 1.5rem;
+    }
+    .drive-banner-inner {
+      background: linear-gradient(135deg, #1a5c38 0%, #0f3d22 100%);
+      border-radius: var(--radius);
+      padding: 1.8rem 2.2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1.5rem; flex-wrap: wrap;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(201,150,61,.3);
+    }
+    .drive-banner-left {
+      display: flex; align-items: center; gap: 1.2rem;
+    }
+    .drive-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; color: var(--gold); flex-shrink: 0;
+    }
+    .drive-banner-left h3 {
+      font-family: 'Playfair Display', serif;
+      color: #fff; font-size: 1.1rem; margin-bottom: .25rem;
+    }
+    .drive-banner-left p {
+      color: rgba(255,255,255,.65); font-size: .82rem; line-height: 1.5;
+    }
+    .btn-drive {
+      display: inline-flex; align-items: center; gap: .55rem;
+      background: var(--gold); color: #fff;
+      padding: .8rem 1.8rem; border-radius: 50px;
+      text-decoration: none; font-weight: 600; font-size: .9rem;
+      box-shadow: 0 4px 18px rgba(201,150,61,.45);
+      transition: all .3s; white-space: nowrap; flex-shrink: 0;
+    }
+    .btn-drive:hover { background: #b8822e; transform: translateY(-2px); }
+    .btn-drive-outline {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: transparent; color: rgba(255,255,255,.85);
+      padding: .7rem 1.4rem; border-radius: 50px;
+      text-decoration: none; font-weight: 600; font-size: .85rem;
+      border: 1px solid rgba(255,255,255,.3);
+      transition: all .3s; white-space: nowrap; flex-shrink: 0;
+    }
+    .btn-drive-outline:hover { background: rgba(255,255,255,.1); }
+    .drive-actions { display: flex; gap: .8rem; flex-wrap: wrap; align-items: center; }
+
+    /* ── LAYOUT ── */
+    .page-wrapper {
+      max-width: 1000px; margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* ── TOOLBAR ── */
+    .pv-toolbar {
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      align-items: center; justify-content: space-between;
+      margin-bottom: 2.5rem;
+    }
+    .search-wrap {
+      position: relative; flex: 1; min-width: 200px; max-width: 320px;
+    }
+    .search-wrap i {
+      position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+      color: #bbb; font-size: .85rem;
+    }
+    #pvSearch {
+      width: 100%; padding: .6rem 1rem .6rem 2.5rem;
+      border: 2px solid #e5e7eb; border-radius: 50px;
+      font-family: 'Poppins', sans-serif; font-size: .83rem;
+      outline: none; background: #fff; transition: border-color .25s;
+    }
+    #pvSearch:focus { border-color: var(--green-mid); }
+    .pv-filters { display: flex; gap: .45rem; flex-wrap: wrap; }
+    .pv-filter-btn {
+      padding: .4rem .95rem; border-radius: 50px;
+      border: 2px solid #e5e7eb; background: #fff;
+      font-family: 'Poppins', sans-serif; font-size: .78rem; font-weight: 600;
+      cursor: pointer; transition: all .25s; color: #666;
+      display: inline-flex; align-items: center; gap: .3rem;
+    }
+    .pv-filter-btn:hover,
+    .pv-filter-btn.active { background: var(--green-dark); border-color: var(--green-dark); color: #fff; }
+
+    /* ── COMPTEUR ── */
+    .pv-count {
+      text-align: center; font-size: .8rem; color: #aaa; margin-bottom: 2rem;
+    }
+    .pv-count strong { color: var(--green-dark); }
+
+    /* ── LISTE PV ── */
+    .pv-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    /* ── CARTE PV ── */
+    .pv-card {
+      background: #fff; border-radius: var(--radius);
+      box-shadow: 0 4px 24px rgba(0,0,0,.07);
+      border: 1px solid rgba(0,0,0,.06);
+      border-left: 5px solid var(--green-mid);
+      overflow: hidden;
+      animation: fadeUp .4s ease both;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .pv-card:hover { transform: translateY(-4px); box-shadow: 0 14px 44px rgba(0,0,0,.12); }
+    .pv-card[data-type="pv"]       { border-left-color: var(--green-mid); }
+    .pv-card[data-type="cr"]       { border-left-color: #3b82f6; }
+    .pv-card[data-type="decision"] { border-left-color: var(--gold); }
+    .pv-card[data-type="urgent"]   { border-left-color: #dc2626; }
+    .pv-card.pv-pinned {
+      border: 2px solid var(--gold);
+      border-left: 5px solid var(--gold);
+      position: relative;
+    }
+    .pv-card.pv-pinned::after {
+      content: '\f08d'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+      position: absolute; top: 0; right: 14px; font-size: 1rem; color: var(--gold);
+    }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(16px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* Header carte */
+    .pv-card-header {
+      padding: 1rem 1.5rem .8rem;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid #f5f5f5;
+      flex-wrap: wrap; gap: .5rem;
+    }
+    .pv-header-left { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+    .pv-type-badge {
+      display: inline-flex; align-items: center; gap: .35rem;
+      padding: .25rem .85rem; border-radius: 50px;
+      font-size: .67rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .type-pv       { background: #dcfce7; color: #166534; }
+    .type-cr       { background: #dbeafe; color: #1d4ed8; }
+    .type-decision { background: #fef3c7; color: #92400e; }
+    .type-urgent   { background: #fee2e2; color: #991b1b; }
+
+    .pv-num-badge {
+      display: inline-flex; align-items: center; gap: .25rem;
+      background: #f0f0f0; color: #999;
+      font-size: .6rem; font-weight: 700;
+      padding: .15rem .55rem; border-radius: 50px; letter-spacing: .5px;
+    }
+    .pv-new {
+      display: inline-flex; align-items: center; gap: .28rem;
+      background: var(--green-mid); color: #fff;
+      font-size: .6rem; font-weight: 700;
+      padding: .15rem .5rem; border-radius: 50px;
+      text-transform: uppercase; letter-spacing: 1px;
+      animation: blink 2s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.45} }
+
+    /* ── BADGE PDF DISPONIBLE ── */
+    .pv-pdf-badge {
+      display: inline-flex; align-items: center; gap: .3rem;
+      background: #fef2f2; color: #dc2626;
+      border: 1px solid #fecaca;
+      font-size: .6rem; font-weight: 700;
+      padding: .15rem .55rem; border-radius: 50px;
+      text-transform: uppercase; letter-spacing: .5px;
+    }
+
+    /* Corps carte */
+    .pv-card-body { padding: 1.2rem 1.5rem; }
+    .pv-card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.12rem; color: var(--green-dark);
+      margin-bottom: .5rem; line-height: 1.35;
+    }
+    .pv-card-body .pv-resume {
+      font-size: .87rem; color: #666; line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    /* Points abordés */
+    .pv-points h4 {
+      font-size: .75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: #999; margin-bottom: .6rem;
+      display: flex; align-items: center; gap: .4rem;
+    }
+    .pv-points h4 i { color: var(--gold); }
+    .pv-points ul { list-style: none; display: flex; flex-direction: column; gap: .4rem; }
+    .pv-points ul li {
+      display: flex; align-items: flex-start; gap: .6rem;
+      font-size: .85rem; color: #555; line-height: 1.5;
+    }
+    .pv-points ul li::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green-mid); flex-shrink: 0; margin-top: .45rem;
+    }
+
+    /* Décisions */
+    .pv-decisions {
+      margin-top: 1rem;
+      background: #fffbeb; border-radius: 10px; padding: .9rem 1.1rem;
+      border-left: 3px solid var(--gold);
+    }
+    .pv-decisions h4 {
+      font-size: .73rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: #92400e; margin-bottom: .5rem;
+      display: flex; align-items: center; gap: .4rem;
+    }
+    .pv-decisions ul { list-style: none; display: flex; flex-direction: column; gap: .35rem; }
+    .pv-decisions ul li {
+      font-size: .84rem; color: #78350f;
+      display: flex; align-items: flex-start; gap: .5rem; line-height: 1.5;
+    }
+    .pv-decisions ul li i { color: var(--gold); margin-top: .1rem; font-size: .75rem; }
+
+    /* Zone expandée */
+    .pv-expanded {
+      display: none;
+      padding: 1.2rem 1.5rem;
+      border-top: 1px dashed #e5e7eb;
+      background: #fafffe;
+    }
+    .pv-expanded.open { display: block; animation: fadeUp .3s ease; }
+    .pv-expanded h4 {
+      font-size: .75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: #999; margin-bottom: .7rem;
+      display: flex; align-items: center; gap: .4rem;
+    }
+    .pv-expanded h4 i { color: var(--gold); }
+    .pv-expanded p {
+      font-size: .87rem; color: #555; line-height: 1.9; white-space: pre-line;
+    }
+
+    /* ── FOOTER CARTE — zone boutons ── */
+    .pv-card-footer {
+      padding: .85rem 1.5rem;
+      border-top: 1px solid #f5f5f5; background: #fafafa;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: .8rem;
+    }
+    .pv-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .pv-meta span {
+      display: flex; align-items: center; gap: .35rem;
+      font-size: .75rem; color: #aaa;
+    }
+    .pv-meta span i { color: var(--green-mid); }
+
+    /* Groupe de boutons */
+    .pv-btn-group { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; }
+
+    /* Bouton Expand */
+    .btn-expand {
+      display: inline-flex; align-items: center; gap: .35rem;
+      padding: .45rem 1rem; border-radius: 50px;
+      border: 2px solid var(--green-light);
+      background: #fff; color: var(--green-dark);
+      font-size: .78rem; font-weight: 600; cursor: pointer;
+      font-family: 'Poppins', sans-serif; transition: all .25s;
+    }
+    .btn-expand:hover { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+
+    /* ── BOUTON TÉLÉCHARGER PDF ── */
+    .btn-pdf {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .45rem 1rem; border-radius: 50px;
+      background: #dc2626; color: #fff;
+      font-size: .78rem; font-weight: 600;
+      text-decoration: none; transition: all .25s;
+      box-shadow: 0 2px 10px rgba(220,38,38,.3);
+    }
+    .btn-pdf:hover { background: #b91c1c; transform: translateY(-2px); }
+    .btn-pdf.disabled {
+      background: #e5e7eb; color: #9ca3af;
+      box-shadow: none; cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* ── BOUTON VOIR SUR DRIVE ── */
+    .btn-drive-card {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .45rem 1rem; border-radius: 50px;
+      background: #fff; color: #1a73e8;
+      border: 2px solid #c5d9f5;
+      font-size: .78rem; font-weight: 600;
+      text-decoration: none; transition: all .25s;
+    }
+    .btn-drive-card:hover { background: #1a73e8; color: #fff; border-color: #1a73e8; }
+
+    /* ── VIDE ── */
+    .pv-empty {
+      text-align: center; padding: 4rem 1rem; color: #ccc;
+      font-size: .92rem; display: none;
+    }
+    .pv-empty i { font-size: 3rem; display: block; margin-bottom: 1rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0f2d1c; color: rgba(255,255,255,.7);
+      text-align: center; padding: 3rem 1.5rem;
+    }
+    footer .footer-logo {
+      font-family: 'Playfair Display', serif; color: #fff;
+      font-size: 1.6rem; margin-bottom: .5rem;
+    }
+    footer .footer-logo span { color: var(--gold); }
+    footer > p { font-size: .85rem; margin-top: .4rem; }
+    .footer-links {
+      display: flex; justify-content: center; gap: 1.5rem;
+      margin: 1.5rem 0; list-style: none; flex-wrap: wrap;
+    }
+    .footer-links a { color: rgba(255,255,255,.6); text-decoration: none; font-size: .85rem; transition: color .3s; }
+    .footer-links a:hover { color: var(--gold); }
+    .social-icons { display: flex; justify-content: center; gap: 1rem; margin: 1.2rem 0; }
+    .social-icons a {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.08); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; transition: background .3s;
+    }
+    .social-icons a:hover { background: var(--gold); }
+    .footer-copy {
+      margin-top: 1.5rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+      font-size: .78rem; color: rgba(255,255,255,.4);
+    }
+
+    /* ── BACK TO TOP ── */
+    #top-btn {
+      position: fixed; bottom: 2rem; right: 2rem;
+      background: var(--gold); color: #fff;
+      width: 46px; height: 46px; border-radius: 50%;
+      display: none; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25);
+      border: none; transition: background .3s, transform .3s; z-index: 997;
+    }
+    #top-btn:hover { background: var(--green-dark); transform: translateY(-3px); }
+    #top-btn.visible { display: flex; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { display: none; }
+      .pv-toolbar { flex-direction: column; align-items: stretch; }
+      .search-wrap { max-width: 100%; }
+      .hero-stats { gap: 1rem; }
+      .drive-banner-inner { flex-direction: column; }
+      .drive-actions { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ╔══ NAVBAR ══╗ -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+    <span>Irqvithen</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#annonces">Annonces</a></li>
+    <li><a href="index.html#about">Le Village</a></li>
+    <li>
+      <a href="commissions.html" class="nav-commissions">
+        <i class="fa-solid fa-compass"></i> Commissions
+      </a>
+    </li>
+    <li>
+      <a href="pvdereunion.html" class="nav-pv active">
+        <i class="fa-solid fa-file-lines"></i> PV de Réunions
+      </a>
+    </li>
+    <li><a href="index.html#location">Localisation</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ╔══ HERO ══╗ -->
+<div class="hero-pv">
+  <a href="index.html" class="breadcrumb">
+    <i class="fa-solid fa-arrow-left"></i> Retour au village
+  </a>
+  <h1>PV de <span>Réunions</span><br/>& Comptes Rendus</h1>
+  <p>Retrouvez ici l'ensemble des procès-verbaux, comptes rendus
+     et décisions prises par le Comité IRQVITHEN.
+     Les documents PDF sont disponibles en téléchargement.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="num" id="statTotal">0</div>
+      <div class="lbl">Documents</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num" id="statPV">0</div>
+      <div class="lbl">PV de réunion</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num" id="statCR">0</div>
+      <div class="lbl">Comptes rendus</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num" id="statPDF">0</div>
+      <div class="lbl">PDF disponibles</div>
+    </div>
+  </div>
+</div>
+
+<!-- ╔══ BANDEAU GOOGLE DRIVE ══╗ -->
+<div class="drive-banner">
+  <div class="drive-banner-inner">
+    <div class="drive-banner-left">
+      <div class="drive-icon">
+        <i class="fa-brands fa-google-drive"></i>
+      </div>
+      <div>
+        <h3>📁 Dossier Google Drive – Documents officiels</h3>
+        <p>
+          Tous les PV, comptes rendus et décisions du Comité IRQVITHEN
+          sont archivés et téléchargeables sur notre Google Drive officiel.
+        </p>
+      </div>
+    </div>
+    <div class="drive-actions">
+      <a href="https://drive.google.com/drive/folders/1U0PNzks2oTzELe-A2fvmNJh8BPfMk8nq?usp=drive_link"
+         target="_blank" class="btn-drive">
+        <i class="fa-brands fa-google-drive"></i> Ouvrir le Drive
+      </a>
+      <a href="https://drive.google.com/drive/folders/1U0PNzks2oTzELe-A2fvmNJh8BPfMk8nq?usp=drive_link"
+         target="_blank" class="btn-drive-outline">
+        <i class="fa-solid fa-folder-open"></i> Voir tous les fichiers
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ╔══ CONTENU ══╗ -->
+<div class="page-wrapper">
+
+  <!-- Toolbar -->
+  <div class="pv-toolbar">
+    <div class="search-wrap">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="pvSearch" placeholder="Rechercher un PV, compte rendu…"/>
+    </div>
+    <div class="pv-filters">
+      <button class="pv-filter-btn active" data-filter="all">
+        <i class="fa-solid fa-border-all"></i> Tous
+      </button>
+      <button class="pv-filter-btn" data-filter="pv">
+        <i class="fa-solid fa-file-contract"></i> PV
+      </button>
+      <button class="pv-filter-btn" data-filter="cr">
+        <i class="fa-solid fa-file-lines"></i> Comptes rendus
+      </button>
+      <button class="pv-filter-btn" data-filter="decision">
+        <i class="fa-solid fa-gavel"></i> Décisions
+      </button>
+      <button class="pv-filter-btn" data-filter="urgent">
+        <i class="fa-solid fa-circle-exclamation"></i> Urgent
+      </button>
+    </div>
+  </div>
+
+  <p class="pv-count" id="pvCount"></p>
+
+  <!-- Liste -->
+  <div class="pv-list" id="pvList"></div>
+  <div class="pv-empty" id="pvEmpty">
+    <i class="fa-regular fa-folder-open"></i>
+    Aucun document trouvé.
+  </div>
+
+</div>
+
+<!-- ╔══ FOOTER ══╗ -->
+<footer>
+  <div class="footer-logo">Village <span>Irqvithen</span></div>
+  <p>Famille Mahtout — Daïra de Maâtkas, Wilaya de Tizi-Ouzou, Algérie</p>
+  <ul class="footer-links">
+    <li><a href="index.html#annonces">Annonces</a></li>
+    <li><a href="index.html#about">Le Village</a></li>
+    <li><a href="commissions.html">Commissions</a></li>
+    <li><a href="pvdereunion.html">PV de Réunions</a></li>
+    <li><a href="index.html#location">Localisation</a></li>
+  </ul>
+  <div class="social-icons">
+    <a href="https://famillemahtout.github.io/" target="_blank"><i class="fa-brands fa-github"></i></a>
+    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#"><i class="fa-solid fa-envelope"></i></a>
+  </div>
+  <div class="footer-copy">
+    &copy; 2025 – Famille Mahtout / Comité IRQVITHEN. Tous droits réservés.<br/>
+    Site réalisé avec ❤️ pour notre village.
+  </div>
+</footer>
+
+<button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   BASE DES PV & COMPTES RENDUS
+   ─────────────────────────────────────────────────────────────────
+   CHAMPS DISPONIBLES :
+   ┌─────────────────┬──────────────────────────────────────────────┐
+   │ ordre           │ Numéro d'ordre (tri décroissant)             │
+   │ id              │ Identifiant unique #01, #02…                 │
+   │ type            │ "pv" | "cr" | "decision" | "urgent"          │
+   │ titre           │ Titre du document                            │
+   │ date            │ Date lisible "Juin 2025"                     │
+   │ lieu            │ Lieu de la réunion                           │
+   │ presides        │ Président de séance                          │
+   │ participants    │ Liste des participants                        │
+   │ resume          │ Résumé court (affiché sur la carte)          │
+   │ points          │ Tableau des points abordés                   │
+   │ decisions       │ Tableau des décisions prises                 │
+   │ texteComplet    │ Texte intégral (bouton "Voir le texte")      │
+   │ nouveau         │ true → badge NOUVEAU animé                   │
+   │ epingle         │ true → carte épinglée en or                  │
+   │                 │                                              │
+   │ ── PDF ──       │                                              │
+   │ pdfDispo        │ true si PDF disponible sur Drive             │
+   │ pdfLien         │ Lien direct Google Drive du fichier PDF      │
+   │                 │ (lien "Télécharger" ou "Afficher")           │
+   │ pdfNom          │ Nom du fichier PDF affiché                   │
+   └─────────────────┴──────────────────────────────────────────────┘
+
+   COMMENT OBTENIR UN LIEN DE TÉLÉCHARGEMENT GOOGLE DRIVE :
+   1. Ouvrir le fichier sur Drive
+   2. Clic droit → "Obtenir le lien"
+   3. Mettre en accès "Tous les utilisateurs avec le lien"
+   4. Copier le lien → il ressemble à :
+      https://drive.google.com/file/d/XXXXXXXX/view?usp=sharing
+   5. Transformer en lien de téléchargement direct :
+      https://drive.google.com/uc?export=download&id=XXXXXXXX
+      (remplacer XXXXXXXX par l'ID du fichier)
+
+   OU utiliser le lien "Afficher" directement pour ouvrir dans Drive.
+   ═══════════════════════════════════════════════════════════════════ */
+
+const DRIVE_FOLDER = "https://drive.google.com/drive/folders/1U0PNzks2oTzELe-A2fvmNJh8BPfMk8nq?usp=drive_link";
+
+const PV_DATA = [
+
+
+
+  // ═══════════════════════════════════════════════════
+  // CR #01 — Commission Aménagement
+  // ═══════════════════════════════════════════════════
+  {
+    ordre       : 1,
+    id          : 1,
+    type        : "cr",
+    titre       : "Compte rendu – Campagne de nettoyage et désherbage",
+    date        : "Mai 2025",
+    lieu        : "Village Irqvithen",
+    presides    : "Commission Aménagement & Environnement",
+    participants: "",
+    resume      : " "
+                + "",
+        
+    points      : [
+    //  "Identification des zones prioritaires à nettoyer",
+    //  "Organisation logistique de la campagne",
+    //  "Mobilisation des habitants et volontaires",
+    //  "Calendrier des interventions"
+    ],
+    decisions   : [
+    //  "Lancement de la campagne de nettoyage en Juin 2025",
+    //  "Répartition des équipes par secteur du village",
+    //  "Acquisition de matériel : gants, sacs, outils"
+    ],
+    texteComplet: `COMPTE RENDU DE 
+Dans le cadre de sa démarche d'amélioration continue du village, le Comité a organisé une journée mobilisant les habitants autour d'actions nécessaires.
+
+Cette initiative avait deux objectifs majeurs :
+1.  La sécurisation des lieux : Deux arbres, dont l'état présentait un risque avéré pour la sécurité des passants, ont été abattus de manière contrôlée. Cette intervention préventive élimine désormais tout danger potentiel lié à leur chute.
+2.  L'assainissement de l'espace public : Les participants ont procédé à un désherbage du cimetière Assaki N'Tarha et El-Kaf suivi d'un nettoyage général des espaces communs, redonnant au village sa propreté.
+
+Nous tenons à remercier chaleureusement tous les participants pour leur engagement et leur esprit de responsabilité.`,
+
+    pdfDispo    : true,
+    pdfNom      : "CR-02-Campagne-Nettoyage-IRQVITHEN.pdf",
+    pdfLien     : "https://drive.google.com/drive/folders/1tdtifQsSd10zjg2By2KT-gU-3l1KNmV2?usp=drive_link",
+    /* ↑ Remplacer par le lien direct du fichier PDF */
+
+    nouveau     : true,
+    epingle     : false
+  },
+  
+
+  
+];
+
+/* ─────────────────────────────────────────────
+   CONFIG DES TYPES
+───────────────────────────────────────────── */
+const TYPE_CONFIG = {
+  pv       : { icon: "fa-solid fa-file-contract",      css: "type-pv",       label: "PV de Réunion" },
+  cr       : { icon: "fa-solid fa-file-lines",         css: "type-cr",       label: "Compte Rendu"  },
+  decision : { icon: "fa-solid fa-gavel",              css: "type-decision", label: "Décision"      },
+  urgent   : { icon: "fa-solid fa-circle-exclamation", css: "type-urgent",   label: "Urgent"        }
+};
+
+/* ─────────────────────────────────────────────
+   RÉFÉRENCES DOM
+───────────────────────────────────────────── */
+const pvList    = document.getElementById('pvList');
+const pvEmpty   = document.getElementById('pvEmpty');
+const pvCountEl = document.getElementById('pvCount');
+const pvSearch  = document.getElementById('pvSearch');
+const filterBtns= document.querySelectorAll('.pv-filter-btn');
+
+const statTotal = document.getElementById('statTotal');
+const statPV    = document.getElementById('statPV');
+const statCR    = document.getElementById('statCR');
+const statPDF   = document.getElementById('statPDF');
+
+let currentFilter = 'all';
+let currentSearch = '';
+
+/* ─────────────────────────────────────────────
+   STATISTIQUES HERO
+───────────────────────────────────────────── */
+function updateStats() {
+  statTotal.textContent = PV_DATA.length;
+  statPV.textContent    = PV_DATA.filter(p => p.type === 'pv').length;
+  statCR.textContent    = PV_DATA.filter(p => p.type === 'cr').length;
+  statPDF.textContent   = PV_DATA.filter(p => p.pdfDispo).length;
+}
+
+/* ─────────────────────────────────────────────
+   TRI (plus récent en premier = ordre DESC)
+───────────────────────────────────────────── */
+function sortPV(list) {
+  return [...list].sort((a, b) => b.ordre - a.ordre);
+}
+
+/* ─────────────────────────────────────────────
+   CONSTRUCTION D'UNE CARTE PV
+───────────────────────────────────────────── */
+function buildPVCard(p) {
+  const cfg      = TYPE_CONFIG[p.type] || TYPE_CONFIG.pv;
+  const pinClass = p.epingle ? 'pv-pinned' : '';
+
+  const newBadge = p.nouveau
+    ? `<span class="pv-new"><i class="fa-solid fa-circle"></i> Nouveau</span>` : '';
+
+  const pdfBadge = p.pdfDispo
+    ? `<span class="pv-pdf-badge"><i class="fa-solid fa-file-pdf"></i> PDF dispo</span>` : '';
+
+  const pointsHTML = p.points.map(pt => `<li>${pt}</li>`).join('');
+
+  const decisionsHTML = p.decisions.map(d =>
+    `<li><i class="fa-solid fa-check-circle"></i> ${d}</li>`
+  ).join('');
+
+  /* ── Bouton téléchargement PDF ── */
+  let btnPDF = '';
+  if (p.pdfDispo && p.pdfLien) {
+    btnPDF = `
+      <a href="${p.pdfLien}" target="_blank" class="btn-pdf"
+         title="Télécharger : ${p.pdfNom}">
+        <i class="fa-solid fa-file-pdf"></i> Télécharger PDF
+      </a>
+      <a href="${DRIVE_FOLDER}" target="_blank" class="btn-drive-card"
+         title="Voir sur Google Drive">
+        <i class="fa-brands fa-google-drive"></i> Drive
+      </a>`;
+  } else {
+    btnPDF = `
+      <span class="btn-pdf disabled" title="PDF non encore disponible">
+        <i class="fa-solid fa-clock"></i> PDF bientôt
+      </span>
+      <a href="${DRIVE_FOLDER}" target="_blank" class="btn-drive-card">
+        <i class="fa-brands fa-google-drive"></i> Drive
+      </a>`;
+  }
+
+  return `
+    <div class="pv-card ${pinClass}" data-id="${p.id}" data-type="${p.type}">
+
+      <!-- EN-TÊTE -->
+      <div class="pv-card-header">
+        <div class="pv-header-left">
+          <span class="pv-type-badge ${cfg.css}">
+            <i class="${cfg.icon}"></i> ${cfg.label}
+          </span>
+          <span class="pv-num-badge">
+            <i class="fa-solid fa-fingerprint"></i> #${String(p.id).padStart(2,'0')}
+          </span>
+          ${pdfBadge}
+          ${newBadge}
+        </div>
+      </div>
+
+      <!-- CORPS -->
+      <div class="pv-card-body">
+        <h3>${p.titre}</h3>
+        <p class="pv-resume">${p.resume}</p>
+
+        <div class="pv-points">
+          <h4><i class="fa-solid fa-list-ul"></i> Points abordés</h4>
+          <ul>${pointsHTML}</ul>
+        </div>
+
+        ${p.decisions.length > 0 ? `
+        <div class="pv-decisions">
+          <h4><i class="fa-solid fa-gavel"></i> Décisions prises</h4>
+          <ul>${decisionsHTML}</ul>
+        </div>` : ''}
+      </div>
+
+      <!-- TEXTE COMPLET (masqué par défaut) -->
+      <div class="pv-expanded" id="expanded-${p.id}">
+        <h4><i class="fa-solid fa-file-lines"></i> Texte intégral du document</h4>
+        <p>${p.texteComplet}</p>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="pv-card-footer">
+        <div class="pv-meta">
+          <span><i class="fa-solid fa-calendar-days"></i> ${p.date}</span>
+          <span><i class="fa-solid fa-location-dot"></i> ${p.lieu}</span>
+          <span><i class="fa-solid fa-user-tie"></i> ${p.presides}</span>
+        </div>
+        <div class="pv-btn-group">
+          <button class="btn-expand" onclick="toggleExpand(${p.id}, this)">
+            <i class="fa-solid fa-eye"></i> Texte complet
+          </button>
+          ${btnPDF}
+        </div>
+      </div>
+
+    </div>`;
+}
+
+/* ─────────────────────────────────────────────
+   TOGGLE TEXTE COMPLET
+───────────────────────────────────────────── */
+function toggleExpand(id, btn) {
+  const zone   = document.getElementById('expanded-' + id);
+  const isOpen = zone.classList.toggle('open');
+  btn.innerHTML = isOpen
+    ? `<i class="fa-solid fa-eye-slash"></i> Réduire`
+    : `<i class="fa-solid fa-eye"></i> Texte complet`;
+}
+
+/* ─────────────────────────────────────────────
+   RENDU DE LA LISTE
+───────────────────────────────────────────── */
+function renderPV() {
+  const sorted   = sortPV(PV_DATA);
+  const filtered = sorted.filter(p => {
+    const matchType   = currentFilter === 'all' || p.type === currentFilter;
+    const matchSearch = p.titre.toLowerCase().includes(currentSearch)
+                     || p.resume.toLowerCase().includes(currentSearch)
+                     || p.texteComplet.toLowerCase().includes(currentSearch);
+    return matchType && matchSearch;
+  });
+
+  pvList.innerHTML = '';
+
+  if (filtered.length === 0) {
+    pvEmpty.style.display = 'block';
+    pvList.style.display  = 'none';
+    pvCountEl.innerHTML   = 'Aucun document trouvé.';
+  } else {
+    pvEmpty.style.display = 'none';
+    pvList.style.display  = 'flex';
+    filtered.forEach(p => pvList.insertAdjacentHTML('beforeend', buildPVCard(p)));
+    const n = filtered.length;
+    pvCountEl.innerHTML = `<strong>${n}</strong> document${n > 1 ? 's' : ''} trouvé${n > 1 ? 's' : ''}`;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   FILTRES
+───────────────────────────────────────────── */
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    renderPV();
+  });
+});
+
+/* ─────────────────────────────────────────────
+   RECHERCHE
+───────────────────────────────────────────── */
+pvSearch.addEventListener('input', () => {
+  currentSearch = pvSearch.value.toLowerCase().trim();
+  renderPV();
+});
+
+/* ─────────────────────────────────────────────
+   BACK TO TOP
+───────────────────────────────────────────── */
+const topBtn = document.getElementById('top-btn');
+window.addEventListener('scroll', () => {
+  topBtn.classList.toggle('visible', window.scrollY > 400);
+});
+
+/* ─────────────────────────────────────────────
+   INIT
+───────────────────────────────────────────── */
+updateStats();
+renderPV();
+</script>
+</body>
+</html>
