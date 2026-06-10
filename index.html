@@ -94,7 +94,7 @@
     }
     .nav-links li a:active { transform: translateY(1px); }
 
-    /* Bouton spécial "Réunions" (optionnel) */
+    /* Bouton spécial "Réunions" */
     .nav-links li:has(a[href="pvreunion.html"]) a {
       background: rgba(201, 150, 61, 0.25);
       border-left: 2px solid var(--gold);
@@ -124,7 +124,6 @@
       box-shadow: 0 3px 12px rgba(0,0,0,.3);
       border-bottom: 2px solid var(--gold);
     }
-    /* (reste du ticker inchangé, gardé de l'original) */
     .ticker-label {
       flex-shrink:0;
       display:flex; align-items:center; gap:.5rem;
@@ -171,7 +170,7 @@
     }
     .ticker-view-all:hover { background:rgba(255,255,255,.07); }
 
-    /* ========= RESTE DU CONTENU (hérité + modifs mineures) ========= */
+    /* ========= RESTE DU CONTENU ========= */
     .hero {
       min-height: calc(100vh - var(--offset));
       background: linear-gradient(160deg,rgba(26,92,56,.85) 0%,rgba(10,40,25,.7) 100%),
@@ -212,7 +211,6 @@
     .btn-outline  { border:2px solid rgba(255,255,255,.7); color:#fff; }
     .btn-outline:hover { background:rgba(255,255,255,.15); transform:translateY(-2px);}
 
-    /* sections */
     section { padding:5rem 1.5rem; }
     .section-title { text-align:center; margin-bottom:3rem; }
     .section-title .overline {
@@ -228,7 +226,6 @@
       background:linear-gradient(90deg,var(--green-mid),var(--gold));
       margin:1rem auto 0;
     }
-    /* grille annonces etc. (gardée) */
     .annonces-section { background:#fff; }
     .annonces-toolbar { max-width:1100px; margin:0 auto 2rem; display:flex; flex-wrap:wrap; gap:1rem; align-items:center; justify-content:space-between; }
     .annonces-search-wrap { position:relative; flex:1; min-width:200px; max-width:320px; }
@@ -310,7 +307,6 @@
     #top-btn.visible { display:flex; }
     #top-btn:hover { background:var(--green-dark); transform:translateY(-3px); }
 
-    /* ========= RESPONSIVE (mobile / tablette) ========= */
     @media (max-width: 880px) {
       nav { padding: 0 1.2rem; }
       .mobile-menu-icon { display: block; }
@@ -331,25 +327,13 @@
         z-index: 998;
         border-top: 2px solid var(--gold);
       }
-      .nav-links.show {
-        display: flex;
-      }
-      .nav-links li a {
-        justify-content: center;
-        width: 100%;
-        padding: 0.8rem 0.8rem;
-        font-size: 0.9rem;
-        background: rgba(255,255,255,0.1);
-      }
-      .nav-links li a:hover {
-        transform: translateY(-2px);
-      }
+      .nav-links.show { display: flex; }
+      .nav-links li a { justify-content: center; width: 100%; padding: 0.8rem 0.8rem; font-size: 0.9rem; background: rgba(255,255,255,0.1); }
       .about-grid { grid-template-columns: 1fr; }
       .annonces-grid { grid-template-columns: 1fr; }
       .banner-divider { display: none; }
       .hero-buttons .btn { font-size: 0.85rem; padding: 0.6rem 1.2rem; }
     }
-
     @media (max-width: 560px) {
       :root { --nav-h: 65px; --ticker-h: 40px; }
       .nav-logo span { font-size: 1rem; }
@@ -380,7 +364,7 @@
   </ul>
 </nav>
 
-<!-- TICKER ANNONCES (inchangé mais fonctionnel) -->
+<!-- TICKER ANNONCES -->
 <div class="annonces-ticker">
   <div class="ticker-label"><i class="fa-solid fa-bullhorn"></i> Annonces</div>
   <div class="ticker-sep"></div>
@@ -399,7 +383,7 @@
   </div>
 </header>
 
-<!-- SECTION ANNONCES (inchangé) -->
+<!-- SECTION ANNONCES -->
 <section class="annonces-section" id="annonces">
   <div class="section-title"><span class="overline">Comité IRQVITHEN</span><h2><i class="fa-solid fa-bullhorn" style="color:var(--gold);"></i> Annonces du Village</h2><div class="divider"></div></div>
   <div class="annonces-toolbar">
@@ -440,7 +424,7 @@
   <div class="commissions-cta"><h3><i class="fa-solid fa-map"></i> Plan d'action 2026–2027</h3><p>Feuille de route détaillée des trois commissions.</p><a href="commissions.html" class="btn-cta"><i class="fa-solid fa-compass"></i> Toutes les commissions</a></div>
 </section>
 
-<!-- LOCALISATION (conservée, non liée au menu mais présente) -->
+<!-- LOCALISATION -->
 <section class="location-section" id="location">
   <div class="section-title"><span class="overline">Ancrage géographique</span><h2>Localisation du Village</h2><div class="divider"></div></div>
   <div class="location-grid"><div class="loc-item"><i class="fa-solid fa-flag"></i><h4>Pays</h4><p>Algérie 🇩🇿</p></div><div class="loc-item"><i class="fa-solid fa-map"></i><h4>Wilaya</h4><p>Tizi-Ouzou</p></div><div class="loc-item"><i class="fa-solid fa-location-crosshairs"></i><h4>Daïra</h4><p>Maâtkas</p></div><div class="loc-item"><i class="fa-solid fa-house"></i><h4>Village</h4><p>Irqvithen</p></div></div>
@@ -461,7 +445,6 @@
     if (navLinks.classList.contains('show')) icon.classList.replace('fa-bars', 'fa-xmark');
     else icon.classList.replace('fa-xmark', 'fa-bars');
   });
-  // fermer le menu après clic sur un lien (mobile)
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
       if (window.innerWidth <= 880) navLinks.classList.remove('show');
@@ -469,17 +452,58 @@
     });
   });
 
-  // ========= DONNÉES ANNONCES (exemple enrichi) =========
+  // ========= DONNÉES ANNONCES =========
   const ANNONCES = [
-    { id:1, ordre:1, categorie:"general", titre:"Création officielle du comité Irqvithen", texte:"Le comité de village est officiellement créé avec trois commissions spécialisées.", date:"2025", meta:"Comité officiel", metaIcon:"fa-solid fa-certificate", lienTexte:"En savoir plus", lienUrl:"commissions.html", nouveau:true, epingle:true },
-    { id:2, ordre:2, categorie:"amenagement", titre:"Campagne de nettoyage & désherbage", texte:"Grande action citoyenne le 8 mai 2026 : nettoyage des passages, fontaine Thala et cimetière Asaki N'Tarha.", date:"8 mai 2026", meta:"Tous habitants", metaIcon:"fa-solid fa-users", lienTexte:"Voir le PV", lienUrl:"pvreunion.html", nouveau:true, epingle:false },
-    { id:3, ordre:3, categorie:"urgent", titre:"Abattage sécurisé d'arbres dangereux", texte:"Intervention professionnelle le 15 mai 2026 – 3 arbres menaçants retirés (frais 22 000 dinars).", date:"15 mai 2026", meta:"Sécurité", metaIcon:"fa-solid fa-triangle-exclamation", lienTexte:"Détails", lienUrl:"pvreunion.html", nouveau:true, epingle:false },
-    { id:4, ordre:4, categorie:"sciences", titre:"Atelier jeunesse : biodiversité locale", texte:"La commission Sciences organise une sortie éducative le 22 mai.", date:"Mai 2026", meta:"Jeunes", metaIcon:"fa-solid fa-flask", lienTexte:"S'inscrire", lienUrl:"#", nouveau:false, epingle:false }
+    { id:1, dateStr:"2025", categorie:"general", titre:"Création officielle du comité Irqvithen", texte:"Le comité de village est officiellement créé avec trois commissions spécialisées.", date:"2025", meta:"Comité officiel", metaIcon:"fa-solid fa-certificate", lienTexte:"En savoir plus", lienUrl:"commissions.html", nouveau:true, epingle:true },
+    { id:2, dateStr:"8 mai 2026", categorie:"amenagement", titre:"Campagne de nettoyage & désherbage", texte:"Grande action citoyenne le 8 mai 2026 : nettoyage des passages, fontaine Thala et cimetière Asaki N'Tarha.", date:"8 mai 2026", meta:"Tous habitants", metaIcon:"fa-solid fa-users", lienTexte:"Voir le PV", lienUrl:"pvreunion.html", nouveau:true, epingle:false },
+    { id:3, dateStr:"15 mai 2026", categorie:"urgent", titre:"Abattage sécurisé d'arbres dangereux", texte:"Intervention professionnelle le 15 mai 2026 – 3 arbres menaçants retirés (frais 22 000 dinars).", date:"15 mai 2026", meta:"Sécurité", metaIcon:"fa-solid fa-triangle-exclamation", lienTexte:"Détails", lienUrl:"pvreunion.html", nouveau:true, epingle:false },
+    { id:4, dateStr:"Mai 2026", categorie:"sciences", titre:"Atelier jeunesse : biodiversité locale", texte:"La commission Sciences organise une sortie éducative le 22 mai.", date:"Mai 2026", meta:"Jeunes", metaIcon:"fa-solid fa-flask", lienTexte:"S'inscrire", lienUrl:"#", nouveau:false, epingle:false }
   ];
+
+  // Fonction de conversion des dates françaises en timestamp
+  function parseDateToTimestamp(dateStr) {
+    if (!dateStr) return 0;
+    const moisMap = {
+      "janvier":0, "février":1, "mars":2, "avril":3, "mai":4, "juin":5,
+      "juillet":6, "août":7, "aout":7, "septembre":8, "octobre":9, "novembre":10, "décembre":11
+    };
+    // Format "8 mai 2026"
+    let match = dateStr.match(/^(\d{1,2})\s+(\w+)\s+(\d{4})$/);
+    if (match) {
+      let day = parseInt(match[1],10);
+      let month = moisMap[match[2].toLowerCase()];
+      let year = parseInt(match[3],10);
+      if (month !== undefined) return new Date(year, month, day).getTime();
+    }
+    // Format "Mai 2026"
+    match = dateStr.match(/^(\w+)\s+(\d{4})$/);
+    if (match) {
+      let month = moisMap[match[1].toLowerCase()];
+      let year = parseInt(match[2],10);
+      if (month !== undefined) return new Date(year, month, 1).getTime();
+    }
+    // Format "2025"
+    if (/^\d{4}$/.test(dateStr)) {
+      return new Date(parseInt(dateStr,10), 0, 1).getTime();
+    }
+    return 0;
+  }
+
+  // Tri des annonces par date décroissante (la plus récente en premier)
+  function sortAnnoncesByDate(list) {
+    return [...list].sort((a, b) => {
+      const tsA = parseDateToTimestamp(a.dateStr);
+      const tsB = parseDateToTimestamp(b.dateStr);
+      if (tsA !== tsB) return tsB - tsA;  // descendant
+      // à dates égales, l'ordre d'id croissant (stabilité)
+      return a.id - b.id;
+    });
+  }
+
   const CAT_CONFIG = { urgent:{ icon:"fa-solid fa-circle-exclamation", css:"cat-urgent", label:"Urgent" }, general:{ icon:"fa-solid fa-bullhorn", css:"cat-general", label:"Général" }, sciences:{ icon:"fa-solid fa-flask", css:"cat-sciences", label:"Sciences" }, amenagement:{ icon:"fa-solid fa-leaf", css:"cat-amenagement", label:"Aménagement" }, juridique:{ icon:"fa-solid fa-scale-balanced", css:"cat-juridique", label:"Juridique" } };
   const grid = document.getElementById('annoncesGrid'), noAnnonce = document.getElementById('noAnnonce'), countEl = document.getElementById('annoncesCount'), searchInput = document.getElementById('searchInput'), filterBtns = document.querySelectorAll('.filter-btn'), tickerInner = document.getElementById('tickerInner');
   let currentFilter = 'all', currentSearch = '';
-  function sortAnnonces(list) { return [...list].sort((a,b)=>a.ordre-b.ordre); }
+
   function buildCard(a) {
     const cfg = CAT_CONFIG[a.categorie] || CAT_CONFIG.general;
     const pinClass = a.epingle ? 'pinned' : '';
@@ -490,21 +514,25 @@
       <div class="annonce-card-footer"><div class="annonce-meta"><span><i class="fa-solid fa-calendar-days"></i> ${a.date}</span><span><i class="${a.metaIcon}"></i> ${a.meta}</span></div><a href="${a.lienUrl}" class="annonce-link">${a.lienTexte} <i class="fa-solid fa-arrow-right"></i></a></div>
     </div>`;
   }
+
   function renderAnnonces() {
-    const sorted = sortAnnonces(ANNONCES);
+    const sorted = sortAnnoncesByDate(ANNONCES);
     const filtered = sorted.filter(a => (currentFilter==='all' || a.categorie===currentFilter) && (a.titre.toLowerCase().includes(currentSearch) || a.texte.toLowerCase().includes(currentSearch)));
     grid.innerHTML = '';
     if (filtered.length===0) { noAnnonce.style.display='block'; countEl.innerHTML='Aucune annonce trouvée.'; grid.appendChild(noAnnonce); }
     else { noAnnonce.style.display='none'; filtered.forEach(a=>grid.insertAdjacentHTML('beforeend',buildCard(a))); countEl.innerHTML=`<strong>${filtered.length}</strong> annonce${filtered.length>1?'s':''} affichée${filtered.length>1?'s':''}`; }
   }
+
   function buildTicker() {
-    const items = [...sortAnnonces(ANNONCES), ...sortAnnonces(ANNONCES)];
+    const sorted = sortAnnoncesByDate(ANNONCES);
+    const items = [...sorted, ...sorted];
     tickerInner.innerHTML = items.map(a=>{ const cfg=CAT_CONFIG[a.categorie]||CAT_CONFIG.general; return `<a href="#annonces" class="ticker-item"><span class="ticker-dot"></span><span class="ticker-cat">${cfg.label}</span><strong>#${String(a.id).padStart(2,'0')} — ${a.titre}</strong></a>`; }).join('');
   }
+
   filterBtns.forEach(btn=>btn.addEventListener('click',()=>{ filterBtns.forEach(b=>b.classList.remove('active')); btn.classList.add('active'); currentFilter=btn.dataset.filter; renderAnnonces(); }));
   searchInput.addEventListener('input',()=>{ currentSearch=searchInput.value.toLowerCase().trim(); renderAnnonces(); });
   buildTicker(); renderAnnonces();
-  // top button
+
   const topBtn = document.getElementById('top-btn');
   window.addEventListener('scroll',()=>topBtn.classList.toggle('visible',window.scrollY>400));
 </script>
