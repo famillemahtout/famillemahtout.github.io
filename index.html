@@ -1,12 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Village Irqvithen – Famille Mahtout</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -20,7 +20,7 @@
       --text-light  : #f0ede8;
       --shadow      : 0 8px 32px rgba(0,0,0,.15);
       --radius      : 16px;
-      --nav-h       : 66px;
+      --nav-h       : 70px;
       --ticker-h    : 44px;
       --offset      : calc(var(--nav-h) + var(--ticker-h));
     }
@@ -33,64 +33,99 @@
       padding-top: var(--offset);
     }
 
-    /* ── NAVBAR ── */
+    /* ========= NAVBAR ========= */
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 1000; height: var(--nav-h);
-      background: rgba(26,92,56,.97);
-      backdrop-filter: blur(10px);
+      background: rgba(26,92,56,.96);
+      backdrop-filter: blur(12px);
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2.5rem;
-      box-shadow: 0 2px 16px rgba(0,0,0,.3);
+      padding: 0 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,.25);
     }
-    .nav-logo { display:flex; align-items:center; gap:.7rem; text-decoration:none; }
-    .nav-logo .logo-icon {
-      width:42px; height:42px; border-radius:50%;
-      background:var(--gold);
-      display:flex; align-items:center; justify-content:center;
-      font-size:1.2rem; color:#fff;
+    .nav-logo {
+      display: flex; align-items: center; gap: .7rem;
+      text-decoration: none;
     }
-    .nav-logo span {
-      font-family:'Playfair Display',serif;
-      color:#fff; font-size:1.15rem; letter-spacing:.5px;
-    }
-    .nav-links { display:flex; gap:1.8rem; list-style:none; }
-    .nav-links a {
-      color:var(--text-light); text-decoration:none;
-      font-size:.88rem; font-weight:400; transition:color .3s;
-      display:flex; align-items:center; gap:.35rem;
-    }
-    .nav-links a:hover { color:var(--gold); }
-    .nav-links a.nav-commissions {
-      color: var(--gold);
-      font-weight: 600;
-      border: 1px solid rgba(201,150,61,.4);
-      padding: .3rem .8rem;
-      border-radius: 50px;
-      transition: all .3s;
-    }
-    .nav-links a.nav-commissions:hover {
+    .logo-icon {
+      width: 44px; height: 44px; border-radius: 50%;
       background: var(--gold);
-      color: #fff;
-      border-color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,.2);
+      transition: transform .2s;
     }
-    .nav-badge {
-      display:inline-flex; align-items:center; justify-content:center;
-      background:var(--gold); color:#fff;
-      font-size:.58rem; font-weight:700;
-      width:16px; height:16px; border-radius:50%;
+    .nav-logo:hover .logo-icon { transform: scale(1.02); }
+    .nav-logo span {
+      font-family: 'Playfair Display', serif;
+      color: #fff; font-size: 1.2rem; letter-spacing: .5px;
+      font-weight: 600;
     }
 
-    /* ── TICKER ── */
+    /* MENU DESKTOP (boutons 3D) */
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      transition: all 0.3s ease;
+    }
+    .nav-links li a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.55rem 1.1rem;
+      border-radius: 40px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(2px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(255,255,255,0.1) inset;
+      transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .nav-links li a:hover {
+      background: var(--gold);
+      color: #1e2a1f;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(255,215,120,0.6) inset;
+      border-color: var(--gold);
+    }
+    .nav-links li a:active { transform: translateY(1px); }
+
+    /* Bouton spécial "Réunions" (optionnel) */
+    .nav-links li:has(a[href="pvreunion.html"]) a {
+      background: rgba(201, 150, 61, 0.25);
+      border-left: 2px solid var(--gold);
+      font-weight: 600;
+    }
+
+    /* HAMBURGER (mobile) */
+    .mobile-menu-icon {
+      display: none;
+      font-size: 1.8rem;
+      color: var(--gold);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s;
+      padding: 0.2rem;
+    }
+    .mobile-menu-icon:hover { transform: scale(1.05); color: #fff; }
+
+    /* ========= TICKER ========= */
     .annonces-ticker {
       position: fixed;
       top: var(--nav-h); left: 0; right: 0;
       z-index: 999; height: var(--ticker-h);
-      background: linear-gradient(90deg,#0f2d1c 0%,var(--green-dark) 40%,#0f2d1c 100%);
+      background: linear-gradient(90deg, #0f2d1c 0%, var(--green-dark) 40%, #0f2d1c 100%);
       display: flex; align-items: center; overflow: hidden;
       box-shadow: 0 3px 12px rgba(0,0,0,.3);
       border-bottom: 2px solid var(--gold);
     }
+    /* (reste du ticker inchangé, gardé de l'original) */
     .ticker-label {
       flex-shrink:0;
       display:flex; align-items:center; gap:.5rem;
@@ -127,7 +162,6 @@
     .ticker-item:hover { color:var(--gold); }
     .ticker-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0; }
     .ticker-cat { font-size:.62rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; opacity:.65; }
-    .ticker-item strong { font-weight:600; }
     .ticker-view-all {
       flex-shrink:0;
       display:flex; align-items:center; gap:.4rem;
@@ -138,16 +172,15 @@
     }
     .ticker-view-all:hover { background:rgba(255,255,255,.07); }
 
-    /* ── HERO ── */
+    /* ========= RESTE DU CONTENU (hérité + modifs mineures) ========= */
     .hero {
       min-height: calc(100vh - var(--offset));
-      background:
-        linear-gradient(160deg,rgba(26,92,56,.85) 0%,rgba(10,40,25,.7) 100%),
-        url('https://images.unsplash.com/photo-1575783970733-1aaedde1db74?w=1600&q=80') center/cover no-repeat;
+      background: linear-gradient(160deg,rgba(26,92,56,.85) 0%,rgba(10,40,25,.7) 100%),
+                  url('https://images.unsplash.com/photo-1575783970733-1aaedde1db74?w=1600&q=80') center/cover no-repeat;
       display:flex; flex-direction:column;
       align-items:center; justify-content:center;
       text-align:center; padding:4rem 1.5rem;
-      position:relative; overflow:hidden;
+      position:relative;
     }
     .hero::after {
       content:''; position:absolute; bottom:0; left:0; right:0; height:80px;
@@ -156,23 +189,16 @@
     .hero-badge {
       background:rgba(201,150,61,.25); border:1px solid var(--gold); color:var(--gold);
       padding:.4rem 1.2rem; border-radius:50px;
-      font-size:.78rem; letter-spacing:2px; text-transform:uppercase; margin-bottom:1.4rem;
+      font-size:.78rem; letter-spacing:2px; margin-bottom:1.4rem;
     }
     .hero h1 {
       font-family:'Playfair Display',serif;
       font-size:clamp(2.8rem,7vw,5.5rem);
       color:#fff; line-height:1.1;
-      text-shadow:0 4px 20px rgba(0,0,0,.4); margin-bottom:.6rem;
+      text-shadow:0 4px 20px rgba(0,0,0,.4);
     }
     .hero h1 span { color:var(--gold); }
-    .hero-sub {
-      font-size:clamp(.95rem,2.2vw,1.2rem);
-      color:rgba(255,255,255,.85); margin-bottom:.5rem; font-weight:300;
-    }
-    .hero-location {
-      display:flex; align-items:center; gap:.5rem;
-      color:var(--green-light); font-size:.9rem; margin-top:.4rem;
-    }
+    .hero-sub { font-size:clamp(.95rem,2.2vw,1.2rem); color:rgba(255,255,255,.85); margin-bottom:.5rem; font-weight:300; }
     .hero-buttons {
       display:flex; gap:1rem; margin-top:2.5rem; flex-wrap:wrap; justify-content:center;
     }
@@ -180,13 +206,14 @@
       padding:.8rem 2rem; border-radius:50px;
       text-decoration:none; font-weight:600; font-size:.95rem;
       transition:all .3s; display:inline-flex; align-items:center; gap:.5rem;
+      box-shadow: 0 6px 12px rgba(0,0,0,.2);
     }
-    .btn-primary { background:var(--gold); color:#fff; box-shadow:0 4px 18px rgba(201,150,61,.4); }
-    .btn-primary:hover { background:#b8822e; transform:translateY(-2px); }
+    .btn-primary { background:var(--gold); color:#fff; }
+    .btn-primary:hover { background:#b8822e; transform:translateY(-2px); box-shadow:0 12px 20px rgba(0,0,0,.3);}
     .btn-outline  { border:2px solid rgba(255,255,255,.7); color:#fff; }
-    .btn-outline:hover { background:rgba(255,255,255,.15); transform:translateY(-2px); }
+    .btn-outline:hover { background:rgba(255,255,255,.15); transform:translateY(-2px);}
 
-    /* ── SECTIONS ── */
+    /* sections */
     section { padding:5rem 1.5rem; }
     .section-title { text-align:center; margin-bottom:3rem; }
     .section-title .overline {
@@ -197,47 +224,25 @@
       font-family:'Playfair Display',serif;
       font-size:clamp(1.8rem,4vw,2.8rem); color:var(--green-dark);
     }
-    .section-title .divider {
+    .divider {
       width:60px; height:4px; border-radius:2px;
       background:linear-gradient(90deg,var(--green-mid),var(--gold));
       margin:1rem auto 0;
     }
-
-    /* ── ANNONCES ── */
+    /* grille annonces etc. (gardée) */
     .annonces-section { background:#fff; }
-    .annonces-toolbar {
-      max-width:1100px; margin:0 auto 2rem;
-      display:flex; flex-wrap:wrap; gap:1rem;
-      align-items:center; justify-content:space-between;
-    }
-    .annonces-search-wrap {
-      position:relative; flex:1; min-width:200px; max-width:320px;
-    }
-    .annonces-search-wrap i {
-      position:absolute; left:1rem; top:50%; transform:translateY(-50%);
-      color:#bbb; font-size:.85rem;
-    }
-    #searchInput {
-      width:100%; padding:.6rem 1rem .6rem 2.5rem;
-      border:2px solid #e5e7eb; border-radius:50px;
-      font-family:'Poppins',sans-serif; font-size:.83rem;
-      outline:none; background:#fff; transition:border-color .25s;
-    }
+    .annonces-toolbar { max-width:1100px; margin:0 auto 2rem; display:flex; flex-wrap:wrap; gap:1rem; align-items:center; justify-content:space-between; }
+    .annonces-search-wrap { position:relative; flex:1; min-width:200px; max-width:320px; }
+    .annonces-search-wrap i { position:absolute; left:1rem; top:50%; transform:translateY(-50%); color:#bbb; }
+    #searchInput { width:100%; padding:.6rem 1rem .6rem 2.5rem; border:2px solid #e5e7eb; border-radius:50px; font-family:'Poppins'; outline:none; }
     #searchInput:focus { border-color:var(--green-mid); }
     .annonces-filters { display:flex; gap:.45rem; flex-wrap:wrap; }
     .filter-btn {
       padding:.4rem .95rem; border-radius:50px;
-      border:2px solid #e5e7eb; background:#fff;
-      font-family:'Poppins',sans-serif; font-size:.78rem; font-weight:600;
-      cursor:pointer; transition:all .25s; color:#666;
-      display:inline-flex; align-items:center; gap:.3rem;
+      border:2px solid #e5e7eb; background:#fff; font-size:.78rem; font-weight:600; cursor:pointer;
+      transition:all .25s; color:#666;
     }
-    .filter-btn:hover,
-    .filter-btn.active { background:var(--green-dark); border-color:var(--green-dark); color:#fff; }
-    .annonces-count {
-      text-align:center; font-size:.8rem; color:#aaa; margin-bottom:1.5rem;
-    }
-    .annonces-count strong { color:var(--green-dark); }
+    .filter-btn.active, .filter-btn:hover { background:var(--green-dark); border-color:var(--green-dark); color:#fff; }
     .annonces-grid {
       max-width:1100px; margin:0 auto;
       display:grid;
@@ -245,18 +250,9 @@
       gap:2rem;
     }
     .annonce-card {
-      background:var(--cream); border-radius:var(--radius);
-      overflow:hidden;
-      box-shadow:0 4px 24px rgba(0,0,0,.07);
-      border:1px solid rgba(0,0,0,.06);
-      border-left:5px solid transparent;
+      background:var(--cream); border-radius:var(--radius); overflow:hidden;
+      box-shadow:0 4px 24px rgba(0,0,0,.07); border-left:5px solid transparent;
       transition:transform .3s, box-shadow .3s;
-      display:flex; flex-direction:column;
-      animation:fadeUp .4s ease both;
-    }
-    @keyframes fadeUp {
-      from { opacity:0; transform:translateY(18px); }
-      to   { opacity:1; transform:translateY(0); }
     }
     .annonce-card:hover { transform:translateY(-5px); box-shadow:0 14px 44px rgba(0,0,0,.13); }
     .annonce-card[data-category="urgent"]      { border-left-color:#dc2626; }
@@ -264,315 +260,151 @@
     .annonce-card[data-category="sciences"]    { border-left-color:#2563eb; }
     .annonce-card[data-category="amenagement"] { border-left-color:var(--green-mid); }
     .annonce-card[data-category="juridique"]   { border-left-color:var(--gold); }
-    .annonce-card.pinned {
-      border:2px solid var(--gold);
-      border-left:5px solid var(--gold);
-      position:relative;
-    }
-    .annonce-card.pinned::after {
-      content:'\f08d'; font-family:'Font Awesome 6 Free'; font-weight:900;
-      position:absolute; top:0; right:14px; font-size:1.1rem; color:var(--gold);
-    }
-    .annonce-card-header {
-      padding:1rem 1.4rem .75rem;
-      display:flex; align-items:center; justify-content:space-between;
-      border-bottom:1px solid #f0f0f0;
-    }
-    .annonce-cat {
-      display:inline-flex; align-items:center; gap:.4rem;
-      padding:.25rem .8rem; border-radius:50px;
-      font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:1px;
-    }
+    .annonce-card.pinned { border:2px solid var(--gold); border-left:5px solid var(--gold); position:relative; }
+    .annonce-card.pinned::after { content:'\f08d'; font-family:'Font Awesome 6 Free'; font-weight:900; position:absolute; top:0; right:14px; color:var(--gold); }
+    .annonce-card-header { padding:1rem 1.4rem .75rem; display:flex; justify-content:space-between; border-bottom:1px solid #f0f0f0; }
+    .annonce-cat { display:inline-flex; align-items:center; gap:.4rem; padding:.25rem .8rem; border-radius:50px; font-size:.68rem; font-weight:700; text-transform:uppercase; }
     .cat-sciences    { background:#dbeafe; color:#1d4ed8; }
     .cat-amenagement { background:#dcfce7; color:#166534; }
     .cat-juridique   { background:#fef3c7; color:#92400e; }
     .cat-general     { background:#ede9fe; color:#5b21b6; }
     .cat-urgent      { background:#fee2e2; color:#991b1b; }
-    .annonce-new {
-      display:inline-flex; align-items:center; gap:.28rem;
-      background:var(--green-mid); color:#fff;
-      font-size:.6rem; font-weight:700;
-      padding:.15rem .5rem; border-radius:50px;
-      text-transform:uppercase; letter-spacing:1px;
-      animation:blink 2s infinite;
-    }
+    .annonce-new { background:var(--green-mid); color:#fff; font-size:.6rem; font-weight:700; padding:.15rem .5rem; border-radius:50px; animation:blink 2s infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.45} }
-    .annonce-card-body { padding:1.2rem 1.4rem; flex:1; }
-    .annonce-card-body h3 {
-      font-family:'Playfair Display',serif;
-      font-size:1.1rem; color:var(--green-dark);
-      margin-bottom:.55rem; line-height:1.35;
-    }
+    .annonce-card-body { padding:1.2rem 1.4rem; }
+    .annonce-card-body h3 { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--green-dark); margin-bottom:.55rem; }
     .annonce-card-body p { font-size:.87rem; color:#666; line-height:1.8; }
-    .annonce-card-footer {
-      padding:.85rem 1.4rem;
-      border-top:1px solid #f0f0f0; background:#fafafa;
-      display:flex; align-items:center;
-      justify-content:space-between; flex-wrap:wrap; gap:.5rem;
-    }
-    .annonce-meta { display:flex; align-items:center; gap:.8rem; font-size:.75rem; color:#aaa; flex-wrap:wrap; }
-    .annonce-meta span { display:flex; align-items:center; gap:.3rem; }
-    .annonce-link {
-      font-size:.8rem; font-weight:600; color:var(--green-dark);
-      text-decoration:none; display:flex; align-items:center; gap:.3rem; transition:color .2s;
-    }
+    .annonce-card-footer { padding:.85rem 1.4rem; border-top:1px solid #f0f0f0; background:#fafafa; display:flex; justify-content:space-between; flex-wrap:wrap; }
+    .annonce-meta { display:flex; gap:.8rem; font-size:.75rem; color:#aaa; }
+    .annonce-link { font-size:.8rem; font-weight:600; color:var(--green-dark); text-decoration:none; }
     .annonce-link:hover { color:var(--gold); }
-
-    /* ── ID BADGE sur chaque carte ── */
-    .annonce-id {
-      display:inline-flex; align-items:center; gap:.25rem;
-      background:#f0f0f0; color:#999;
-      font-size:.6rem; font-weight:700;
-      padding:.15rem .55rem; border-radius:50px;
-      font-family:'Poppins',sans-serif; letter-spacing:.5px;
-    }
-
-    .no-annonce {
-      text-align:center; padding:3.5rem 1rem; color:#ccc;
-      font-size:.92rem; display:none; grid-column:1/-1;
-    }
-    .no-annonce i { font-size:3rem; display:block; margin-bottom:1rem; }
-
-    /* ── À PROPOS ── */
-    .about { background:var(--cream); }
-    .about-grid {
-      max-width:1100px; margin:0 auto;
-      display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center;
-    }
-    .about-img { border-radius:var(--radius); overflow:hidden; position:relative; box-shadow:var(--shadow); }
+    .about-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+    .about-img { border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); position:relative; }
     .about-img img { width:100%; display:block; }
-    .about-img .img-badge {
-      position:absolute; bottom:1rem; left:1rem;
-      background:var(--green-dark); color:#fff;
-      padding:.5rem 1rem; border-radius:8px; font-size:.8rem;
-    }
-    .about-text h3 { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--green-dark); margin-bottom:1rem; }
-    .about-text p  { color:#555; line-height:1.8; margin-bottom:1rem; font-size:.95rem; }
-    .info-chips { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.5rem; }
-    .chip {
-      background:var(--green-light); color:var(--green-dark);
-      padding:.35rem .9rem; border-radius:50px; font-size:.8rem; font-weight:600;
-      display:flex; align-items:center; gap:.4rem;
-    }
-
-    /* ── COMMISSIONS ── */
+    .img-badge { position:absolute; bottom:1rem; left:1rem; background:var(--green-dark); color:#fff; padding:.5rem 1rem; border-radius:8px; font-size:.8rem; }
     .committee { background:#fff; }
     .commissions-banner { display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; margin-bottom:3rem; }
     .banner-stat { text-align:center; }
-    .banner-stat .stat-number { font-family:'Playfair Display',serif; font-size:2.8rem; color:var(--green-dark); line-height:1; }
-    .banner-stat .stat-label  { font-size:.78rem; text-transform:uppercase; letter-spacing:2px; color:#999; margin-top:.3rem; }
-    .banner-divider { width:1px; background:#ddd; }
-    .commissions-grid {
-      max-width:1100px; margin:0 auto;
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem;
-    }
-    .commission-card {
-      background:var(--cream); border-radius:var(--radius); padding:2.2rem;
-      box-shadow:var(--shadow); border-top:5px solid transparent;
-      transition:transform .3s, box-shadow .3s; position:relative; overflow:hidden;
-      display:flex; flex-direction:column;
-    }
-    .commission-card:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(0,0,0,.18); }
-    .commission-card::before {
-      content:attr(data-num); position:absolute; top:-10px; right:16px;
-      font-family:'Playfair Display',serif; font-size:5rem; font-weight:700;
-      color:rgba(0,0,0,.04); line-height:1; pointer-events:none;
-    }
+    .stat-number { font-family:'Playfair Display',serif; font-size:2.8rem; color:var(--green-dark); line-height:1; }
+    .commissions-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem; }
+    .commission-card { background:var(--cream); border-radius:var(--radius); padding:2rem; box-shadow:var(--shadow); border-top:5px solid; transition:transform .3s; }
+    .commission-card:hover { transform:translateY(-6px); }
     .commission-card:nth-child(1) { border-color:#3b82f6; }
     .commission-card:nth-child(2) { border-color:var(--green-mid); }
     .commission-card:nth-child(3) { border-color:var(--gold); }
-    .commission-icon { width:60px; height:60px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.6rem; margin-bottom:1.2rem; }
-    .commission-card:nth-child(1) .commission-icon { background:#eff6ff; color:#3b82f6; }
-    .commission-card:nth-child(2) .commission-icon { background:#f0fdf4; color:var(--green-mid); }
-    .commission-card:nth-child(3) .commission-icon { background:#fffbeb; color:var(--gold); }
-    .commission-num { display:inline-block; margin-bottom:.7rem; font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; padding:.2rem .75rem; border-radius:50px; }
-    .commission-card:nth-child(1) .commission-num { background:#dbeafe; color:#1d4ed8; }
-    .commission-card:nth-child(2) .commission-num { background:#dcfce7; color:#166534; }
-    .commission-card:nth-child(3) .commission-num { background:#fef3c7; color:#92400e; }
-    .commission-card h3 { font-family:'Playfair Display',serif; font-size:1.25rem; margin-bottom:.5rem; color:var(--text-dark); }
-    .commission-domain  { font-size:.78rem; color:#999; font-style:italic; margin-bottom:.8rem; }
-    .commission-card p  { color:#666; font-size:.9rem; line-height:1.75; }
-    .commission-card ul { margin-top:.8rem; padding-left:1.1rem; color:#555; font-size:.88rem; line-height:2; flex:1; }
-    .tag { display:inline-block; margin-top:1.2rem; padding:.3rem .8rem; border-radius:50px; font-size:.75rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; }
-    .tag-blue  { background:#dbeafe; color:#1d4ed8; }
-    .tag-green { background:#dcfce7; color:#166534; }
-    .tag-gold  { background:#fef3c7; color:#92400e; }
-    .commission-card .btn-detail {
-      display: inline-flex; align-items: center; gap: .4rem;
-      margin-top: 1.2rem;
-      padding: .55rem 1.1rem; border-radius: 50px;
-      font-size: .78rem; font-weight: 600;
-      text-decoration: none; color: var(--green-dark);
-      border: 2px solid var(--green-light);
-      background: #fff;
-      transition: all .25s; width: fit-content;
-    }
-    .commission-card .btn-detail:hover {
-      background: var(--green-dark); color: #fff;
-      border-color: var(--green-dark);
-      transform: translateY(-2px);
-    }
-    .commissions-cta {
-      text-align: center;
-      margin-top: 3.5rem;
-      padding: 2.5rem 1.5rem;
-      background: linear-gradient(135deg, var(--green-dark) 0%, #0f3d22 100%);
-      border-radius: var(--radius);
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow: var(--shadow);
-    }
-    .commissions-cta h3 {
-      font-family: 'Playfair Display', serif;
-      color: #fff; font-size: 1.5rem; margin-bottom: .6rem;
-    }
-    .commissions-cta p {
-      color: rgba(255,255,255,.75); font-size: .9rem;
-      margin-bottom: 1.5rem; max-width: 500px; margin-left: auto; margin-right: auto;
-    }
-    .btn-cta {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: var(--gold); color: #fff;
-      padding: .85rem 2rem; border-radius: 50px;
-      text-decoration: none; font-weight: 600; font-size: .95rem;
-      box-shadow: 0 4px 18px rgba(201,150,61,.5);
-      transition: all .3s;
-    }
-    .btn-cta:hover { background: #b8822e; transform: translateY(-2px); }
-
-    /* ── LOCALISATION ── */
     .location-section { background:var(--green-dark); color:#fff; }
-    .location-section .section-title h2     { color:#fff; }
-    .location-section .section-title .overline { color:var(--gold); }
-    .location-grid {
-      max-width:900px; margin:0 auto;
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:1.5rem; text-align:center;
-    }
-    .loc-item {
-      background:rgba(255,255,255,.08); border-radius:var(--radius); padding:1.8rem 1rem;
-      border:1px solid rgba(255,255,255,.12); transition:background .3s;
-    }
-    .loc-item:hover { background:rgba(255,255,255,.14); }
-    .loc-item i  { font-size:2rem; color:var(--gold); margin-bottom:.8rem; }
-    .loc-item h4 { font-size:.8rem; text-transform:uppercase; letter-spacing:2px; color:var(--green-light); margin-bottom:.4rem; }
-    .loc-item p  { font-size:1rem; font-weight:600; }
-    .map-wrapper { max-width:900px; margin:3rem auto 0; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
-    .map-wrapper iframe { display:block; width:100%; height:320px; border:none; }
-
-    /* ── FOOTER ── */
+    .location-section .section-title h2 { color:#fff; }
+    .location-grid { max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; text-align:center; }
+    .loc-item { background:rgba(255,255,255,.08); border-radius:var(--radius); padding:1.8rem 1rem; }
+    .loc-item i { font-size:2rem; color:var(--gold); margin-bottom:.8rem; }
+    .map-wrapper { max-width:900px; margin:3rem auto 0; border-radius:var(--radius); overflow:hidden; }
     footer { background:#0f2d1c; color:rgba(255,255,255,.7); text-align:center; padding:3rem 1.5rem; }
-    footer .footer-logo { font-family:'Playfair Display',serif; color:#fff; font-size:1.6rem; margin-bottom:.5rem; }
-    footer .footer-logo span { color:var(--gold); }
-    footer > p { font-size:.85rem; margin-top:.4rem; }
-    .footer-links { display:flex; justify-content:center; gap:1.5rem; margin:1.5rem 0; list-style:none; flex-wrap:wrap; }
+    .footer-logo { font-family:'Playfair Display',serif; color:#fff; font-size:1.6rem; margin-bottom:.5rem; }
+    .footer-logo span { color:var(--gold); }
+    .footer-links { display:flex; justify-content:center; gap:1.5rem; margin:1.5rem 0; flex-wrap:wrap; list-style:none; }
     .footer-links a { color:rgba(255,255,255,.6); text-decoration:none; font-size:.85rem; transition:color .3s; }
     .footer-links a:hover { color:var(--gold); }
     .social-icons { display:flex; justify-content:center; gap:1rem; margin:1.2rem 0; }
-    .social-icons a {
-      width:40px; height:40px; border-radius:50%;
-      background:rgba(255,255,255,.08); color:#fff;
-      display:flex; align-items:center; justify-content:center;
-      text-decoration:none; transition:background .3s, color .3s;
-    }
+    .social-icons a { width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,.08); color:#fff; display:flex; align-items:center; justify-content:center; text-decoration:none; transition:background .3s; }
     .social-icons a:hover { background:var(--gold); }
-    .footer-copy { margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,.08); font-size:.78rem; color:rgba(255,255,255,.4); }
-
-    /* ── BACK TO TOP ── */
-    #top-btn {
-      position:fixed; bottom:2rem; right:2rem;
-      background:var(--gold); color:#fff;
-      width:46px; height:46px; border-radius:50%;
-      display:none; align-items:center; justify-content:center;
-      cursor:pointer; font-size:1.1rem;
-      box-shadow:0 4px 16px rgba(0,0,0,.25);
-      border:none; transition:background .3s, transform .3s; z-index:997;
-    }
-    #top-btn:hover { background:var(--green-dark); transform:translateY(-3px); }
+    #top-btn { position:fixed; bottom:2rem; right:2rem; background:var(--gold); color:#fff; width:46px; height:46px; border-radius:50%; display:none; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,.25); border:none; transition:all .3s; z-index:997; }
     #top-btn.visible { display:flex; }
+    #top-btn:hover { background:var(--green-dark); transform:translateY(-3px); }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width:768px) {
-      nav { padding:0 1.2rem; }
-      .nav-links { display:none; }
-      .about-grid { grid-template-columns:1fr; }
-      .banner-divider { display:none; }
-      .annonces-grid { grid-template-columns:1fr; }
-      .annonces-toolbar { flex-direction:column; align-items:stretch; }
-      .annonces-search-wrap { max-width:100%; }
-      .ticker-label { padding:0 .7rem; font-size:.63rem; }
+    /* ========= RESPONSIVE (mobile / tablette) ========= */
+    @media (max-width: 880px) {
+      nav { padding: 0 1.2rem; }
+      .mobile-menu-icon { display: block; }
+      .nav-links {
+        position: fixed;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
+        background: rgba(15, 45, 28, 0.98);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.6rem;
+        padding: 1.2rem 1rem;
+        border-radius: 0 0 28px 28px;
+        box-shadow: 0 20px 30px rgba(0,0,0,0.4);
+        display: none;
+        z-index: 998;
+        border-top: 2px solid var(--gold);
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .nav-links li a {
+        justify-content: center;
+        width: 100%;
+        padding: 0.8rem 0.8rem;
+        font-size: 0.9rem;
+        background: rgba(255,255,255,0.1);
+      }
+      .nav-links li a:hover {
+        transform: translateY(-2px);
+      }
+      .about-grid { grid-template-columns: 1fr; }
+      .annonces-grid { grid-template-columns: 1fr; }
+      .banner-divider { display: none; }
+      .hero-buttons .btn { font-size: 0.85rem; padding: 0.6rem 1.2rem; }
+    }
+
+    @media (max-width: 560px) {
+      :root { --nav-h: 65px; --ticker-h: 40px; }
+      .nav-logo span { font-size: 1rem; }
+      .logo-icon { width: 36px; height: 36px; font-size: 1rem; }
+      .hero h1 { font-size: clamp(2rem, 9vw, 3rem); }
+      .ticker-label { font-size: 0.6rem; padding: 0 0.8rem; }
+      .ticker-view-all { font-size: 0.65rem; padding: 0 0.8rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ╔══ NAVBAR ══╗ -->
+<!-- ========= NAVBAR AVEC MENU MOBILE ========= -->
 <nav>
   <a href="#" class="nav-logo">
     <div class="logo-icon"><i class="fa-solid fa-mountain-sun"></i></div>
     <span>Irqvithen</span>
   </a>
-  <ul class="nav-links">
-    <li><a href="#annonces">Annonces <span class="nav-badge" id="navBadge">0</span></a></li>
-    <li><a href="#about">Le Village</a></li>
-    <li>
-      <a href="commissions.html" class="nav-commissions">
-        <i class="fa-solid fa-compass"></i> Commissions
-      </a>
-    </li>
-    <li><a href="#location">Localisation</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <button class="mobile-menu-icon" id="mobileMenuBtn" aria-label="Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#annonces"><i class="fa-solid fa-bullhorn"></i> Annonces</a></li>
+    <li><a href="#about"><i class="fa-solid fa-tree"></i> Le Village</a></li>
+    <li><a href="commissions.html"><i class="fa-solid fa-compass"></i> Commissions</a></li>
+    <li><a href="pvreunion.html"><i class="fa-solid fa-handshake"></i> RÉUNIONS ET ACTIONS DE SOLIDARITÉ</a></li>
+    <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
   </ul>
 </nav>
 
-<!-- ╔══ TICKER ══╗ -->
+<!-- TICKER ANNONCES (inchangé mais fonctionnel) -->
 <div class="annonces-ticker">
-  <div class="ticker-label">
-    <i class="fa-solid fa-bullhorn"></i> Annonces
-  </div>
+  <div class="ticker-label"><i class="fa-solid fa-bullhorn"></i> Annonces</div>
   <div class="ticker-sep"></div>
-  <div class="ticker-track">
-    <div class="ticker-inner" id="tickerInner"></div>
-  </div>
-  <a href="#annonces" class="ticker-view-all">
-    Voir tout <i class="fa-solid fa-arrow-right"></i>
-  </a>
+  <div class="ticker-track"><div class="ticker-inner" id="tickerInner"></div></div>
+  <a href="#annonces" class="ticker-view-all">Voir tout <i class="fa-solid fa-arrow-right"></i></a>
 </div>
 
-<!-- ╔══ 1 — HERO ══╗ -->
+<!-- HERO -->
 <header class="hero" id="accueil">
-  <div class="hero-badge">
-    <i class="fa-solid fa-star-and-crescent"></i> &nbsp; Algérie – Wilaya de Tizi-Ouzou
-  </div>
+  <div class="hero-badge"><i class="fa-solid fa-star-and-crescent"></i> Algérie – Wilaya de Tizi-Ouzou</div>
   <h1>Village<br/><span>Irqvithen</span></h1>
   <p class="hero-sub">Famille <strong>Mahtout</strong> — Fiers de notre terre kabyle</p>
-  <div class="hero-location">
-    <i class="fa-solid fa-location-dot"></i>
-    Daïra de Maâtkas &nbsp;•&nbsp; Wilaya de Tizi-Ouzou
-  </div>
   <div class="hero-buttons">
-    <a href="#annonces"        class="btn btn-primary"><i class="fa-solid fa-bullhorn"></i> Voir les annonces</a>
-    <a href="commissions.html" class="btn btn-outline"><i class="fa-solid fa-compass"></i> Nos Commissions</a>
+    <a href="#annonces" class="btn btn-primary"><i class="fa-solid fa-bullhorn"></i> Voir annonces</a>
+    <a href="pvreunion.html" class="btn btn-outline"><i class="fa-solid fa-handshake"></i> Solidarité & réunions</a>
   </div>
 </header>
 
-<!-- ╔══ 2 — ANNONCES ══╗ -->
+<!-- SECTION ANNONCES (inchangé) -->
 <section class="annonces-section" id="annonces">
-  <div class="section-title">
-    <span class="overline">Comité IRQVITHEN</span>
-    <h2>
-      <i class="fa-solid fa-bullhorn" style="color:var(--gold);font-size:.8em;margin-right:.3rem;"></i>
-      Annonces du Village
-    </h2>
-    <div class="divider"></div>
-  </div>
-
+  <div class="section-title"><span class="overline">Comité IRQVITHEN</span><h2><i class="fa-solid fa-bullhorn" style="color:var(--gold);"></i> Annonces du Village</h2><div class="divider"></div></div>
   <div class="annonces-toolbar">
-    <div class="annonces-search-wrap">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <input type="text" id="searchInput" placeholder="Rechercher une annonce…"/>
-    </div>
+    <div class="annonces-search-wrap"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="searchInput" placeholder="Rechercher une annonce…"/></div>
     <div class="annonces-filters">
       <button class="filter-btn active" data-filter="all"><i class="fa-solid fa-border-all"></i> Toutes</button>
       <button class="filter-btn" data-filter="urgent"><i class="fa-solid fa-circle-exclamation"></i> Urgent</button>
@@ -582,396 +414,100 @@
       <button class="filter-btn" data-filter="juridique"><i class="fa-solid fa-scale-balanced"></i> Juridique</button>
     </div>
   </div>
-
   <p class="annonces-count" id="annoncesCount"></p>
   <div class="annonces-grid" id="annoncesGrid">
-    <div class="no-annonce" id="noAnnonce">
-      <i class="fa-regular fa-folder-open"></i>
-      Aucune annonce trouvée.
-    </div>
+    <div class="no-annonce" id="noAnnonce"><i class="fa-regular fa-folder-open"></i> Aucune annonce trouvée.</div>
   </div>
 </section>
 
-<!-- ╔══ 3 — À PROPOS ══╗ -->
+<!-- À PROPOS -->
 <section class="about" id="about">
-  <div class="section-title">
-    <span class="overline">Notre identité</span>
-    <h2>Le Village Irqvithen</h2>
-    <div class="divider"></div>
-  </div>
+  <div class="section-title"><span class="overline">Notre identité</span><h2>Le Village Irqvithen</h2><div class="divider"></div></div>
   <div class="about-grid">
-    <div class="about-img">
-      <img src="https://images.unsplash.com/photo-1597149980600-4d54d1ee71c4?w=800&q=80" alt="Paysage kabyle"/>
-      <div class="img-badge"><i class="fa-solid fa-mountain"></i> Kabylie, Algérie</div>
-    </div>
-    <div class="about-text">
-      <h3>Un seul village, une seule famille</h3>
-      <p>Irqvithen est un village kabyle niché dans la région de la Daïra de Maâtkas,
-         au cœur de la Wilaya de Tizi-Ouzou.</p>
-      <p>La famille <strong>Mahtout</strong>, profondément ancrée dans ce terroir,
-         œuvre pour le développement, la cohésion sociale et la préservation
-         de son patrimoine à travers le Comité de village <strong>IRQVITHEN</strong>,
-         organisé en <strong>3 commissions spécialisées</strong>.</p>
-      <div class="info-chips">
-        <span class="chip"><i class="fa-solid fa-flag"></i> Algérie</span>
-        <span class="chip"><i class="fa-solid fa-map-pin"></i> Tizi-Ouzou</span>
-        <span class="chip"><i class="fa-solid fa-tree"></i> Maâtkas</span>
-        <span class="chip"><i class="fa-solid fa-users"></i> Famille Mahtout</span>
-        <span class="chip"><i class="fa-solid fa-globe"></i> Kabylie</span>
-      </div>
-    </div>
+    <div class="about-img"><img src="https://images.unsplash.com/photo-1597149980600-4d54d1ee71c4?w=800&q=80" alt="Paysage kabyle"/><div class="img-badge"><i class="fa-solid fa-mountain"></i> Kabylie, Algérie</div></div>
+    <div class="about-text"><h3>Un seul village, une seule famille</h3><p>Irqvithen, dans la Daïra de Maâtkas (Tizi-Ouzou). La famille Mahtout œuvre pour le développement, la cohésion sociale et la préservation du patrimoine.</p><div class="info-chips"><span class="chip"><i class="fa-solid fa-flag"></i> Algérie</span><span class="chip"><i class="fa-solid fa-map-pin"></i> Tizi-Ouzou</span><span class="chip"><i class="fa-solid fa-users"></i> Famille Mahtout</span></div></div>
   </div>
 </section>
 
-<!-- ╔══ 4 — COMMISSIONS ══╗ -->
+<!-- COMMISSIONS -->
 <section class="committee" id="committee">
-  <div class="section-title">
-    <span class="overline">Comité IRQVITHEN</span>
-    <h2>3 Commissions</h2>
-    <div class="divider"></div>
-  </div>
-
-  <div class="commissions-banner">
-    <div class="banner-stat"><div class="stat-number">3</div><div class="stat-label">Commissions</div></div>
-    <div class="banner-divider"></div>
-    <div class="banner-stat"><div class="stat-number">3</div><div class="stat-label">Domaines couverts</div></div>
-    <div class="banner-divider"></div>
-    <div class="banner-stat"><div class="stat-number">1</div><div class="stat-label">Objectif commun</div></div>
-  </div>
-
+  <div class="section-title"><span class="overline">Comité IRQVITHEN</span><h2>3 Commissions</h2><div class="divider"></div></div>
+  <div class="commissions-banner"><div class="banner-stat"><div class="stat-number">3</div><div class="stat-label">Commissions</div></div><div class="banner-divider"></div><div class="banner-stat"><div class="stat-number">3</div><div class="stat-label">Domaines couverts</div></div></div>
   <div class="commissions-grid">
-
-    <!-- Commission 1 -->
-    <div class="commission-card" data-num="01">
-      <span class="commission-num"><i class="fa-solid fa-hashtag"></i> Commission 1</span>
-      <div class="commission-icon"><i class="fa-solid fa-flask"></i></div>
-      <h3>Sciences &amp; Loisirs</h3>
-      <p class="commission-domain"><i class="fa-solid fa-circle-dot"></i>&nbsp; Domaine : <strong>Jeunesse &amp; Éducation</strong></p>
-      <p>Cette commission se consacre entièrement à la jeunesse du village. Elle stimule la curiosité scientifique, soutient l'éducation et organise des activités de loisirs.</p>
-      <ul>
-        <li>Ateliers éducatifs et scientifiques</li>
-        <li>Activités sportives &amp; culturelles</li>
-        <li>Soutien scolaire &amp; orientation</li>
-        <li>Événements jeunesse</li>
-      </ul>
-      <span class="tag tag-blue"><i class="fa-solid fa-graduation-cap"></i> Pour les jeunes</span>
-      <a href="commissions.html" class="btn-detail">
-        <i class="fa-solid fa-arrow-right"></i> Voir le plan d'action
-      </a>
-    </div>
-
-    <!-- Commission 2 -->
-    <div class="commission-card" data-num="02">
-      <span class="commission-num"><i class="fa-solid fa-hashtag"></i> Commission 2</span>
-      <div class="commission-icon"><i class="fa-solid fa-leaf"></i></div>
-      <h3>Aménagement &amp; Environnement</h3>
-      <p class="commission-domain"><i class="fa-solid fa-circle-dot"></i>&nbsp; Domaine : <strong>Cadre de vie &amp; Nature</strong></p>
-      <p>Cette commission se consacre à l'embellissement du village, la préservation de la nature et le développement de l'espace public.</p>
-      <ul>
-        <li>Aménagement des espaces communs</li>
-        <li>Plantation d'arbres &amp; verdissement</li>
-        <li>Gestion des déchets &amp; propreté</li>
-      </ul>
-      <span class="tag tag-green"><i class="fa-solid fa-seedling"></i> Développement durable</span>
-      <a href="commissions.html" class="btn-detail">
-        <i class="fa-solid fa-arrow-right"></i> Voir le plan d'action
-      </a>
-    </div>
-
-    <!-- Commission 3 -->
-    <div class="commission-card" data-num="03">
-      <span class="commission-num"><i class="fa-solid fa-hashtag"></i> Commission 3</span>
-      <div class="commission-icon"><i class="fa-solid fa-scale-balanced"></i></div>
-      <h3>Juridique</h3>
-      <p class="commission-domain"><i class="fa-solid fa-circle-dot"></i>&nbsp; Domaine : <strong>Droits &amp; Patrimoine</strong></p>
-      <p>Cette commission se consacre au suivi de l'affaire du cimetière <em>Assadi</em>.</p>
-      <ul>
-        <li>Suivi de l'affaire Assadi</li>
-        <li>Coordination avec les autorités</li>
-        <li>Documentation &amp; archives légales</li>
-      </ul>
-      <span class="tag tag-gold"><i class="fa-solid fa-gavel"></i> Cimetière Assadi</span>
-      <a href="commissions.html" class="btn-detail">
-        <i class="fa-solid fa-arrow-right"></i> Voir le plan d'action
-      </a>
-    </div>
-
+    <div class="commission-card"><span class="commission-num"><i class="fa-solid fa-hashtag"></i> Commission 1</span><div class="commission-icon"><i class="fa-solid fa-flask"></i></div><h3>Sciences & Loisirs</h3><p>Jeunesse & éducation – ateliers, soutien, sport et culture.</p><a href="commissions.html" class="btn-detail"><i class="fa-solid fa-arrow-right"></i> Détails</a></div>
+    <div class="commission-card"><span class="commission-num"><i class="fa-solid fa-hashtag"></i> Commission 2</span><div class="commission-icon"><i class="fa-solid fa-leaf"></i></div><h3>Aménagement & Environnement</h3><p>Embellissement, verdissement, gestion des déchets.</p><a href="commissions.html" class="btn-detail"><i class="fa-solid fa-arrow-right"></i> Détails</a></div>
+    <div class="commission-card"><span class="commission-num"><i class="fa-solid fa-hashtag"></i> Commission 3</span><div class="commission-icon"><i class="fa-solid fa-scale-balanced"></i></div><h3>Juridique</h3><p>Suivi de l'affaire du cimetière Assadi, droits & patrimoine.</p><a href="commissions.html" class="btn-detail"><i class="fa-solid fa-arrow-right"></i> Détails</a></div>
   </div>
-
-  <div class="commissions-cta">
-    <h3><i class="fa-solid fa-map" style="color:var(--gold);margin-right:.4rem;"></i> Plan d'action 2026 – 2027</h3>
-    <p>Découvrez en détail les grands axes, les actions prévues et la feuille de route complète de chaque commission.</p>
-    <a href="commissions.html" class="btn-cta">
-      <i class="fa-solid fa-compass"></i> Voir toutes les commissions
-    </a>
-  </div>
-
+  <div class="commissions-cta"><h3><i class="fa-solid fa-map"></i> Plan d'action 2026–2027</h3><p>Feuille de route détaillée des trois commissions.</p><a href="commissions.html" class="btn-cta"><i class="fa-solid fa-compass"></i> Toutes les commissions</a></div>
 </section>
 
-<!-- ╔══ 5 — LOCALISATION ══╗ -->
+<!-- LOCALISATION (conservée, non liée au menu mais présente) -->
 <section class="location-section" id="location">
-  <div class="section-title">
-    <span class="overline">Où nous trouver</span>
-    <h2>Localisation du Village</h2>
-    <div class="divider"></div>
-  </div>
-  <div class="location-grid">
-    <div class="loc-item"><i class="fa-solid fa-flag"></i><h4>Pays</h4><p>Algérie 🇩🇿</p></div>
-    <div class="loc-item"><i class="fa-solid fa-map"></i><h4>Wilaya</h4><p>Tizi-Ouzou</p></div>
-    <div class="loc-item"><i class="fa-solid fa-location-crosshairs"></i><h4>Daïra</h4><p>Maâtkas</p></div>
-    <div class="loc-item"><i class="fa-solid fa-house"></i><h4>Village</h4><p>Irqvithen</p></div>
-  </div>
-  <div class="map-wrapper">
-    <iframe
-      src="https://www.openstreetmap.org/export/embed.html?bbox=4.0%2C36.4%2C4.5%2C36.7&layer=mapnik"
-      title="Carte – région de Maâtkas, Tizi-Ouzou" loading="lazy">
-    </iframe>
-  </div>
+  <div class="section-title"><span class="overline">Ancrage géographique</span><h2>Localisation du Village</h2><div class="divider"></div></div>
+  <div class="location-grid"><div class="loc-item"><i class="fa-solid fa-flag"></i><h4>Pays</h4><p>Algérie 🇩🇿</p></div><div class="loc-item"><i class="fa-solid fa-map"></i><h4>Wilaya</h4><p>Tizi-Ouzou</p></div><div class="loc-item"><i class="fa-solid fa-location-crosshairs"></i><h4>Daïra</h4><p>Maâtkas</p></div><div class="loc-item"><i class="fa-solid fa-house"></i><h4>Village</h4><p>Irqvithen</p></div></div>
+  <div class="map-wrapper"><iframe src="https://www.openstreetmap.org/export/embed.html?bbox=4.0,36.4,4.5,36.7&layer=mapnik" title="Carte Maâtkas" loading="lazy"></iframe></div>
 </section>
 
-<!-- ╔══ FOOTER ══╗ -->
-<footer id="contact">
-  <div class="footer-logo">Village <span>Irqvithen</span></div>
-  <p>Famille Mahtout — Daïra de Maâtkas, Wilaya de Tizi-Ouzou, Algérie</p>
-  <ul class="footer-links">
-    <li><a href="#annonces">Annonces</a></li>
-    <li><a href="#about">Le Village</a></li>
-    <li><a href="commissions.html">Commissions</a></li>
-    <li><a href="#location">Localisation</a></li>
-  </ul>
-  <div class="social-icons">
-    <a href="https://famillemahtout.github.io/" target="_blank"><i class="fa-brands fa-github"></i></a>
-    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-    <a href="#"><i class="fa-solid fa-envelope"></i></a>
-  </div>
-  <div class="footer-copy">
-    &copy; 2025 – Famille Mahtout / Comité IRQVITHEN. Tous droits réservés.<br/>
-    Site réalisé avec ❤️ pour notre village.
-  </div>
-</footer>
-
-<button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-  <i class="fa-solid fa-chevron-up"></i>
-</button>
+<!-- FOOTER + CONTACT -->
+<footer id="contact"><div class="footer-logo">Village <span>Irqvithen</span></div><p>Famille Mahtout — Maâtkas, Tizi-Ouzou, Algérie</p><ul class="footer-links"><li><a href="#annonces">Annonces</a></li><li><a href="#about">Le Village</a></li><li><a href="commissions.html">Commissions</a></li><li><a href="pvreunion.html">Solidarité & réunions</a></li><li><a href="#contact">Contact</a></li></ul><div class="social-icons"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-solid fa-envelope"></i></a></div><div class="footer-copy">&copy; 2026 – Famille Mahtout / Comité IRQVITHEN. Tous droits réservés.<br/>Site mobilisé pour les actions solidaires.</div></footer>
+<button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-chevron-up"></i></button>
 
 <script>
-/* ═══════════════════════════════════════════════════════════════
-   BASE DES ANNONCES
-   ───────────────────────────────────────────────────────────────
-   Pour ajouter une annonce :
-     1. Copier un bloc existant
-     2. Incrémenter id  ET  ordre
-     3. Remplir les champs
-     4. Catégories disponibles :
-        "general" | "urgent" | "sciences" | "amenagement" | "juridique"
-   ═══════════════════════════════════════════════════════════════ */
-
-const ANNONCES = [
-
-
-  // ═══════════════════════════════════════════
-  // ID 1 — Aménagement
-  // ═══════════════════════════════════════════
-  {
-  
-    id       : 2,
-    categorie: "amenagement",
-    titre    : "Campagne de nettoyage et désherbage",
-    texte    : "La Commission Aménagement & Environnement lance une grande campagne "
-             + "de nettoyage et de désherbage dans le village Irqvithen. "
-             + "Tous les habitants sont invités à participer. "
-             + "Venez munis de vos outils, gants et bonne humeur pour embellir "
-             + "notre cadre de vie ensemble !",
-    date     : "2025",
-    meta     : "Tous les habitants",
-    metaIcon : "fa-solid fa-users",
-    lienTexte: "Participer",
-    lienUrl  : "#",
-    nouveau  : true,
-    epingle  : false
-  },
-
-
-// ═══════════════════════════════════════════
-  // ID 2 — Annonce épinglée / générale
-  // ═══════════════════════════════════════════
-  {
-    
-    id       : 1,
-    categorie: "general",
-    titre    : "Création officielle du comité Irqvithen",
-    texte    : "Le comité de village IRQVITHEN est officiellement créé. "
-             + "Il est composé de trois commissions spécialisées : "
-             + "Sciences & Loisirs, Aménagement & Environnement, et Juridique. "
-             + "Ensemble, œuvrons pour le développement et le rayonnement de notre village.",
-    date     : " 2025",
-    meta     : "Comité officiel",
-    metaIcon : "fa-solid fa-certificate",
-    lienTexte: "Découvrir les commissions",
-    lienUrl  : "commissions.html",
-    nouveau  : true,
-    epingle  : true
-  },
-
-
-];
-
-/* ─────────────────────────────────────────────
-   CONFIG DES CATÉGORIES
-───────────────────────────────────────────── */
-const CAT_CONFIG = {
-  urgent      : { icon:"fa-solid fa-circle-exclamation", css:"cat-urgent",      label:"Urgent"             },
-  general     : { icon:"fa-solid fa-bullhorn",           css:"cat-general",     label:"Général"            },
-  sciences    : { icon:"fa-solid fa-flask",              css:"cat-sciences",    label:"Sciences & Loisirs" },
-  amenagement : { icon:"fa-solid fa-leaf",               css:"cat-amenagement", label:"Aménagement"        },
-  juridique   : { icon:"fa-solid fa-scale-balanced",     css:"cat-juridique",   label:"Juridique"          }
-};
-
-/* ─────────────────────────────────────────────
-   RÉFÉRENCES DOM
-───────────────────────────────────────────── */
-const grid        = document.getElementById('annoncesGrid');
-const noAnnonce   = document.getElementById('noAnnonce');
-const countEl     = document.getElementById('annoncesCount');
-const navBadge    = document.getElementById('navBadge');
-const searchInput = document.getElementById('searchInput');
-const filterBtns  = document.querySelectorAll('.filter-btn');
-const tickerInner = document.getElementById('tickerInner');
-
-let currentFilter = 'all';
-let currentSearch = '';
-
-/* ─────────────────────────────────────────────
-   CONSTRUCTION D'UNE CARTE
-───────────────────────────────────────────── */
-function buildCard(a) {
-  const cfg      = CAT_CONFIG[a.categorie] || CAT_CONFIG.general;
-  const pinClass = a.epingle ? 'pinned' : '';
-
-  const newBadge = a.nouveau
-    ? `<span class="annonce-new"><i class="fa-solid fa-circle"></i> Nouveau</span>`
-    : '';
-
-  return `
-    <div class="annonce-card ${pinClass}" data-id="${a.id}" data-category="${a.categorie}">
-
-      <div class="annonce-card-header">
-        <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;">
-          <span class="annonce-cat ${cfg.css}">
-            <i class="${cfg.icon}"></i> ${cfg.label}
-          </span>
-          <!-- Badge ID -->
-          <span class="annonce-id">
-            <i class="fa-solid fa-fingerprint"></i> #${String(a.id).padStart(2,'0')}
-          </span>
-        </div>
-        ${newBadge}
-      </div>
-
-      <div class="annonce-card-body">
-        <h3>${a.titre}</h3>
-        <p>${a.texte}</p>
-      </div>
-
-      <div class="annonce-card-footer">
-        <div class="annonce-meta">
-          <span><i class="fa-solid fa-calendar-days"></i> ${a.date}</span>
-          <span><i class="${a.metaIcon}"></i> ${a.meta}</span>
-        </div>
-        <a href="${a.lienUrl}" class="annonce-link">
-          ${a.lienTexte} <i class="fa-solid fa-arrow-right"></i>
-        </a>
-      </div>
-
-    </div>`;
-}
-
-/* ─────────────────────────────────────────────
-   TRI PAR ORDRE
-───────────────────────────────────────────── */
-function sortAnnonces(list) {
-  return [...list].sort((a, b) => a.ordre - b.ordre);
-}
-
-/* ─────────────────────────────────────────────
-   RENDU DE LA GRILLE
-───────────────────────────────────────────── */
-function renderAnnonces() {
-  const sorted   = sortAnnonces(ANNONCES);
-  const filtered = sorted.filter(a => {
-    const matchCat    = currentFilter === 'all' || a.categorie === currentFilter;
-    const matchSearch = a.titre.toLowerCase().includes(currentSearch)
-                     || a.texte.toLowerCase().includes(currentSearch);
-    return matchCat && matchSearch;
+  // ========= GESTION MENU MOBILE =========
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.getElementById('navLinks');
+  mobileBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+    const icon = mobileBtn.querySelector('i');
+    if (navLinks.classList.contains('show')) icon.classList.replace('fa-bars', 'fa-xmark');
+    else icon.classList.replace('fa-xmark', 'fa-bars');
+  });
+  // fermer le menu après clic sur un lien (mobile)
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 880) navLinks.classList.remove('show');
+      mobileBtn.querySelector('i').classList.replace('fa-xmark', 'fa-bars');
+    });
   });
 
-  grid.innerHTML = '';
-  grid.appendChild(noAnnonce);
-
-  if (filtered.length === 0) {
-    noAnnonce.style.display = 'block';
-    countEl.innerHTML = 'Aucune annonce trouvée.';
-  } else {
-    noAnnonce.style.display = 'none';
-    filtered.forEach(a => grid.insertAdjacentHTML('beforeend', buildCard(a)));
-    const n = filtered.length;
-    countEl.innerHTML = `<strong>${n}</strong> annonce${n > 1 ? 's' : ''} affichée${n > 1 ? 's' : ''}`;
-  }
-}
-
-/* ─────────────────────────────────────────────
-   TICKER
-───────────────────────────────────────────── */
-function buildTicker() {
-  const items = [...sortAnnonces(ANNONCES), ...sortAnnonces(ANNONCES)];
-  tickerInner.innerHTML = items.map(a => {
+  // ========= DONNÉES ANNONCES (exemple enrichi) =========
+  const ANNONCES = [
+    { id:1, ordre:1, categorie:"general", titre:"Création officielle du comité Irqvithen", texte:"Le comité de village est officiellement créé avec trois commissions spécialisées.", date:"2025", meta:"Comité officiel", metaIcon:"fa-solid fa-certificate", lienTexte:"En savoir plus", lienUrl:"commissions.html", nouveau:true, epingle:true },
+    { id:2, ordre:2, categorie:"amenagement", titre:"Campagne de nettoyage & désherbage", texte:"Grande action citoyenne le 8 mai 2026 : nettoyage des passages, fontaine Thala et cimetière Asaki N'Tarha.", date:"8 mai 2026", meta:"Tous habitants", metaIcon:"fa-solid fa-users", lienTexte:"Voir le PV", lienUrl:"pvreunion.html", nouveau:true, epingle:false },
+    { id:3, ordre:3, categorie:"urgent", titre:"Abattage sécurisé d'arbres dangereux", texte:"Intervention professionnelle le 15 mai 2026 – 3 arbres menaçants retirés (frais 22 000 dinars).", date:"15 mai 2026", meta:"Sécurité", metaIcon:"fa-solid fa-triangle-exclamation", lienTexte:"Détails", lienUrl:"pvreunion.html", nouveau:true, epingle:false },
+    { id:4, ordre:4, categorie:"sciences", titre:"Atelier jeunesse : biodiversité locale", texte:"La commission Sciences organise une sortie éducative le 22 mai.", date:"Mai 2026", meta:"Jeunes", metaIcon:"fa-solid fa-flask", lienTexte:"S'inscrire", lienUrl:"#", nouveau:false, epingle:false }
+  ];
+  const CAT_CONFIG = { urgent:{ icon:"fa-solid fa-circle-exclamation", css:"cat-urgent", label:"Urgent" }, general:{ icon:"fa-solid fa-bullhorn", css:"cat-general", label:"Général" }, sciences:{ icon:"fa-solid fa-flask", css:"cat-sciences", label:"Sciences" }, amenagement:{ icon:"fa-solid fa-leaf", css:"cat-amenagement", label:"Aménagement" }, juridique:{ icon:"fa-solid fa-scale-balanced", css:"cat-juridique", label:"Juridique" } };
+  const grid = document.getElementById('annoncesGrid'), noAnnonce = document.getElementById('noAnnonce'), countEl = document.getElementById('annoncesCount'), searchInput = document.getElementById('searchInput'), filterBtns = document.querySelectorAll('.filter-btn'), tickerInner = document.getElementById('tickerInner');
+  let currentFilter = 'all', currentSearch = '';
+  function sortAnnonces(list) { return [...list].sort((a,b)=>a.ordre-b.ordre); }
+  function buildCard(a) {
     const cfg = CAT_CONFIG[a.categorie] || CAT_CONFIG.general;
-    return `<a href="#annonces" class="ticker-item">
-      <span class="ticker-dot"></span>
-      <span class="ticker-cat">${cfg.label}</span>
-      <strong>#${String(a.id).padStart(2,'0')} — ${a.titre}</strong>
-    </a>`;
-  }).join('');
-}
-
-/* ─────────────────────────────────────────────
-   BADGE NAVBAR
-───────────────────────────────────────────── */
-navBadge.textContent = ANNONCES.length;
-
-/* ─────────────────────────────────────────────
-   FILTRES
-───────────────────────────────────────────── */
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentFilter = btn.dataset.filter;
-    renderAnnonces();
-  });
-});
-
-/* ─────────────────────────────────────────────
-   RECHERCHE
-───────────────────────────────────────────── */
-searchInput.addEventListener('input', () => {
-  currentSearch = searchInput.value.toLowerCase().trim();
-  renderAnnonces();
-});
-
-/* ─────────────────────────────────────────────
-   BACK TO TOP
-───────────────────────────────────────────── */
-const topBtn = document.getElementById('top-btn');
-window.addEventListener('scroll', () => {
-  topBtn.classList.toggle('visible', window.scrollY > 400);
-});
-
-/* ─────────────────────────────────────────────
-   INIT
-───────────────────────────────────────────── */
-buildTicker();
-renderAnnonces();
+    const pinClass = a.epingle ? 'pinned' : '';
+    const newBadge = a.nouveau ? `<span class="annonce-new"><i class="fa-solid fa-circle"></i> Nouveau</span>` : '';
+    return `<div class="annonce-card ${pinClass}" data-id="${a.id}" data-category="${a.categorie}">
+      <div class="annonce-card-header"><div style="display:flex;gap:.5rem;flex-wrap:wrap;"><span class="annonce-cat ${cfg.css}"><i class="${cfg.icon}"></i> ${cfg.label}</span><span class="annonce-id"><i class="fa-solid fa-fingerprint"></i> #${String(a.id).padStart(2,'0')}</span></div>${newBadge}</div>
+      <div class="annonce-card-body"><h3>${a.titre}</h3><p>${a.texte}</p></div>
+      <div class="annonce-card-footer"><div class="annonce-meta"><span><i class="fa-solid fa-calendar-days"></i> ${a.date}</span><span><i class="${a.metaIcon}"></i> ${a.meta}</span></div><a href="${a.lienUrl}" class="annonce-link">${a.lienTexte} <i class="fa-solid fa-arrow-right"></i></a></div>
+    </div>`;
+  }
+  function renderAnnonces() {
+    const sorted = sortAnnonces(ANNONCES);
+    const filtered = sorted.filter(a => (currentFilter==='all' || a.categorie===currentFilter) && (a.titre.toLowerCase().includes(currentSearch) || a.texte.toLowerCase().includes(currentSearch)));
+    grid.innerHTML = '';
+    if (filtered.length===0) { noAnnonce.style.display='block'; countEl.innerHTML='Aucune annonce trouvée.'; grid.appendChild(noAnnonce); }
+    else { noAnnonce.style.display='none'; filtered.forEach(a=>grid.insertAdjacentHTML('beforeend',buildCard(a))); countEl.innerHTML=`<strong>${filtered.length}</strong> annonce${filtered.length>1?'s':''} affichée${filtered.length>1?'s':''}`; }
+  }
+  function buildTicker() {
+    const items = [...sortAnnonces(ANNONCES), ...sortAnnonces(ANNONCES)];
+    tickerInner.innerHTML = items.map(a=>{ const cfg=CAT_CONFIG[a.categorie]||CAT_CONFIG.general; return `<a href="#annonces" class="ticker-item"><span class="ticker-dot"></span><span class="ticker-cat">${cfg.label}</span><strong>#${String(a.id).padStart(2,'0')} — ${a.titre}</strong></a>`; }).join('');
+  }
+  filterBtns.forEach(btn=>btn.addEventListener('click',()=>{ filterBtns.forEach(b=>b.classList.remove('active')); btn.classList.add('active'); currentFilter=btn.dataset.filter; renderAnnonces(); }));
+  searchInput.addEventListener('input',()=>{ currentSearch=searchInput.value.toLowerCase().trim(); renderAnnonces(); });
+  buildTicker(); renderAnnonces();
+  // top button
+  const topBtn = document.getElementById('top-btn');
+  window.addEventListener('scroll',()=>topBtn.classList.toggle('visible',window.scrollY>400));
 </script>
 </body>
 </html>
