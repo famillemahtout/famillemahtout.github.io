@@ -32,7 +32,7 @@
       padding-top: var(--offset);
     }
 
-    /* ========= NAVBAR ========= (identique à index.html) */
+    /* ========= NAVBAR ========= */
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 1000; height: var(--nav-h);
@@ -92,7 +92,6 @@
       border-color: var(--gold);
     }
     .nav-links li a:active { transform: translateY(1px); }
-    /* Bouton actif pour la page courante */
     .nav-links li a.active {
       background: var(--gold);
       color: #1e2a1f;
@@ -404,6 +403,15 @@
       box-shadow: none; cursor: not-allowed;
       pointer-events: none;
     }
+    .btn-photos {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .45rem 1rem; border-radius: 50px;
+      background: #3b82f6; color: #fff;
+      font-size: .78rem; font-weight: 600;
+      text-decoration: none; transition: all .25s;
+      box-shadow: 0 2px 10px rgba(59,130,246,.3);
+    }
+    .btn-photos:hover { background: #2563eb; transform: translateY(-2px); }
     .btn-drive-card {
       display: inline-flex; align-items: center; gap: .4rem;
       padding: .45rem 1rem; border-radius: 50px;
@@ -506,17 +514,15 @@
   </ul>
 </nav>
 
-<!-- ========= TICKER (annonces dynamique) ========= -->
+<!-- TICKER (annonces) -->
 <div class="annonces-ticker">
   <div class="ticker-label"><i class="fa-solid fa-bullhorn"></i> Annonces</div>
   <div class="ticker-sep"></div>
-  <div class="ticker-track">
-    <div class="ticker-inner" id="tickerInner"></div>
-  </div>
+  <div class="ticker-track"><div class="ticker-inner" id="tickerInner"></div></div>
   <a href="index.html#annonces" class="ticker-view-all">Voir tout <i class="fa-solid fa-arrow-right"></i></a>
 </div>
 
-<!-- ========= HERO SPÉCIFIQUE (sans bandeau Drive) ========= -->
+<!-- HERO SPÉCIFIQUE -->
 <div class="hero-pv">
   <a href="index.html" class="breadcrumb">
     <i class="fa-solid fa-arrow-left"></i> Retour au village
@@ -532,7 +538,7 @@
   </div>
 </div>
 
-<!-- ========= CONTENU ========= -->
+<!-- CONTENU PRINCIPAL -->
 <div class="page-wrapper">
   <div class="pv-toolbar">
     <div class="search-wrap">
@@ -555,7 +561,7 @@
   </div>
 </div>
 
-<!-- ========= FOOTER ========= -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-logo">Village <span>Irqvithen</span></div>
   <p>Famille Mahtout — Daïra de Maâtkas, Wilaya de Tizi-Ouzou, Algérie</p>
@@ -596,28 +602,87 @@
     });
   });
 
-  // ========= DONNÉES DES PV & CR (exemple concret issu du PV original) =========
+  // ========= DONNÉES DES PV (conformes aux demandes) =========
   const PV_DATA = [
     {
-      ordre: 1, id: 1, type: "pv",
-      titre: "Action de solidarité – Désherbage & nettoyage (8 mai 2026)",
-      date: "8 mai 2026", lieu: "Village Irqvithen", presides: "Comité citoyen",
-      resume: "Désherbage des passages, chemin vers la fontaine Thala, cimetière 2 (Asaki N'Tarha). Évacuation des déchets et badigeonnage des tombes à la chaux.",
-      points: ["Désherbage et nettoyage des différents passages", "Nettoyage du chemin vers la fontaine Thala", "Entretien du cimetière 2 (Asaki N'Tarha)", "Évacuation complète des déchets", "Badigeonnage des tombes à la chaux"],
-      decisions: ["Programmation d'une deuxième action le 15 mai 2026", "Remerciements à tous les participants"],
-      texteComplet: "Le 8 mai 2026, une action de désherbage, de nettoyage et d'aménagement s'est déroulée dans le village d'IRKEVITHEN.\n\nRéalisations : désherbage des passages, chemin vers la fontaine Thala, cimetière 2 (Asaki N'Tarha) ; évacuation complète des déchets ; badigeonnage des tombes à la chaux.\n\nListe des participants : profonde gratitude à toutes les personnes présentes pour leur dévouement. Une deuxième action a été programmée le 15 mai 2026.",
-      pdfDispo: true, pdfNom: "PV_Solidarite_8Mai2026.pdf", pdfLien: "https://drive.google.com/drive/folders/1tdtifQsSd10zjg2By2KT-gU-3l1KNmV2?usp=drive_link",
+      ordre: 2, id: 1, type: "pv",
+      titre: "Action de solidarité – Désherbage, nettoyage & abattage (15 mai 2026)",
+      date: "15 mai 2026", lieu: "Village Irqvithen", presides: "Comité citoyen",
+      resume: "Désherbage, nettoyage, abattage de 3 arbres dangereux, évacuation des déchets et badigeonnage des tombes.",
+      points: [
+        "Désherbage et nettoyage du cimetière Assaki n’Tarha, des chemins, El-Kaf, Our-Thaissa, Amrah, Annar",
+        "Abattage de trois arbres dangereux : Thaslent n’Hocine n’Ahmed Ou Lamara, Thakaroucht n’Ali ou Slimane, Caliptus n’Slimane Moh Ou Kaci",
+        "Intervention professionnelle : 22 000 dinars",
+        "Évacuation complète des déchets",
+        "Badigeonnage des tombes à la chaux"
+      ],
+      decisions: [
+        "Remerciements à tous les participants",
+        "Le comité veillera à la sécurité des passages"
+      ],
+      texteComplet: `VILLAGE IKEVITHEN
+Comité Irkevithen
+Date : 15/05/2026
+
+Procès-verbal de l'action de solidarité du 15 mai 2026.
+Le 08 et le 15 mai 2026, des actions de désherbage, de nettoyage, d’abattage d’arbres se sont déroulées dans le village d'Irkevithen.
+
+Les principales réalisations sont les suivantes :
+- Désherbage et nettoyage notamment au niveau du cimetière Assaki n’Tarha, les différents chemins, El-Kaf, Our-Thaissa, Amrah, Annar.
+- L'abattage de trois arbres qui représentaient un danger imminent pour les habitants et les passants, appartenant respectivement à :
+  • Thaslent n’Hocine n’Ahmed Ou Lamara,
+  • Thakaroucht n’Ali ou Slimane,
+  • Caliptus n’Slimane Moh Ou Kaci.
+  Pour cette intervention, le comité a fait appel à un professionnel, dont les frais s'élèvent à 22 000 dinars.
+- L'évacuation complète des déchets.
+- Le badigeonnage des tombes à la chaux.
+
+Nous tenons à exprimer notre profonde gratitude à l'ensemble des personnes présentes lors de cette journée d'action citoyenne pour leur esprit de solidarité. Sans leur engagement, rien de tout cela n'aurait été possible.
+
+Tizi-Ouzou, le 16/05/2026`,
+      pdfDispo: true, pdfNom: "PV_Solidarite_15Mai2026.pdf", pdfLien: "https://drive.google.com/drive/folders/1tdtifQsSd10zjg2By2KT-gU-3l1KNmV2?usp=drive_link",
+      photosLink: "https://photos.google.com/example",  // lien à remplacer par le vrai album
       nouveau: true, epingle: true
     },
     {
-      ordre: 2, id: 2, type: "pv",
-      titre: "Abattage sécurisé d'arbres dangereux (15 mai 2026)",
-      date: "15 mai 2026", lieu: "Irok Biten / Irqvithen", presides: "Services du village",
-      resume: "Trois arbres menaçant la sécurité des habitants ont été abattus par un professionnel. Frais : 22 000 dinars.",
-      points: ["Arbre 'Fassel Husin Nahmad ou la Mara'", "Arbre 'Faqar Rusht Nali Ousliman'", "Arbre 'Kalitus N'Sliman Mohu Qasi'"],
-      decisions: ["Faire appel à un professionnel agréé", "Prise en charge financière de 22 000 dinars", "Sécurisation définitive de la zone"],
-      texteComplet: "Opération d'abattage de trois arbres dangereux réalisée le 15 mai 2026. Les arbres concernés : Fassel Husin Nahmad ou la Mara, Faqar Rusht Nali Ousliman, Kalitus N'Sliman Mohu Qasi. Intervention professionnelle, frais s'élevant à 22 000 dinars.",
-      pdfDispo: true, pdfNom: "PV_Abattage_15Mai2026.pdf", pdfLien: "https://drive.google.com/drive/folders/1tdtifQsSd10zjg2By2KT-gU-3l1KNmV2?usp=drive_link",
+      ordre: 1, id: 2, type: "pv",
+      titre: "Rencontre avec les autorités locales – Travaux et aménagements (8 mai 2026)",
+      date: "8 mai 2026", lieu: "Mairie / Village Irqvithen", presides: "Maire, PAPC, Comité du village",
+      resume: "Suite à l'opposition des habitants concernant la route d'Our Thaissa, rencontre avec le maire. Engagement sur plusieurs travaux (murs, bétonnage, éclairage).",
+      points: [
+        "Mur de soutènement côté Our Thaissa (face maison Smail)",
+        "Bétonnage du passage vers maison Saïd Elhaj Mouh",
+        "Sentier menant vers maison Arab",
+        "Mur de soutènement côté bas (maison Amar Wali)",
+        "Mur de soutènement El Kaf",
+        "Surélévation du mur du cimetière 2 « Asaki N’Tarha »",
+        "Renforcement de l’éclairage public (4 lampadaires promis)",
+        "Mise en demeure pour dépassement de clôture vers passage public"
+      ],
+      decisions: [
+        "Le PAPC s'engage à réaliser les travaux sous sa responsabilité",
+        "Le maire promet les lampadaires et la mise en demeure"
+      ],
+      texteComplet: `VILLAGE IKEVITHEN
+Comité Irkevithen
+Date de la rencontre : 08/05/2026
+
+Procès-verbal de la rencontre avec les autorités locales
+
+Suite à l'opposition des habitants concernant la route menant à Our Thaissa, une rencontre s'est tenue entre le maire, les représentants du service technique, et les membres du comité du village Irkevithen.
+Les membres du comité ont profité de l'occasion pour attirer l'attention du maire sur les différents manquements constatés au sein du village.
+Avec le consentement entre le PAPC et les membres du comité, le PAPC s'est engagé à réaliser :
+- Le mur de soutènement du côté Our Thaissa (mur en face la porte d'entrée de la maison de Smail).
+- Le bétonnage du passage menant vers la maison de Saïd Elhaj Mouh.
+- Le sentier menant vers maison de Arab.
+- Le mur de soutènement du côté bas (maison Amar Wali).
+- Le mur de soutènement El Kaf.
+Suite à la demande des membres du comité, il a également été demandé la surélévation du mur du cimetière 2 « Asaki N’Tarha », ainsi que le renforcement de l’éclairage publique.
+Le maire a promis de faire cela incessamment en fournissant quatre lampadaires.
+Il a également promis de faire une mise en demeure pour la personne à l’origine du dépassement de la clôture vers le passage public menant à Assaki N’Tarha.
+
+Tizi-Ouzou, le 09/05/2026`,
+      pdfDispo: true, pdfNom: "PV_Rencontre_Autorites_8Mai2026.pdf", pdfLien: "https://drive.google.com/drive/folders/1tdtifQsSd10zjg2By2KT-gU-3l1KNmV2?usp=drive_link",
       nouveau: true, epingle: false
     }
   ];
@@ -654,6 +719,7 @@
     const pdfBadge = p.pdfDispo ? `<span class="pv-pdf-badge"><i class="fa-solid fa-file-pdf"></i> PDF dispo</span>` : '';
     const pointsHTML = p.points.map(pt => `<li>${pt}</li>`).join('');
     const decisionsHTML = p.decisions.map(d => `<li><i class="fa-solid fa-check-circle"></i> ${d}</li>`).join('');
+    
     let btnPDF = '';
     if (p.pdfDispo && p.pdfLien) {
       btnPDF = `<a href="${p.pdfLien}" target="_blank" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> Télécharger PDF</a>
@@ -662,6 +728,13 @@
       btnPDF = `<span class="btn-pdf disabled"><i class="fa-solid fa-clock"></i> PDF bientôt</span>
                 <a href="${DRIVE_FOLDER}" target="_blank" class="btn-drive-card"><i class="fa-brands fa-google-drive"></i> Drive</a>`;
     }
+
+    // Bouton "Voir les photos" si le champ photosLink existe
+    let btnPhotos = '';
+    if (p.photosLink) {
+      btnPhotos = `<a href="${p.photosLink}" target="_blank" class="btn-photos"><i class="fa-solid fa-camera"></i> Voir les photos</a>`;
+    }
+
     return `
       <div class="pv-card ${pinClass}" data-id="${p.id}" data-type="${p.type}">
         <div class="pv-card-header">
@@ -679,8 +752,16 @@
         </div>
         <div class="pv-expanded" id="expanded-${p.id}"><h4><i class="fa-solid fa-file-lines"></i> Texte intégral</h4><p>${p.texteComplet}</p></div>
         <div class="pv-card-footer">
-          <div class="pv-meta"><span><i class="fa-solid fa-calendar-days"></i> ${p.date}</span><span><i class="fa-solid fa-location-dot"></i> ${p.lieu}</span><span><i class="fa-solid fa-user-tie"></i> ${p.presides}</span></div>
-          <div class="pv-btn-group"><button class="btn-expand" onclick="toggleExpand(${p.id}, this)"><i class="fa-solid fa-eye"></i> Texte complet</button>${btnPDF}</div>
+          <div class="pv-meta">
+            <span><i class="fa-solid fa-calendar-days"></i> ${p.date}</span>
+            <span><i class="fa-solid fa-location-dot"></i> ${p.lieu}</span>
+            <span><i class="fa-solid fa-user-tie"></i> ${p.presides}</span>
+          </div>
+          <div class="pv-btn-group">
+            <button class="btn-expand" onclick="toggleExpand(${p.id}, this)"><i class="fa-solid fa-eye"></i> Texte complet</button>
+            ${btnPhotos}
+            ${btnPDF}
+          </div>
         </div>
       </div>`;
   }
@@ -697,16 +778,15 @@
   pvSearch.addEventListener('input', () => { currentSearch = pvSearch.value.toLowerCase().trim(); renderPV(); });
   updateStats(); renderPV();
 
-  // Ticker dynamique (reprise annonces)
+  // Ticker (annonces légères pour la page)
   const tickerInner = document.getElementById('tickerInner');
   const tickerAnnonces = [
-    { id:1, titre:"Création officielle du comité Irqvithen", cat:"Général" },
-    { id:2, titre:"Campagne de nettoyage & désherbage – 8 mai 2026", cat:"Aménagement" },
-    { id:3, titre:"Abattage sécurisé d'arbres dangereux – 15 mai 2026", cat:"Urgent" }
+    { id:1, titre:"Action solidaire 15 mai 2026 – nettoyage & abattage", cat:"Solidarité" },
+    { id:2, titre:"Rencontre avec le maire – travaux obtenus", cat:"Aménagement" }
   ];
   function buildTicker() {
     const items = [...tickerAnnonces, ...tickerAnnonces];
-    tickerInner.innerHTML = items.map(a => `<a href="index.html#annonces" class="ticker-item"><span class="ticker-dot"></span><span class="ticker-cat">${a.cat}</span><strong>#${String(a.id).padStart(2,'0')} — ${a.titre}</strong></a>`).join('');
+    tickerInner.innerHTML = items.map(a => `<a href="#" class="ticker-item"><span class="ticker-dot"></span><span class="ticker-cat">${a.cat}</span><strong>#${String(a.id).padStart(2,'0')} — ${a.titre}</strong></a>`).join('');
   }
   buildTicker();
 
