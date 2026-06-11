@@ -748,7 +748,7 @@ Tizi-Ouzou, le 09/05/2026`,
           <h3>${p.titre}</h3>
           <p class="pv-resume">${p.resume}</p>
           <div class="pv-points"><h4><i class="fa-solid fa-list-ul"></i> Points abordés</h4><ul>${pointsHTML}</ul></div>
-          ${p.decisions.length ? `<div class="pv-decisions"><h4><i class="fa-solid fa-gavel"></i> Décisions prises</h4><ul>${decisionsHTML}</ul></div>` : ''}
+          ${p.decisions.length ? `<div class="pv-decisions"><h4><i class="fa-solid fa-gavel"></i> </h4><ul>${decisionsHTML}</ul></div>` : ''}
         </div>
         <div class="pv-expanded" id="expanded-${p.id}"><h4><i class="fa-solid fa-file-lines"></i> Texte intégral</h4><p>${p.texteComplet}</p></div>
         <div class="pv-card-footer">
