@@ -610,14 +610,10 @@
       date: "15 mai 2026", lieu: "Village Irqvithen", presides: "Comité citoyen",
       resume: "Désherbage, nettoyage, abattage de 3 arbres dangereux, évacuation des déchets et badigeonnage des tombes.",
       points: [
-        "Désherbage et nettoyage du cimetière Assaki n’Tarha, des chemins, El-Kaf, Our-Thaissa, Amrah, Annar",
-        "Abattage de trois arbres dangereux : Thaslent n’Hocine n’Ahmed Ou Lamara, Thakaroucht n’Ali ou Slimane, Caliptus n’Slimane Moh Ou Kaci",
-        "Intervention professionnelle : 22 000 dinars",
-        "Évacuation complète des déchets",
-        "Badigeonnage des tombes à la chaux"
+        ""
       ],
       decisions: [
-        "Remerciements à tous les participants",
+        "",
       
       ],
       texteComplet: `VILLAGE IKEVITHEN
@@ -747,7 +743,7 @@ Tizi-Ouzou, le 09/05/2026`,
         <div class="pv-card-body">
           <h3>${p.titre}</h3>
           <p class="pv-resume">${p.resume}</p>
-          <div class="pv-points"><h4><i class="fa-solid fa-list-ul"></i> Ce qui a été fait</h4><ul>${pointsHTML}</ul></div>
+          <div class="pv-points"><h4><i class="fa-solid fa-list-ul"></h4><ul>${pointsHTML}</ul></div>
           ${p.decisions.length ? `<div class="pv-decisions"><h4><i class="fa-solid fa-gavel"></i> </h4><ul>${decisionsHTML}</ul></div>` : ''}
         </div>
         <div class="pv-expanded" id="expanded-${p.id}"><h4><i class="fa-solid fa-file-lines"></i> Texte intégral</h4><p>${p.texteComplet}</p></div>
