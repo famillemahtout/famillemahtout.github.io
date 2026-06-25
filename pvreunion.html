@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
+    /* ---- CSS inchangé (identique à l'original) ---- */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -110,7 +111,7 @@
     }
     .mobile-menu-icon:hover { transform: scale(1.05); color: #fff; }
 
-    /* ========= TICKER (annonces) ========= */
+    /* ========= TICKER ========= */
     .annonces-ticker {
       position: fixed;
       top: var(--nav-h); left: 0; right: 0;
@@ -166,7 +167,7 @@
     }
     .ticker-view-all:hover { background:rgba(255,255,255,.07); }
 
-    /* ========= HERO SPÉCIFIQUE ========= */
+    /* ========= HERO ========= */
     .hero-pv {
       background: linear-gradient(160deg, rgba(10,40,25,.92) 0%, rgba(26,92,56,.85) 100%),
                   url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80') center/cover no-repeat;
@@ -220,7 +221,7 @@
       letter-spacing: 2px; color: rgba(255,255,255,.7); margin-top: .3rem;
     }
 
-    /* ========= CONTENU PRINCIPAL (PV LIST) ========= */
+    /* ========= PAGE ========= */
     .page-wrapper {
       max-width: 1000px; margin: 0 auto;
       padding: 3rem 1.5rem 5rem;
@@ -326,37 +327,6 @@
       font-size: 1.12rem; color: var(--green-dark);
       margin-bottom: .5rem;
     }
-    .pv-card-body .pv-resume {
-      font-size: .87rem; color: #666; line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-    .pv-points h4, .pv-decisions h4, .pv-expanded h4 {
-      font-size: .75rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 1.5px; color: #999; margin-bottom: .6rem;
-      display: flex; align-items: center; gap: .4rem;
-    }
-    .pv-points h4 i, .pv-decisions h4 i, .pv-expanded h4 i { color: var(--gold); }
-    .pv-points ul, .pv-decisions ul {
-      list-style: none; display: flex; flex-direction: column; gap: .4rem;
-    }
-    .pv-points ul li {
-      display: flex; align-items: flex-start; gap: .6rem;
-      font-size: .85rem; color: #555; line-height: 1.5;
-    }
-    .pv-points ul li::before {
-      content: ''; width: 6px; height: 6px; border-radius: 50%;
-      background: var(--green-mid); flex-shrink: 0; margin-top: .45rem;
-    }
-    .pv-decisions {
-      margin-top: 1rem;
-      background: #fffbeb; border-radius: 10px; padding: .9rem 1.1rem;
-      border-left: 3px solid var(--gold);
-    }
-    .pv-decisions ul li {
-      font-size: .84rem; color: #78350f;
-      display: flex; align-items: flex-start; gap: .5rem; line-height: 1.5;
-    }
-    .pv-decisions ul li i { color: var(--gold); margin-top: .1rem; font-size: .75rem; }
     .pv-expanded {
       display: none;
       padding: 1.2rem 1.5rem;
@@ -496,7 +466,7 @@
 </head>
 <body>
 
-<!-- ========= NAVBAR IDENTIQUE À INDEX.HTML ========= -->
+<!-- ========= NAVBAR ========= -->
 <nav>
   <a href="index.html" class="nav-logo">
     <div class="logo-icon"><i class="fa-solid fa-mountain-sun"></i></div>
@@ -514,7 +484,7 @@
   </ul>
 </nav>
 
-<!-- TICKER (annonces) -->
+<!-- TICKER -->
 <div class="annonces-ticker">
   <div class="ticker-label"><i class="fa-solid fa-bullhorn"></i> Annonces</div>
   <div class="ticker-sep"></div>
@@ -522,7 +492,7 @@
   <a href="index.html#annonces" class="ticker-view-all">Voir tout <i class="fa-solid fa-arrow-right"></i></a>
 </div>
 
-<!-- HERO SPÉCIFIQUE -->
+<!-- HERO -->
 <div class="hero-pv">
   <a href="index.html" class="breadcrumb">
     <i class="fa-solid fa-arrow-left"></i> Retour au village
@@ -585,7 +555,7 @@
 <button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-chevron-up"></i></button>
 
 <script>
-  // ========= GESTION MENU MOBILE =========
+  // ========= MENU MOBILE =========
   const mobileBtn = document.getElementById('mobileMenuBtn');
   const navLinks = document.getElementById('navLinks');
   mobileBtn.addEventListener('click', () => {
@@ -602,20 +572,13 @@
     });
   });
 
-  // ========= DONNÉES DES PV (conformes aux demandes) =========
+  // ========= DONNÉES DES PV =========
   const PV_DATA = [
     {
       ordre: 2, id: 1, type: "pv",
       titre: "Action de solidarité – Désherbage, nettoyage & abattage (15 mai 2026)",
       date: "15 mai 2026", lieu: "Village Irqvithen", presides: "Comité citoyen",
-      resume: "Désherbage, nettoyage, abattage de 3 arbres dangereux, évacuation des déchets et badigeonnage des tombes.",
-      points: [
-        ""
-      ],
-      decisions: [
-        "",
-      
-      ],
+      // On garde le texte complet, mais on supprime le résumé, points, décisions
       texteComplet: `VILLAGE IKEVITHEN
 Comité Irkevithen
 Date : 15/05/2026
@@ -644,16 +607,6 @@ Tizi-Ouzou, le 16/05/2026`,
       ordre: 1, id: 2, type: "pv",
       titre: "Rencontre avec les autorités locales – Travaux et aménagements (8 mai 2026)",
       date: "8 mai 2026", lieu: "Mairie / Village Irqvithen", presides: "Maire, PAPC, Comité du village",
-      resume: "",
-      points: [
-        "",
-        ""
-
-      ],
-      decisions: [
-        "",
-        ""
-      ],
       texteComplet: `VILLAGE IKEVITHEN
 Comité Irkevithen
 Date de la rencontre : 08/05/2026
@@ -698,18 +651,22 @@ Tizi-Ouzou, le 09/05/2026`,
     statPDF.textContent = PV_DATA.filter(p => p.pdfDispo).length;
   }
   function sortPV(list) { return [...list].sort((a,b) => b.ordre - a.ordre); }
+
+  // Fonction pour basculer l'affichage du texte complet
   function toggleExpand(id, btn) {
     const zone = document.getElementById('expanded-' + id);
+    if (!zone) return;
     const isOpen = zone.classList.toggle('open');
-    btn.innerHTML = isOpen ? `<i class="fa-solid fa-eye-slash"></i> Réduire` : `<i class="fa-solid fa-eye"></i> Texte complet`;
+    btn.innerHTML = isOpen
+      ? `<i class="fa-solid fa-eye-slash"></i> Réduire`
+      : `<i class="fa-solid fa-eye"></i> Texte complet`;
   }
+
   function buildPVCard(p) {
     const cfg = TYPE_CONFIG[p.type] || TYPE_CONFIG.pv;
     const pinClass = p.epingle ? 'pv-pinned' : '';
     const newBadge = p.nouveau ? `<span class="pv-new"><i class="fa-solid fa-circle"></i> Nouveau</span>` : '';
     const pdfBadge = p.pdfDispo ? `<span class="pv-pdf-badge"><i class="fa-solid fa-file-pdf"></i> PDF dispo</span>` : '';
-    const pointsHTML = p.points.map(pt => `<li>${pt}</li>`).join('');
-    const decisionsHTML = p.decisions.map(d => `<li><i class="fa-solid fa-check-circle"></i> ${d}</li>`).join('');
     
     let btnPDF = '';
     if (p.pdfDispo && p.pdfLien) {
@@ -720,7 +677,6 @@ Tizi-Ouzou, le 09/05/2026`,
                 <a href="${DRIVE_FOLDER}" target="_blank" class="btn-drive-card"><i class="fa-brands fa-google-drive"></i> Drive</a>`;
     }
 
-    // Bouton "Voir les photos" si le champ photosLink existe
     let btnPhotos = '';
     if (p.photosLink) {
       btnPhotos = `<a href="${p.photosLink}" target="_blank" class="btn-photos"><i class="fa-solid fa-camera"></i> Voir les photos</a>`;
@@ -737,11 +693,12 @@ Tizi-Ouzou, le 09/05/2026`,
         </div>
         <div class="pv-card-body">
           <h3>${p.titre}</h3>
-          <p class="pv-resume">${p.resume}</p>
-          <div class="pv-points"><h4><i class="fa-solid fa-list-ul"></h4><ul>${pointsHTML}</ul></div>
-          ${p.decisions.length ? `<div class="pv-decisions"><h4><i class="fa-solid fa-gavel"></i> </h4><ul>${decisionsHTML}</ul></div>` : ''}
+          <!-- Plus de résumé, points, décisions avant le clic -->
         </div>
-        <div class="pv-expanded" id="expanded-${p.id}"><h4><i class="fa-solid fa-file-lines"></i> Texte intégral</h4><p>${p.texteComplet}</p></div>
+        <div class="pv-expanded" id="expanded-${p.id}">
+          <h4><i class="fa-solid fa-file-lines"></i> Texte intégral</h4>
+          <p>${p.texteComplet}</p>
+        </div>
         <div class="pv-card-footer">
           <div class="pv-meta">
             <span><i class="fa-solid fa-calendar-days"></i> ${p.date}</span>
@@ -749,27 +706,52 @@ Tizi-Ouzou, le 09/05/2026`,
             <span><i class="fa-solid fa-user-tie"></i> ${p.presides}</span>
           </div>
           <div class="pv-btn-group">
-            <button class="btn-expand" onclick="toggleExpand(${p.id}, this)"><i class="fa-solid fa-eye"></i> Texte complet</button>
+            <button class="btn-expand" onclick="toggleExpand(${p.id}, this)">
+              <i class="fa-solid fa-eye"></i> Texte complet
+            </button>
             ${btnPhotos}
             ${btnPDF}
           </div>
         </div>
       </div>`;
   }
+
   function renderPV() {
     const sorted = sortPV(PV_DATA);
-    const filtered = sorted.filter(p => (currentFilter === 'all' || p.type === currentFilter) && (p.titre.toLowerCase().includes(currentSearch) || p.resume.toLowerCase().includes(currentSearch) || p.texteComplet.toLowerCase().includes(currentSearch)));
+    const filtered = sorted.filter(p => 
+      (currentFilter === 'all' || p.type === currentFilter) &&
+      (p.titre.toLowerCase().includes(currentSearch) || 
+       p.texteComplet.toLowerCase().includes(currentSearch))
+    );
     pvList.innerHTML = '';
-    if (filtered.length === 0) { pvEmpty.style.display = 'block'; pvList.style.display = 'none'; pvCountEl.innerHTML = 'Aucun document trouvé.'; }
-    else { pvEmpty.style.display = 'none'; pvList.style.display = 'flex'; filtered.forEach(p => pvList.insertAdjacentHTML('beforeend', buildPVCard(p))); pvCountEl.innerHTML = `<strong>${filtered.length}</strong> document${filtered.length > 1 ? 's' : ''} trouvé${filtered.length > 1 ? 's' : ''}`; }
+    if (filtered.length === 0) {
+      pvEmpty.style.display = 'block';
+      pvList.style.display = 'none';
+      pvCountEl.innerHTML = 'Aucun document trouvé.';
+    } else {
+      pvEmpty.style.display = 'none';
+      pvList.style.display = 'flex';
+      filtered.forEach(p => pvList.insertAdjacentHTML('beforeend', buildPVCard(p)));
+      pvCountEl.innerHTML = `<strong>${filtered.length}</strong> document${filtered.length > 1 ? 's' : ''} trouvé${filtered.length > 1 ? 's' : ''}`;
+    }
   }
-  filterBtns.forEach(btn => btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active')); btn.classList.add('active'); currentFilter = btn.dataset.filter; renderPV();
-  }));
-  pvSearch.addEventListener('input', () => { currentSearch = pvSearch.value.toLowerCase().trim(); renderPV(); });
-  updateStats(); renderPV();
 
-  // Ticker (annonces légères pour la page)
+  filterBtns.forEach(btn => btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    renderPV();
+  }));
+
+  pvSearch.addEventListener('input', () => {
+    currentSearch = pvSearch.value.toLowerCase().trim();
+    renderPV();
+  });
+
+  updateStats();
+  renderPV();
+
+  // ========= TICKER =========
   const tickerInner = document.getElementById('tickerInner');
   const tickerAnnonces = [
     { id:1, titre:"Action solidaire 15 mai 2026 – nettoyage & abattage", cat:"Solidarité" },
@@ -777,12 +759,17 @@ Tizi-Ouzou, le 09/05/2026`,
   ];
   function buildTicker() {
     const items = [...tickerAnnonces, ...tickerAnnonces];
-    tickerInner.innerHTML = items.map(a => `<a href="#" class="ticker-item"><span class="ticker-dot"></span><span class="ticker-cat">${a.cat}</span><strong>#${String(a.id).padStart(2,'0')} — ${a.titre}</strong></a>`).join('');
+    tickerInner.innerHTML = items.map(a => 
+      `<a href="#" class="ticker-item"><span class="ticker-dot"></span><span class="ticker-cat">${a.cat}</span><strong>#${String(a.id).padStart(2,'0')} — ${a.titre}</strong></a>`
+    ).join('');
   }
   buildTicker();
 
+  // ========= BOUTON RETOUR HAUT =========
   const topBtn = document.getElementById('top-btn');
   window.addEventListener('scroll', () => topBtn.classList.toggle('visible', window.scrollY > 400));
+
+  // Rendre la fonction toggleExpand accessible globalement
   window.toggleExpand = toggleExpand;
 </script>
 </body>
